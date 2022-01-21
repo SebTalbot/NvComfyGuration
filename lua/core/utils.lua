@@ -22,8 +22,6 @@ M.map = function(mode, keys, command, opt)
       ["t"] = true,
    }
 
-   -- helper function for M.map
-   -- can gives multiple modes and keys
    local function map_wrapper(sub_mode, lhs, rhs, sub_options)
       if type(lhs) == "table" then
          for _, key in ipairs(lhs) do

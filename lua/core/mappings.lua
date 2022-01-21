@@ -1,6 +1,6 @@
 local map = require("core.utils").map
 
-g.mapleader = " "
+vim.g.mapleader = " "
 local M = {}
 
 M.keybinds = {
