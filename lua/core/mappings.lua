@@ -82,7 +82,7 @@ end
 
 M.buffers = function ()
    local m = generalMappings.buffers
-  map("n", m.close_current, ":Bclose!")
+  map("n", m.close_current, ":Bclose!<CR>")
   -- map("n", m.close_all_but_current, "")
   -- map("n", m.close_list, "")
   map("n", m.last, ":e#<CR>")
