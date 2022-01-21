@@ -9,4 +9,4 @@ for _, module in ipairs(core_modules) do
    end
 end
 
-require("core.mappings").telescope()
+require("core.mappings").init()
