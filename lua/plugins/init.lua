@@ -1,14 +1,5 @@
 local present, packer = pcall(require, "plugins.packerInit")
 
-local useConfigs = function (name)
-    if string.match(name, "^%(") then
-        name = name:sub(2)
-        name = name:gsub("%)%.", "').", 1)
-        return "require('" .. name
-    end
-   return "require('" .. name .. "')"    
-end
-
 if not present then
    return false
 end
@@ -25,10 +16,18 @@ return packer.startup(function()
    }
 
    use {
+     "folke/tokyonight.nvim",
+     config = function()
+       vim.g.tokyonight_style = "night"
+       vim.cmd [[colorscheme tokyonight]]
+     end
+   }
+
+   use {
       "nvim-telescope/telescope.nvim",
       module = "telescope",
       cmd = "Telescope",
-      config = useConfigs("plugins.configs.telescope.config"),
+      config = "require('plugins.configs.telescope')",
       setup = function()
          require("core.mappings").telescope()
       end,

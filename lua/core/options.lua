@@ -16,5 +16,3 @@ opt.swapfile = false
 opt.tabstop = 2
 opt.undodir = "./undo"
 opt.undofile = true
-
--- vim.cmd [[colorscheme tokyonight]]

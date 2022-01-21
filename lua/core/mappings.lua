@@ -117,7 +117,7 @@ M.telescope = function()
    -- map("n", m.git_commits, ":Telescope git_commits <CR>")
    -- map("n", m.git_status, ":Telescope git_status <CR>")
    -- map("n", m.help_tags, ":Telescope help_tags <CR>")
-   -- map("n", m.live_grep, ":Telescope live_grep <CR>")
+   map("n", m.live_grep, ":Telescope live_grep <CR>")
    -- map("n", m.oldfiles, ":Telescope oldfiles <CR>")
    -- map("n", m.themes, ":Telescope themes <CR>")
 end
@@ -127,10 +127,10 @@ end
 
 M.files = function ()
   local m = M.keybinds.files
-  map("n", m.i3wm, ":e ~/.config/i3/config<CR>G")
-  map("n", m.vim_init, ":e ~/.config/nvim/init.lua<CR>G")
-  map("n", m.vim_mappings, ":e ~/.config/nvim/lua/core/mappings.lua<CR>G")
-  map("n", m.zsh, ":e ~/.zshrc<CR>G")
+  map("n", m.i3wm, ":e ~/.config/i3/config<CR>")
+  map("n", m.vim_init, ":e ~/.config/nvim/init.lua<CR>")
+  map("n", m.vim_mappings, ":e ~/.config/nvim/lua/core/mappings.lua<CR>")
+  map("n", m.zsh, ":e ~/.zshrc<CR>")
 end
 
 -------------------------------------------------------------------------------
