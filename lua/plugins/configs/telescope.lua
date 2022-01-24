@@ -52,11 +52,3 @@ telescope.setup {
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
    },
 }
-
-local extensions = { "themes", "terms" }
-
-pcall(function()
-   for _, ext in ipairs(extensions) do
-      telescope.load_extension(ext)
-   end
-end)

@@ -34,6 +34,14 @@ return packer.startup(function()
     end
   }
 
+   use {
+      "nvim-treesitter/nvim-treesitter",
+      event = "BufRead",
+      config = function ()
+        require("plugins.configs.treesitter")
+      end,
+   }
+
   -- Tools
 
   use "tpope/vim-surround"
@@ -50,18 +58,90 @@ return packer.startup(function()
       end,
    }
 
+  use {
+      'kyazdani42/nvim-tree.lua',
+      setup = function()
+         require("core.mappings").nvim_tree()
+      end,
+      config = function()
+        require("plugins.configs.nvim_tree")
+      end
+  }
+
    -- LSP and Completion
 
    use {
       "neovim/nvim-lspconfig",
       opt = true,
+      config = function()
+        -- require("plugins.configs.lsp").lspconfig()
+      end,
       setup = function()
          require("core.utils").packer_lazy_load "nvim-lspconfig"
          vim.defer_fn(function()
             vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
          end, 0)
       end,
-      -- config = override_req("lspconfig", "plugins.configs.lspconfig"),
+   }
+
+   use {
+     "williamboman/nvim-lsp-installer"
+   }
+
+   use {
+      "ray-x/lsp_signature.nvim",
+      after = "nvim-lspconfig",
+      config = function()
+        require("plugins.configs.lsp").signature()
+      end,
+  }
+
+   use {
+      "andymass/vim-matchup",
+      opt = true,
+      setup = function()
+         require("core.utils").packer_lazy_load "vim-matchup"
+      end,
+   }
+
+   use {
+      "hrsh7th/nvim-cmp",
+      after = "friendly-snippets",
+      config = function()
+        -- require("plugins.configs.nvim_cmp")
+      end,
+   }
+
+   use {
+      "L3MON4D3/LuaSnip",
+      wants = "friendly-snippets",
+      after = "nvim-cmp",
+      -- config = override_req("luasnip", "plugins.configs.others", "luasnip"),
+   }
+
+   use {
+      "saadparwaiz1/cmp_luasnip",
+      after = "LuaSnip",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lua",
+      after = "cmp_luasnip",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lsp",
+      after = "cmp-nvim-lua",
+   }
+
+   use {
+      "hrsh7th/cmp-buffer",
+      after = "cmp-nvim-lsp",
+   }
+
+   use {
+      "hrsh7th/cmp-path",
+      after = "cmp-buffer",
    }
 
 end)

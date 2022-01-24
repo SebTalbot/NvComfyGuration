@@ -44,8 +44,13 @@ M.keybinds = {
         live_grep = "<leader>fw",
         oldfiles = "",
         themes = "",
-    }
+    },
+    nvim_tree = {
+      toggle = "<leader>nt",
+      find_file = "<leader>nn",
+    },
   },
+  lsp = {},
   files = {
     i3wm = "<leader>zi",
     vim_init = "<leader>zv",
@@ -98,7 +103,7 @@ M.windows = function ()
   map("n", m.move_left, "<C-w><S-l>")
   map("n", m.move_right, "<C-w><S-h>")
   map("n", m.move_to_down, "<C-w><C-j>")
-  map("n", m.move_to_up, "<C-w><C-k")
+  map("n", m.move_to_up, "<C-w><C-k>")
   map("n", m.move_to_left, "<C-w><C-l>")
   map("n", m.move_to_right, "<C-w><C-h>")
   map("n", m.split_horizontal, "<C-w>s")
@@ -120,6 +125,19 @@ M.telescope = function()
    map("n", m.live_grep, ":Telescope live_grep <CR>")
    -- map("n", m.oldfiles, ":Telescope oldfiles <CR>")
    -- map("n", m.themes, ":Telescope themes <CR>")
+end
+
+M.nvim_tree = function()
+   local m = pluginsMappings.nvim_tree
+   map("n", m.toggle, ":NvimTreeToggle <CR>")
+   map("n", m.find_file, ":NvimTreeFindFile <CR>")
+end
+
+-------------------------------------------------------------------------------
+-- LSP
+
+M.lsp = function ()
+  local m = M.keybinds.lsp
 end
 
 -------------------------------------------------------------------------------
