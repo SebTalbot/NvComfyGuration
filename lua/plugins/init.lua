@@ -85,14 +85,17 @@ return packer.startup(function()
    }
 
    use {
-     "williamboman/nvim-lsp-installer"
+     "williamboman/nvim-lsp-installer",
+     config = function()
+       require("plugins.configs.lsp")
+     end,
    }
 
    use {
       "ray-x/lsp_signature.nvim",
       after = "nvim-lspconfig",
       config = function()
-        require("plugins.configs.lsp").signature()
+        -- require("plugins.configs.lsp").signature()
       end,
   }
 
@@ -105,43 +108,41 @@ return packer.startup(function()
    }
 
    use {
+      "rafamadriz/friendly-snippets",
+      event = "InsertEnter",
+   }
+
+   use {
       "hrsh7th/nvim-cmp",
-      after = "friendly-snippets",
       config = function()
-        -- require("plugins.configs.nvim_cmp")
+        require("plugins.configs.nvim_cmp")
       end,
    }
 
    use {
       "L3MON4D3/LuaSnip",
       wants = "friendly-snippets",
-      after = "nvim-cmp",
       -- config = override_req("luasnip", "plugins.configs.others", "luasnip"),
    }
 
    use {
       "saadparwaiz1/cmp_luasnip",
-      after = "LuaSnip",
    }
 
    use {
       "hrsh7th/cmp-nvim-lua",
-      after = "cmp_luasnip",
    }
 
    use {
       "hrsh7th/cmp-nvim-lsp",
-      after = "cmp-nvim-lua",
    }
 
    use {
       "hrsh7th/cmp-buffer",
-      after = "cmp-nvim-lsp",
    }
 
    use {
       "hrsh7th/cmp-path",
-      after = "cmp-buffer",
    }
 
 end)
