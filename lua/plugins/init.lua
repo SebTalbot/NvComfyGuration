@@ -48,6 +48,13 @@ return packer.startup(function()
 
   use "rbgrouleff/bclose.vim"
 
+  use {
+    "terrortylor/nvim-comment",
+    config = function()
+      require('nvim_comment').setup()
+    end,
+  }
+
    use {
       "nvim-telescope/telescope.nvim",
       module = "telescope",
