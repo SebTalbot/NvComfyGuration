@@ -1,21 +1,26 @@
-local opt = vim.opt
+local options = {
+  clipboard = "unnamedplus",
+  colorcolumn = "80",
+  conceallevel = 0,
+  cursorline = true,
+  expandtab = true,
+  ignorecase = true,
+  lazyredraw = true,
+  linebreak = true,
+  mouse = "",
+  number = true,
+  relativenumber = true,
+  shiftwidth = 2,
+  showmatch = true,
+  smartcase = true,
+  swapfile = false,
+  tabstop = 2,
+  termguicolors = true,
+  timeout = false,
+  undodir = "~/.config/nvim/undo",
+  undofile = true,
+}
 
-opt.clipboard = "unnamedplus"
-opt.colorcolumn = "80"
-opt.cursorline = true
-opt.expandtab = true
-opt.ignorecase = true
-opt.lazyredraw = true
-opt.linebreak = true
-opt.mouse = ""
-opt.number = true
-opt.relativenumber = true
-opt.shiftwidth = 2
-opt.showmatch = true
-opt.smartcase = true
-opt.swapfile = false
-opt.tabstop = 2
-opt.termguicolors = true
-opt.timeout = false
-opt.undodir = "~/.config/nvim/undo"
-opt.undofile = true
+for key, value in pairs(options) do
+  vim.opt[key] = value
+end
