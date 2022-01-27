@@ -79,15 +79,15 @@ return packer.startup(function()
 
    use {
       "neovim/nvim-lspconfig",
-      opt = true,
+      -- opt = true,
+      -- setup = function()
+      --    require("core.utils").packer_lazy_load "nvim-lspconfig"
+      --    vim.defer_fn(function()
+      --       vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+      --    end, 0)
+      -- end,
       config = function()
-        require("plugins.configs.lspconfig")
-      end,
-      setup = function()
-         require("core.utils").packer_lazy_load "nvim-lspconfig"
-         vim.defer_fn(function()
-            vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-         end, 0)
+        require("plugins.configs.lsp")
       end,
    }
 
@@ -132,24 +132,12 @@ return packer.startup(function()
       -- config = override_req("luasnip", "plugins.configs.others", "luasnip"),
    }
 
-   use {
-      "saadparwaiz1/cmp_luasnip",
-   }
-
-   use {
-      "hrsh7th/cmp-nvim-lua",
-   }
-
-   use {
-      "hrsh7th/cmp-nvim-lsp",
-   }
-
-   use {
-      "hrsh7th/cmp-buffer",
-   }
-
-   use {
-      "hrsh7th/cmp-path",
-   }
+   use "saadparwaiz1/cmp_luasnip"
+   use "hrsh7th/cmp-nvim-lua"
+   use "hrsh7th/cmp-nvim-lsp"
+   use "hrsh7th/cmp-buffer"
+   use "hrsh7th/cmp-path"
+   use "jose-elias-alvarez/null-ls.nvim"
+   use "jose-elias-alvarez/nvim-lsp-ts-utils"
 
 end)

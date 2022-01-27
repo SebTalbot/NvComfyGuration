@@ -207,7 +207,6 @@ M.init = function()
   M.buffers()
   M.windows()
   M.telescope()
-  M.lsp()
   M.files()
   M.generateCommands()
 end
