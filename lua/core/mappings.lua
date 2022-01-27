@@ -13,7 +13,7 @@ M.keybinds = {
     },
     buffers = {
       close_current = "<leader>bdd",
-      close_all_but_current = "<leader>bda",
+      close_all_but_current = "<leader>bdo",
       close_list = "<leader>bdl",
       last = "<leader>bb",
       next = "<leader>bn",
@@ -51,22 +51,22 @@ M.keybinds = {
     },
   },
   lsp = {
-    declaration = "<leader>ld",
-    definition = "<leader>lt",
+    declaration = "",
+    definition = "<leader>ld",
     hover = "<S-k>",
     implementation = "<leader>li",
     signature_help = "gk",
-    add_workspace_folder = "<leader>wa",
-    remove_workspace_folder = "<leader>wr",
-    list_workspace_folders = "<leader>wl",
-    type_definition = "<leader>D",
-    rename = "<leader>rn",
-    code_action = "<leader>ca",
-    references = "gr",
-    float_diagnostics = "ge",
-    goto_prev = "[d",
-    goto_next = "]d",
-    set_loclist = "<leader>q",
+    add_workspace_folder = "",
+    remove_workspace_folder = "",
+    list_workspace_folders = "",
+    type_definition = "<leader>lt",
+    rename = "",
+    code_action = "<leader>lca",
+    references = "<leader>lr",
+    float_diagnostics = "<leader>ef",
+    goto_prev = "<leader>ep",
+    goto_next = "<leader>en",
+    set_loclist = "<leader>el",
     formatting = "<leader>fm",
   },
   files = {
@@ -156,16 +156,16 @@ end
 
 M.lsp = function ()
   local m = M.keybinds.lsp
-   map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
+   -- map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
    map("n", m.definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
    map("n", m.hover, "<cmd>lua vim.lsp.buf.hover()<CR>")
    map("n", m.implementation, "<cmd>lua vim.lsp.buf.implementation()<CR>")
-   map("n", m.signature_help, "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-   map("n", m.add_workspace_folder, "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-   map("n", m.remove_workspace_folder, "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
-   map("n", m.list_workspace_folders, "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
+   -- map("n", m.signature_help, "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+   -- map("n", m.add_workspace_folder, "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
+   -- map("n", m.remove_workspace_folder, "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
+   -- map("n", m.list_workspace_folders, "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
    map("n", m.type_definition, "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-   map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
+   -- map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
    map("n", m.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
    map("n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
    map("n", m.float_diagnostics, "<cmd>lua vim.diagnostic.open_float()<CR>")
