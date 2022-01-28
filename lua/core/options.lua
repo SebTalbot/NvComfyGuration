@@ -5,7 +5,6 @@ local options = {
   cursorline = true,
   expandtab = true,
   ignorecase = true,
-  lazyredraw = true,
   linebreak = true,
   mouse = "",
   number = true,
