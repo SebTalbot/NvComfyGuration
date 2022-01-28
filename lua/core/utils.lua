@@ -1,6 +1,7 @@
 local M = {}
 
 M.map = function(mode, keys, command, opt)
+   if(keys == nil or keys == "") then return end
    local options = { noremap = true, silent = true }
    if opt then
       options = vim.tbl_extend("force", options, opt)
