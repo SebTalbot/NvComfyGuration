@@ -4,9 +4,7 @@ if not present then
    return false
 end
 
-local use = packer.use
-
-packer.startup(function()
+return packer.startup(function(use)
 
   use "nvim-lua/plenary.nvim"
 
@@ -23,6 +21,14 @@ packer.startup(function()
   }
 
   use "kyazdani42/nvim-web-devicons"
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    config = function()
+      require('lualine').setup()
+    end,
+  }
 
   use {
     "akinsho/bufferline.nvim",
