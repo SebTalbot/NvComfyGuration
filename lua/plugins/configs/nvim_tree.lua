@@ -57,3 +57,5 @@ require'nvim-tree'.setup {
     require_confirm = true
   }
 }
+
+require("core.mappings").nvim_tree()
