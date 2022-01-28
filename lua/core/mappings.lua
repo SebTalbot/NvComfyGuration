@@ -91,11 +91,12 @@ M.overwrite = function ()
   map("n", "<leader>*", "*``")
   map("v", "<", "<gv")
   map("v", ">", ">gv")
+  map("v", "p", [["_dP]])
 end
 
 M.general = function ()
    local m = generalMappings.general
-  map("n", m.quick_help, ":vert h<space>")
+  map("n", m.quick_help, ":vert h<space>", {silent=false})
   map("n", m.hide_highlights, ":nohlsearch<CR>")
   map("n", m.move_line_down, "ddp")
   map("n", m.move_line_up, "ddkP")
@@ -106,8 +107,8 @@ end
 M.buffers = function ()
    local m = generalMappings.buffers
   map("n", m.close_current, ":Bclose!<CR>")
-  -- map("n", m.close_all_but_current, "")
-  -- map("n", m.close_list, "")
+  map("n", m.close_all_but_current, "")
+  map("n", m.close_list, "")
   map("n", m.last, ":e#<CR>")
   map("n", m.next, ":bn<CR>")
   map("n", m.previous, ":bp<CR>")
@@ -137,12 +138,12 @@ M.telescope = function()
    map("n", m.buffers, ":Telescope buffers <CR>")
    map("n", m.find_files, ":Telescope find_files <CR>")
    map("n", m.find_hiddenfiles, ":Telescope find_files follow=true no_ignore=true hidden=true <CR>")
-   -- map("n", m.git_commits, ":Telescope git_commits <CR>")
-   -- map("n", m.git_status, ":Telescope git_status <CR>")
-   -- map("n", m.help_tags, ":Telescope help_tags <CR>")
+   map("n", m.git_commits, ":Telescope git_commits <CR>")
+   map("n", m.git_status, ":Telescope git_status <CR>")
+   map("n", m.help_tags, ":Telescope help_tags <CR>")
    map("n", m.live_grep, ":Telescope live_grep <CR>")
-   -- map("n", m.oldfiles, ":Telescope oldfiles <CR>")
-   -- map("n", m.themes, ":Telescope themes <CR>")
+   map("n", m.oldfiles, ":Telescope oldfiles <CR>")
+   map("n", m.themes, ":Telescope themes <CR>")
 end
 
 M.nvim_tree = function()
@@ -156,16 +157,16 @@ end
 
 M.lsp = function ()
   local m = M.keybinds.lsp
-   -- map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
+   map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
    map("n", m.definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
    map("n", m.hover, "<cmd>lua vim.lsp.buf.hover()<CR>")
    map("n", m.implementation, "<cmd>lua vim.lsp.buf.implementation()<CR>")
-   -- map("n", m.signature_help, "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-   -- map("n", m.add_workspace_folder, "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-   -- map("n", m.remove_workspace_folder, "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
-   -- map("n", m.list_workspace_folders, "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
+   map("n", m.signature_help, "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+   map("n", m.add_workspace_folder, "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
+   map("n", m.remove_workspace_folder, "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
+   map("n", m.list_workspace_folders, "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
    map("n", m.type_definition, "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-   -- map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
+   map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
    map("n", m.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
    map("n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
    map("n", m.float_diagnostics, "<cmd>lua vim.diagnostic.open_float()<CR>")
@@ -187,9 +188,9 @@ M.files = function ()
 end
 
 -------------------------------------------------------------------------------
--- Init
+-- Commands
 
-M.generateCommands = function()
+M.commands = function()
   local cmd = vim.cmd
   -- Packer
   cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
@@ -200,15 +201,16 @@ M.generateCommands = function()
   cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
 end
 
-M.init = function()
-  M.disable()
-  M.overwrite()
-  M.general()
-  M.buffers()
-  M.windows()
-  M.telescope()
-  M.files()
-  M.generateCommands()
-end
+-------------------------------------------------------------------------------
+-- Init
+
+M.disable()
+M.overwrite()
+M.general()
+M.buffers()
+M.windows()
+M.telescope()
+M.files()
+M.commands()
 
 return M
