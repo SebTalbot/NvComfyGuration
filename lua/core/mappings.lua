@@ -91,11 +91,12 @@ M.overwrite = function ()
   map("n", "<leader>*", "*``")
   map("v", "<", "<gv")
   map("v", ">", ">gv")
+  map("v", "p", [["_dP]])
 end
 
 M.general = function ()
    local m = generalMappings.general
-  map("n", m.quick_help, ":vert h<space>")
+  map("n", m.quick_help, ":vert h<space>", {silent=false})
   map("n", m.hide_highlights, ":nohlsearch<CR>")
   map("n", m.move_line_down, "ddp")
   map("n", m.move_line_up, "ddkP")
