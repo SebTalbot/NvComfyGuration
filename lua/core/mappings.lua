@@ -188,9 +188,9 @@ M.files = function ()
 end
 
 -------------------------------------------------------------------------------
--- Init
+-- Commands
 
-M.generateCommands = function()
+M.commands = function()
   local cmd = vim.cmd
   -- Packer
   cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
@@ -201,15 +201,16 @@ M.generateCommands = function()
   cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
 end
 
-M.init = function()
-  M.disable()
-  M.overwrite()
-  M.general()
-  M.buffers()
-  M.windows()
-  M.telescope()
-  M.files()
-  M.generateCommands()
-end
+-------------------------------------------------------------------------------
+-- Init
+
+M.disable()
+M.overwrite()
+M.general()
+M.buffers()
+M.windows()
+M.telescope()
+M.files()
+M.commands()
 
 return M
