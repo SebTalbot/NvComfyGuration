@@ -65,9 +65,12 @@ return packer.startup(function(use)
     end,
   }
 
-  use "neovim/nvim-lspconfig"
+  use {
+    "neovim/nvim-lspconfig",
+    config = [[require("plugins.configs.lsp")]],
+  }
 
-  -- use "williamboman/nvim-lsp-installer"
+  use "williamboman/nvim-lsp-installer"
 
   -- use "ray-x/lsp_signature.nvim"
 
@@ -82,13 +85,14 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-path"
   use "hrsh7th/cmp-cmdline"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lua"
 
   use "L3MON4D3/LuaSnip"
   use "rafamadriz/friendly-snippets"
   use "saadparwaiz1/cmp_luasnip"
 
-  -- use "hrsh7th/cmp-nvim-lua"
-  -- use "hrsh7th/cmp-nvim-lsp"
+
   -- use "jose-elias-alvarez/null-ls.nvim"
   -- use "jose-elias-alvarez/nvim-lsp-ts-utils"
 
