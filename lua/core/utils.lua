@@ -5,23 +5,19 @@ M.map = function(mode, keys, command, opt)
    if opt then
       options = vim.tbl_extend("force", options, opt)
    end
-
-   -- all valid modes allowed for mappings
-   -- :h map-modes
    local valid_modes = {
-      [""] = true,
-      ["n"] = true,
-      ["v"] = true,
-      ["s"] = true,
-      ["x"] = true,
-      ["o"] = true,
-      ["!"] = true,
-      ["i"] = true,
-      ["l"] = true,
-      ["c"] = true,
-      ["t"] = true,
+      [""] = true,  -- Normal, Visual, Select, Operator-pending
+      ["n"] = true, -- Normal
+      ["v"] = true, -- Visual, Select
+      ["s"] = true, -- Select
+      ["x"] = true, -- Visual
+      ["o"] = true, -- Operator-pending
+      ["!"] = true, -- Insert, Command-line
+      ["i"] = true, -- Insert
+      ["l"] = true, -- Insert, Command-line, Lang-Arg
+      ["c"] = true, -- Command-line
+      ["t"] = true, -- Terminal
    }
-
    local function map_wrapper(sub_mode, lhs, rhs, sub_options)
       if type(lhs) == "table" then
          for _, key in ipairs(lhs) do
@@ -44,18 +40,7 @@ M.map = function(mode, keys, command, opt)
          end
       end
    end
-
    map_wrapper(mode, keys, command, options)
-end
-
-
-M.packer_lazy_load = function(plugin, timer)
-   if plugin then
-      timer = timer or 0
-      vim.defer_fn(function()
-         require("packer").loader(plugin)
-      end, timer)
-   end
 end
 
 return M
