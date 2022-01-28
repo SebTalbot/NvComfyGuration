@@ -10,6 +10,7 @@ local options = {
   mouse = "",
   number = true,
   relativenumber = true,
+  scrolloff = 4,
   shiftwidth = 2,
   showmatch = true,
   smartcase = true,
