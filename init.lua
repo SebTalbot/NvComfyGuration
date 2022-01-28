@@ -1,7 +1,8 @@
 local modules = {
-   "core.options",
-   "core.mappings",
-   "plugins",
+  "core.autocommands",
+  "core.options",
+  "core.mappings",
+  "plugins",
 }
 
 for _, module in ipairs(modules) do
