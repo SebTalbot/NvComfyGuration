@@ -45,6 +45,7 @@ M.keybinds = {
         oldfiles = "",
         themes = "",
     },
+    -- nvim_cmp needed
     nvim_tree = {
       toggle = "<leader>nt",
       find_file = "<leader>nn",
