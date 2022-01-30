@@ -211,7 +211,6 @@ M.overwrite()
 M.general()
 M.buffers()
 M.windows()
-M.telescope()
 M.files()
 M.commands()
 

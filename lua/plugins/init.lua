@@ -1,7 +1,8 @@
 local present, packer = pcall(require, "plugins.packerInit")
 
 if not present then
-   return false
+  print("Warning: Cannot find packer")
+  return false
 end
 
 return packer.startup(function(use)
