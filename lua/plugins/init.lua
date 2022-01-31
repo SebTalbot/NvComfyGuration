@@ -14,9 +14,21 @@ return packer.startup(function(use)
 
   use {
     "folke/tokyonight.nvim",
+    enable = os.getenv("CURRENT_DEVICE") == nil,
     config = function()
+      vim.opt.termguicolors = true
       vim.g.tokyonight_style = "night"
       vim.cmd [[colorscheme tokyonight]]
+    end,
+  }
+
+  use {
+    "morhetz/gruvbox",
+    enable = os.getenv("CURRENT_DEVICE") == "laptop",
+    config = function()
+      vim.opt.termguicolors = true
+      vim.o.background = "dark"
+      vim.cmd([[colorscheme gruvbox]])
     end,
   }
 
