@@ -40,12 +40,16 @@ return packer.startup(function(use)
 
   use {
     "nvim-treesitter/nvim-treesitter",
+    run = [[:TSUpdate]],
     config = [[require("plugins.configs.treesitter")]],
   }
+  use "p00f/nvim-ts-rainbow"
 
   use "tpope/vim-surround"
 
   use "rbgrouleff/bclose.vim"
+
+  use "andymass/vim-matchup"
 
   use {
     "terrortylor/nvim-comment",
@@ -75,7 +79,6 @@ return packer.startup(function(use)
 
   -- use "ray-x/lsp_signature.nvim"
 
-  -- use "andymass/vim-matchup"
 
 
   use {
