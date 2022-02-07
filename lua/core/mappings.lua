@@ -46,6 +46,7 @@ M.keybinds = {
       oldfiles = "",
       themes = "",
     },
+    -- git needed
     -- nvim_cmp needed
     nvim_tree = {
       toggle = "<leader>nt",
@@ -53,19 +54,19 @@ M.keybinds = {
     },
   },
   lsp = {
-    declaration = "",
-    definition = "<leader>ld",
+    declaration = "<leader>ll",
+    definitions = "<leader>ld",
     hover = "<S-k>",
-    implementation = "<leader>li",
+    implementations = "<leader>li",
     signature_help = "gk",
     add_workspace_folder = "",
     remove_workspace_folder = "",
     list_workspace_folders = "",
-    type_definition = "<leader>lt",
+    type_definitions = "<leader>lt",
     rename = "<leader>ar",
-    code_action = "<leader>laa",
+    code_actions = "<leader>laa",
     references = "<leader>lr",
-    float_diagnostics = "<leader>ef",
+    float_diagnostics = "<leader>ee",
     goto_prev = "<leader>ep",
     goto_next = "<leader>en",
     set_loclist = "<leader>el",
@@ -98,7 +99,7 @@ end
 
 M.general = function()
   local m = generalMappings.general
-  map("n", m.quick_help, ":vert h<space>", { silent = false })
+  map("n", m.quick_help, "<cmd>lua require('telescope.builtin').help_tags()<CR>")
   map("n", m.hide_highlights, ":nohlsearch<CR>")
   map("n", m.move_line_down, "ddp")
   map("n", m.move_line_up, "ddkP")
@@ -139,11 +140,7 @@ M.telescope = function()
   local m = pluginsMappings.telescope
   map("n", m.buffers, ":Telescope buffers <CR>")
   map("n", m.find_files, ":Telescope find_files <CR>")
-  map(
-    "n",
-    m.find_hiddenfiles,
-    ":Telescope find_files follow=true no_ignore=true hidden=true <CR>"
-  )
+  map("n", m.find_hiddenfiles, ":Telescope find_files follow=true no_ignore=true hidden=true <CR>")
   map("n", m.git_commits, ":Telescope git_commits <CR>")
   map("n", m.git_status, ":Telescope git_status <CR>")
   map("n", m.help_tags, ":Telescope help_tags <CR>")
@@ -164,53 +161,18 @@ end
 M.lsp = function(buf)
   local m = M.keybinds.lsp
   mapBuf(buf, "n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
-  mapBuf(buf, "n", m.definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
+  mapBuf(buf, "n", m.definitions, "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>")
   mapBuf(buf, "n", m.hover, "<cmd>lua vim.lsp.buf.hover()<CR>")
-  mapBuf(
-    buf,
-    "n",
-    m.implementation,
-    "<cmd>lua vim.lsp.buf.implementation()<CR>"
-  )
-  mapBuf(
-    buf,
-    "n",
-    m.signature_help,
-    "<cmd>lua vim.lsp.buf.signature_help()<CR>"
-  )
-  mapBuf(
-    buf,
-    "n",
-    m.add_workspace_folder,
-    "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>"
-  )
-  mapBuf(
-    buf,
-    "n",
-    m.remove_workspace_folder,
-    "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>"
-  )
-  mapBuf(
-    buf,
-    "n",
-    m.list_workspace_folders,
-    "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>"
-  )
-  mapBuf(
-    buf,
-    "n",
-    m.type_definition,
-    "<cmd>lua vim.lsp.buf.type_definition()<CR>"
-  )
+  mapBuf(buf, "n", m.implementations, "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>")
+  mapBuf(buf, "n", m.signature_help, "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+  mapBuf(buf, "n", m.add_workspace_folder, "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
+  mapBuf(buf, "n", m.remove_workspace_folder, "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
+  mapBuf(buf, "n", m.list_workspace_folders, "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
+  mapBuf(buf, "n", m.type_definitions, "<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>")
   mapBuf(buf, "n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
-  mapBuf(buf, "n", m.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
-  mapBuf(buf, "n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
-  mapBuf(
-    buf,
-    "n",
-    m.float_diagnostics,
-    "<cmd>lua vim.diagnostic.open_float()<CR>"
-  )
+  mapBuf(buf, "n", m.code_actions, "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))<CR>")
+  mapBuf(buf, "n", m.references, "<cmd>lua require('telescope.builtin').lsp_references()<CR>")
+  mapBuf(buf, "n", m.float_diagnostics, "<cmd>lua vim.diagnostic.open_float()<CR>")
   mapBuf(buf, "n", m.goto_prev, "<cmd>lua vim.diagnostic.goto_prev()<CR>")
   mapBuf(buf, "n", m.goto_next, "<cmd>lua vim.diagnostic.goto_next()<CR>")
   mapBuf(buf, "n", m.set_loclist, "<cmd>lua vim.diagnostic.setloclist()<CR>")
