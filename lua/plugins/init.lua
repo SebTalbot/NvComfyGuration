@@ -52,6 +52,13 @@ return packer.startup(function(use)
   }
 
   use {
+    "camspiers/lens.vim",
+    config = function()
+      vim.cmd [[let g:lens#disabled = 1]]
+    end,
+  }
+
+  use {
     "nvim-treesitter/nvim-treesitter",
     run = [[:TSUpdate]],
     config = [[require("plugins.configs.treesitter")]],

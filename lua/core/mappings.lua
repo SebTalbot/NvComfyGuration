@@ -32,6 +32,8 @@ M.keybinds = {
       move_to_right = "<leader>wh",
       split_horizontal = "<leader>ws",
       split_vertical = "<leader>wv",
+      resize = "<leader>wrr",
+      resize_equal = "<leader>wre",
     },
   },
   plugins = {
@@ -130,6 +132,8 @@ M.windows = function()
   map("n", m.move_to_right, "<C-w><C-h>")
   map("n", m.split_horizontal, "<C-w>s")
   map("n", m.split_vertical, "<C-w>v")
+  map("n", m.resize, ":call lens#run()<CR>")
+  map("n", m.resize_equal, "<C-w>=")
 end
 
 -------------------------------------------------------------------------------
