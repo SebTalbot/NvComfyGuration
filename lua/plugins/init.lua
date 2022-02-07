@@ -6,6 +6,8 @@ if not present then
 end
 
 return packer.startup(function(use)
+  local isLaptop = (os.getenv "CURRENT_DEVICE" == "laptop")
+
   use "nvim-lua/plenary.nvim"
 
   use {
@@ -14,7 +16,7 @@ return packer.startup(function(use)
 
   use {
     "folke/tokyonight.nvim",
-    enable = os.getenv("CURRENT_DEVICE") == nil,
+    disable = isLaptop,
     config = function()
       vim.opt.termguicolors = true
       vim.g.tokyonight_style = "night"
@@ -24,11 +26,11 @@ return packer.startup(function(use)
 
   use {
     "morhetz/gruvbox",
-    enable = os.getenv("CURRENT_DEVICE") == "laptop",
+    disable = not isLaptop,
     config = function()
       vim.opt.termguicolors = true
       vim.o.background = "dark"
-      vim.cmd([[colorscheme gruvbox]])
+      vim.cmd [[colorscheme gruvbox]]
     end,
   }
 
