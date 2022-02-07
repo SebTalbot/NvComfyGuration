@@ -17,7 +17,7 @@ local options = {
   tabstop = 2,
   termguicolors = true,
   timeout = false,
-  undodir = "~/.config/nvim/undo",
+  undodir = vim.fn.stdpath "config" .. "/undo",
   undofile = true,
 }
 
