@@ -95,6 +95,8 @@ return packer.startup(function(use)
     run = "make",
   }
 
+  use { "LinArcX/telescope-env.nvim" }
+
   use {
     "kyazdani42/nvim-tree.lua",
     config = function()
