@@ -14,7 +14,6 @@ M.disable = function()
 end
 
 M.overwrite = function()
-  map("n", "<leader>*", "*``")
   map("v", "<", "<gv")
   map("v", ">", ">gv")
   map("v", "p", [["_dP]])
@@ -22,6 +21,7 @@ end
 
 M.general = function()
   map("n", "<leader><leader>", ":WhichKey<CR>")
+  map("n", "<leader>*", "*``")
   map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
   map("n", "<leader>/", ":nohlsearch<CR>")
   map("n", "<C-j>", ":m .+1<CR>==")
