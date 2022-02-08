@@ -80,17 +80,6 @@ return packer.startup(function(use)
   use "schickling/vim-bufonly"
 
   use {
-    "famiu/nvim-reload",
-    config = function()
-      require("nvim-reload").post_reload_hook = function()
-        -- Quick fix until I find something better
-        require("packer").sync()
-        vim.cmd [[:e%]]
-      end
-    end,
-  }
-
-  use {
     config = [[require("plugins.configs.which_key")]],
     "folke/which-key.nvim",
   }
