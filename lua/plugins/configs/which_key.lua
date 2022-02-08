@@ -26,10 +26,9 @@ local nmappings = {
     ["*"] = "Select word under cursor",
     ["/"] = "Hide word selection",
     ["h"] = "Neovim help search",
-    a = {
-      name = "Actions",
-      r = "Rename word under the cursor @TO MOVE",
-    },
+    -- a = {
+    --   name = "Actions",
+    -- },
     b = {
       name = "Buffers",
       b = "Back",
@@ -38,11 +37,11 @@ local nmappings = {
       d = {
         name = "Close",
         d = "Current",
-        o = "Everything but the current",
       },
+        o = "Everything but the current",
     },
     e = {
-      name = "Errors & Diagnostic",
+      name = "Errors & Diagnostic [LSP]",
       e = "Open details",
       l = "List diagnostic in quickfix",
       n = "Next error",
@@ -53,7 +52,6 @@ local nmappings = {
       a = "All Files",
       b = "Buffers",
       f = "Files (not hidden)",
-      m = "Format file @TO MOVE",
       w = "Live Grep",
     },
     l = {
@@ -66,6 +64,8 @@ local nmappings = {
       a = {
         name = "Actions",
         a = "LSP code actions",
+        r = "Rename word under the cursor",
+        f = "Format file",
       }
     },
     n = {

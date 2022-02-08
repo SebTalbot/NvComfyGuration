@@ -115,14 +115,14 @@ M.lsp = function(buf)
   mapBuf(buf, "n", "", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
   mapBuf(buf, "n", "", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
   mapBuf(buf, "n", "<leader>lt", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>")
-  mapBuf(buf, "n", "<leader>ar", "<cmd>lua vim.lsp.buf.rename()<CR>")
   mapBuf(buf, "n", "<leader>laa", "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))<CR>")
+  mapBuf(buf, "n", "<leader>laf", "<cmd>lua vim.lsp.buf.rename()<CR>")
+  mapBuf(buf, "n", "<leader>lam", "<cmd>lua vim.lsp.buf.formatting()<CR>")
   mapBuf(buf, "n", "<leader>lr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>")
   mapBuf(buf, "n", "<leader>ee", "<cmd>lua vim.diagnostic.open_float()<CR>")
   mapBuf(buf, "n", "<leader>ep", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
   mapBuf(buf, "n", "<leader>en", "<cmd>lua vim.diagnostic.goto_next()<CR>")
   mapBuf(buf, "n", "<leader>el", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-  mapBuf(buf, "n", "<leader>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 end
 
 return M
