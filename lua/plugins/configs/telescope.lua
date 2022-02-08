@@ -6,15 +6,7 @@ if not present then
 end
 
 telescope.setup {
-  defaults = {
-    file_ignore_patterns = {
-      "%.git",
-    },
-  },
   pickers = {
-    find_files = {
-      hidden = true,
-    },
     help_tags = {
       mappings = {
         i = {
