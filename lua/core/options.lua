@@ -19,6 +19,7 @@ local options = {
   timeoutlen = 0,
   undodir = vim.fn.stdpath "config" .. "/undo",
   undofile = true,
+  updatetime = 500,
 }
 
 for key, value in pairs(options) do
