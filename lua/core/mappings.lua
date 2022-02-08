@@ -5,7 +5,7 @@ vim.g.mapleader = " " -- Space leader key
 
 local M = {}
 
--------------------------------------------------------------------------------
+--== INIT ON STARTUP ==--------------------------------------------------------
 -- General
 M.disable = function()
   map("n", "Q", "<nop>")
@@ -55,7 +55,38 @@ M.windows = function()
   map("n", "<leader>wre", "<C-w>=")
 end
 
--------------------------------------------------------------------------------
+-- Files
+M.files = function()
+  map("n", "<leader>zi", ":e ~/.config/i3/config<CR>")
+  map("n", "<leader>zv", ":e ~/.config/nvim/init.lua<CR>")
+  map("n", "<leader>zm", ":e ~/.config/nvim/lua/core/mappings.lua<CR>")
+  map("n", "<leader>zb", ":e ~/.zshrc<CR>")
+end
+
+-- Commands
+M.commands = function()
+  local cmd = vim.cmd
+  -- Packer
+  cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
+  cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
+  cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
+  cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
+  cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
+  cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
+  -- LSP
+  cmd "silent! command LspFormatting lua vim.lsp.buf.formatting()"
+end
+
+-- Init
+M.disable()
+M.overwrite()
+M.general()
+M.buffers()
+M.windows()
+M.files()
+M.commands()
+
+--== EXTERNAL INIT ==----------------------------------------------------------
 -- Plugins
 M.telescope = function()
   map("n", "<leader>fb", ":Telescope buffers <CR>")
@@ -74,15 +105,12 @@ M.nvim_tree = function()
   map("n", "<leader>nn", ":NvimTreeFindFile <CR>")
 end
 
--------------------------------------------------------------------------------
 -- LSP
-
 M.lsp = function(buf)
   mapBuf(buf, "n", "<leader>ll", "<cmd>lua vim.lsp.buf.declaration()<CR>")
   mapBuf(buf, "n", "<leader>ld", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>")
   mapBuf(buf, "n", "<S-k>", "<cmd>lua vim.lsp.buf.hover()<CR>")
   mapBuf(buf, "n", "<leader>li", "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>")
-  mapBuf(buf, "n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
   mapBuf(buf, "n", "", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
   mapBuf(buf, "n", "", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
   mapBuf(buf, "n", "", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
@@ -96,42 +124,5 @@ M.lsp = function(buf)
   mapBuf(buf, "n", "<leader>el", "<cmd>lua vim.diagnostic.setloclist()<CR>")
   mapBuf(buf, "n", "<leader>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 end
-
--------------------------------------------------------------------------------
--- Files
-
-M.files = function()
-  map("n", "<leader>zi", ":e ~/.config/i3/config<CR>")
-  map("n", "<leader>zv", ":e ~/.config/nvim/init.lua<CR>")
-  map("n", "<leader>zm", ":e ~/.config/nvim/lua/core/mappings.lua<CR>")
-  map("n", "<leader>zb", ":e ~/.zshrc<CR>")
-end
-
--------------------------------------------------------------------------------
--- Commands
-
-M.commands = function()
-  local cmd = vim.cmd
-  -- Packer
-  cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
-  cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
-  cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
-  cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
-  cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
-  cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
-  -- LSP
-  cmd "silent! command LspFormatting lua vim.lsp.buf.formatting()"
-end
-
--------------------------------------------------------------------------------
--- Init
-
-M.disable()
-M.overwrite()
-M.general()
-M.buffers()
-M.windows()
-M.files()
-M.commands()
 
 return M
