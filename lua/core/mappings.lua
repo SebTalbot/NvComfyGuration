@@ -1,7 +1,7 @@
 local map = require("core.utils").map
 local mapBuf = require("core.utils").mapBuf
 
-vim.g.mapleader = "<space>"
+vim.g.mapleader = " " -- Space leader key
 
 local M = {}
 
@@ -21,6 +21,7 @@ M.overwrite = function()
 end
 
 M.general = function()
+  map("n", "<leader><leader>", ":WhichKey<CR>")
   map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
   map("n", "<leader>/", ":nohlsearch<CR>")
   map("n", "<C-j>", "ddp")
