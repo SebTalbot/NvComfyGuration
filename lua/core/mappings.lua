@@ -20,23 +20,23 @@ M.overwrite = function()
 end
 
 M.general = function()
-  map("n", "<leader><leader>", ":WhichKey<CR>")
+  map("n", "<leader><leader>", "<cmd>WhichKey<CR>")
   map("n", "<leader>*", "*``")
   map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
-  map("n", "<leader>/", ":nohlsearch<CR>")
-  map("n", "<C-j>", ":m .+1<CR>==")
-  map("n", "<C-k>", ":m .-2<CR>==")
-  map("v", "<C-j>", ":m '>+1<CR>gv=gv")
-  map("v", "<C-k>", ":m '<-2<CR>gv=gv")
+  map("n", "<leader>/", "<cmd>nohlsearch<CR>")
+  map("n", "<C-j>", "<cmd>m .+1<CR>==")
+  map("n", "<C-k>", "<cmd>m .-2<CR>==")
+  map("v", "<C-j>", "<cmd>m '>+1<CR>gv=gv")
+  map("v", "<C-k>", "<cmd>m '<-2<CR>gv=gv")
 end
 
 M.buffers = function()
-  map("n", "<leader>bdd", ":Bclose!<CR>")
-  map("n", "<leader>bdo", ":BufOnly<CR>")
+  map("n", "<leader>bdd", "<cmd>Bclose!<CR>")
+  map("n", "<leader>bdo", "<cmd>BufOnly<CR>")
   map("n", "<leader>bdl", "")
-  map("n", "<leader>bb", ":e#<CR>")
-  map("n", "<leader>bn", ":bn<CR>")
-  map("n", "<leader>bp", ":bp<CR>")
+  map("n", "<leader>bb", "<cmd>e#<CR>")
+  map("n", "<leader>bn", "<cmd>bn<CR>")
+  map("n", "<leader>bp", "<cmd>bp<CR>")
 end
 
 M.windows = function()
@@ -51,16 +51,16 @@ M.windows = function()
   map("n", "<leader>wh", "<C-w><C-h>")
   map("n", "<leader>ws", "<C-w>s")
   map("n", "<leader>wv", "<C-w>v")
-  map("n", "<leader>wrr", ":call lens#run()<CR>")
+  map("n", "<leader>wrr", "<cmd>call lens#run()<CR>")
   map("n", "<leader>wre", "<C-w>=")
 end
 
 -- Files
 M.files = function()
-  map("n", "<leader>zi", ":e ~/.config/i3/config<CR>")
-  map("n", "<leader>zv", ":e ~/.config/nvim/init.lua<CR>")
-  map("n", "<leader>zm", ":e ~/.config/nvim/lua/core/mappings.lua<CR>")
-  map("n", "<leader>zb", ":e ~/.zshrc<CR>")
+  map("n", "<leader>zi", "<cmd>e ~/.config/i3/config<CR>")
+  map("n", "<leader>zv", "<cmd>e ~/.config/nvim/init.lua<CR>")
+  map("n", "<leader>zm", "<cmd>e ~/.config/nvim/lua/core/mappings.lua<CR>")
+  map("n", "<leader>zb", "<cmd>e ~/.zshrc<CR>")
 end
 
 -- Commands
@@ -92,20 +92,20 @@ M.commands()
 --== EXTERNAL INIT ==----------------------------------------------------------
 -- Plugins
 M.telescope = function()
-  map("n", "<leader>fb", ":Telescope buffers <CR>")
-  map("n", "<leader>ff", ":Telescope find_files <CR>")
-  map("n", "<leader>fa", ":Telescope find_files follow=true no_ignore=true hidden=true <CR>")
-  map("n", "", ":Telescope git_commits <CR>")
-  map("n", "", ":Telescope git_status <CR>")
-  map("n", "", ":Telescope help_tags <CR>")
-  map("n", "<leader>fw", ":Telescope live_grep <CR>")
-  map("n", "", ":Telescope oldfiles <CR>")
-  map("n", "", ":Telescope themes <CR>")
+  map("n", "<leader>fb", "<cmd>Telescope buffers <CR>")
+  map("n", "<leader>ff", "<cmd>Telescope find_files <CR>")
+  map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+  map("n", "", "<cmd>Telescope git_commits <CR>")
+  map("n", "", "<cmd>Telescope git_status <CR>")
+  map("n", "", "<cmd>Telescope help_tags <CR>")
+  map("n", "<leader>fw", "<cmd>Telescope live_grep <CR>")
+  map("n", "", "<cmd>Telescope oldfiles <CR>")
+  map("n", "", "<cmd>Telescope themes <CR>")
 end
 
 M.nvim_tree = function()
-  map("n", "<leader>nt", ":NvimTreeToggle <CR>")
-  map("n", "<leader>nn", ":NvimTreeFindFile <CR>")
+  map("n", "<leader>nt", "<cmd>NvimTreeToggle <CR>")
+  map("n", "<leader>nn", "<cmd>NvimTreeFindFile <CR>")
 end
 
 -- LSP

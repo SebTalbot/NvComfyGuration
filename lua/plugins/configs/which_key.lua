@@ -37,8 +37,8 @@ local nmappings = {
       d = {
         name = "Close",
         d = "Current",
-      },
         o = "Everything but the current",
+      },
     },
     e = {
       name = "Errors & Diagnostic [LSP]",
@@ -69,7 +69,7 @@ local nmappings = {
       }
     },
     n = {
-      name = "Neotree",
+      name = "Nvim-tree",
       n = "Open on current file",
       t = "Toggle",
     },
