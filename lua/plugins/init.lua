@@ -71,6 +71,17 @@ return packer.startup(function(use)
   use "rbgrouleff/bclose.vim"
   use "schickling/vim-bufonly"
 
+  use {
+    "famiu/nvim-reload",
+    config = function()
+      require("nvim-reload").post_reload_hook = function()
+        -- Quick fix until I find something better
+        require("packer").sync()
+        vim.cmd [[:e%]]
+      end
+    end,
+  }
+
   use "andymass/vim-matchup"
 
   use {
