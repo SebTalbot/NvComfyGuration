@@ -16,7 +16,7 @@ local options = {
   swapfile = false,
   tabstop = 2,
   termguicolors = true,
-  timeout = false,
+  timeoutlen = 100,
   undodir = vim.fn.stdpath "config" .. "/undo",
   undofile = true,
 }

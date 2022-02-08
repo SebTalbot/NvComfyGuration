@@ -1,91 +1,12 @@
 local map = require("core.utils").map
 local mapBuf = require("core.utils").mapBuf
 
-vim.g.mapleader = " "
+vim.g.mapleader = " " -- Space leader key
+
 local M = {}
 
-M.keybinds = {
-  general = {
-    general = {
-      quick_help = "<leader>h",
-      hide_highlights = "<leader>/",
-      move_line_down = "<C-j>",
-      move_line_up = "<C-k>",
-    },
-    buffers = {
-      close_current = "<leader>bdd",
-      close_all_but_current = "<leader>bdo",
-      close_list = "<leader>bdl",
-      last = "<leader>bb",
-      next = "<leader>bn",
-      previous = "<leader>bp",
-    },
-    windows = {
-      close_current = "<leader>wd",
-      move_down = "<leader>wJ",
-      move_up = "<leader>wK",
-      move_left = "<leader>wL",
-      move_right = "<leader>wH",
-      move_to_down = "<leader>wj",
-      move_to_up = "<leader>wk",
-      move_to_left = "<leader>wl",
-      move_to_right = "<leader>wh",
-      split_horizontal = "<leader>ws",
-      split_vertical = "<leader>wv",
-      resize = "<leader>wrr",
-      resize_equal = "<leader>wre",
-    },
-  },
-  plugins = {
-    telescope = {
-      buffers = "<leader>fb",
-      find_files = "<leader>ff",
-      find_hiddenfiles = "<leader>fa",
-      git_commits = "",
-      git_status = "",
-      help_tags = "",
-      live_grep = "<leader>fw",
-      oldfiles = "",
-      themes = "",
-    },
-    -- git needed
-    -- nvim_cmp needed
-    nvim_tree = {
-      toggle = "<leader>nt",
-      find_file = "<leader>nn",
-    },
-  },
-  lsp = {
-    declaration = "<leader>ll",
-    definitions = "<leader>ld",
-    hover = "<S-k>",
-    implementations = "<leader>li",
-    signature_help = "gk",
-    add_workspace_folder = "",
-    remove_workspace_folder = "",
-    list_workspace_folders = "",
-    type_definitions = "<leader>lt",
-    rename = "<leader>ar",
-    code_actions = "<leader>laa",
-    references = "<leader>lr",
-    float_diagnostics = "<leader>ee",
-    goto_prev = "<leader>ep",
-    goto_next = "<leader>en",
-    set_loclist = "<leader>el",
-    formatting = "<leader>fm",
-  },
-  files = {
-    i3wm = "<leader>zi",
-    vim_init = "<leader>zv",
-    vim_mappings = "<leader>zm",
-    zsh = "<leader>zb",
-  },
-}
-
--------------------------------------------------------------------------------
+--== INIT ON STARTUP ==--------------------------------------------------------
 -- General
-local generalMappings = M.keybinds.general
-
 M.disable = function()
   map("n", "Q", "<nop>")
   map("n", "<C-z>", "<nop>")
@@ -100,103 +21,49 @@ M.overwrite = function()
 end
 
 M.general = function()
-  local m = generalMappings.general
-  map("n", m.quick_help, "<cmd>lua require('telescope.builtin').help_tags()<CR>")
-  map("n", m.hide_highlights, ":nohlsearch<CR>")
-  map("n", m.move_line_down, "ddp")
-  map("n", m.move_line_up, "ddkP")
-  map("v", m.move_line_down, "dp`[V`]")
-  map("v", m.move_line_up, "dkP`[V`]")
+  map("n", "<leader><leader>", ":WhichKey<CR>")
+  map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
+  map("n", "<leader>/", ":nohlsearch<CR>")
+  map("n", "<C-j>", "ddp")
+  map("n", "<C-k>", "ddkP")
+  map("v", "<C-j>", "dp`[V`]")
+  map("v", "<C-k>", "dkP`[V`]")
 end
 
 M.buffers = function()
-  local m = generalMappings.buffers
-  map("n", m.close_current, ":Bclose!<CR>")
-  map("n", m.close_all_but_current, ":BufOnly<CR>")
-  map("n", m.close_list, "")
-  map("n", m.last, ":e#<CR>")
-  map("n", m.next, ":bn<CR>")
-  map("n", m.previous, ":bp<CR>")
+  map("n", "<leader>bdd", ":Bclose!<CR>")
+  map("n", "<leader>bdo", ":BufOnly<CR>")
+  map("n", "<leader>bdl", "")
+  map("n", "<leader>bb", ":e#<CR>")
+  map("n", "<leader>bn", ":bn<CR>")
+  map("n", "<leader>bp", ":bp<CR>")
 end
 
 M.windows = function()
-  local m = generalMappings.windows
-  map("n", m.close_current, "<C-w>q")
-  map("n", m.move_down, "<C-w><S-j>")
-  map("n", m.move_up, "<C-w><S-k>")
-  map("n", m.move_left, "<C-w><S-l>")
-  map("n", m.move_right, "<C-w><S-h>")
-  map("n", m.move_to_down, "<C-w><C-j>")
-  map("n", m.move_to_up, "<C-w><C-k>")
-  map("n", m.move_to_left, "<C-w><C-l>")
-  map("n", m.move_to_right, "<C-w><C-h>")
-  map("n", m.split_horizontal, "<C-w>s")
-  map("n", m.split_vertical, "<C-w>v")
-  map("n", m.resize, ":call lens#run()<CR>")
-  map("n", m.resize_equal, "<C-w>=")
+  map("n", "<leader>wd", "<C-w>q")
+  map("n", "<leader>wJ", "<C-w><S-j>")
+  map("n", "<leader>wK", "<C-w><S-k>")
+  map("n", "<leader>wL", "<C-w><S-l>")
+  map("n", "<leader>wH", "<C-w><S-h>")
+  map("n", "<leader>wj", "<C-w><C-j>")
+  map("n", "<leader>wk", "<C-w><C-k>")
+  map("n", "<leader>wl", "<C-w><C-l>")
+  map("n", "<leader>wh", "<C-w><C-h>")
+  map("n", "<leader>ws", "<C-w>s")
+  map("n", "<leader>wv", "<C-w>v")
+  map("n", "<leader>wrr", ":call lens#run()<CR>")
+  map("n", "<leader>wre", "<C-w>=")
 end
 
--------------------------------------------------------------------------------
--- Plugins
-local pluginsMappings = M.keybinds.plugins
-
-M.telescope = function()
-  local m = pluginsMappings.telescope
-  map("n", m.buffers, ":Telescope buffers <CR>")
-  map("n", m.find_files, ":Telescope find_files <CR>")
-  map("n", m.find_hiddenfiles, ":Telescope find_files follow=true no_ignore=true hidden=true <CR>")
-  map("n", m.git_commits, ":Telescope git_commits <CR>")
-  map("n", m.git_status, ":Telescope git_status <CR>")
-  map("n", m.help_tags, ":Telescope help_tags <CR>")
-  map("n", m.live_grep, ":Telescope live_grep <CR>")
-  map("n", m.oldfiles, ":Telescope oldfiles <CR>")
-  map("n", m.themes, ":Telescope themes <CR>")
-end
-
-M.nvim_tree = function()
-  local m = pluginsMappings.nvim_tree
-  map("n", m.toggle, ":NvimTreeToggle <CR>")
-  map("n", m.find_file, ":NvimTreeFindFile <CR>")
-end
-
--------------------------------------------------------------------------------
--- LSP
-
-M.lsp = function(buf)
-  local m = M.keybinds.lsp
-  mapBuf(buf, "n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
-  mapBuf(buf, "n", m.definitions, "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>")
-  mapBuf(buf, "n", m.hover, "<cmd>lua vim.lsp.buf.hover()<CR>")
-  mapBuf(buf, "n", m.implementations, "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>")
-  mapBuf(buf, "n", m.signature_help, "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-  mapBuf(buf, "n", m.add_workspace_folder, "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-  mapBuf(buf, "n", m.remove_workspace_folder, "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
-  mapBuf(buf, "n", m.list_workspace_folders, "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
-  mapBuf(buf, "n", m.type_definitions, "<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>")
-  mapBuf(buf, "n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
-  mapBuf(buf, "n", m.code_actions, "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))<CR>")
-  mapBuf(buf, "n", m.references, "<cmd>lua require('telescope.builtin').lsp_references()<CR>")
-  mapBuf(buf, "n", m.float_diagnostics, "<cmd>lua vim.diagnostic.open_float()<CR>")
-  mapBuf(buf, "n", m.goto_prev, "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-  mapBuf(buf, "n", m.goto_next, "<cmd>lua vim.diagnostic.goto_next()<CR>")
-  mapBuf(buf, "n", m.set_loclist, "<cmd>lua vim.diagnostic.setloclist()<CR>")
-  mapBuf(buf, "n", m.formatting, "<cmd>lua vim.lsp.buf.formatting()<CR>")
-end
-
--------------------------------------------------------------------------------
 -- Files
-
 M.files = function()
-  local m = M.keybinds.files
-  map("n", m.i3wm, ":e ~/.config/i3/config<CR>")
-  map("n", m.vim_init, ":e ~/.config/nvim/init.lua<CR>")
-  map("n", m.vim_mappings, ":e ~/.config/nvim/lua/core/mappings.lua<CR>")
-  map("n", m.zsh, ":e ~/.zshrc<CR>")
+  map("n", "<leader>zi", ":e ~/.config/i3/config<CR>")
+  map("n", "<leader>zv", ":e ~/.config/nvim/init.lua<CR>")
+  map("n", "<leader>zm", ":e ~/.config/nvim/lua/core/mappings.lua<CR>")
+  map("n", "<leader>zb", ":e ~/.zshrc<CR>")
 end
 
--------------------------------------------------------------------------------
 -- Commands
-
 M.commands = function()
   local cmd = vim.cmd
   -- Packer
@@ -210,9 +77,7 @@ M.commands = function()
   cmd "silent! command LspFormatting lua vim.lsp.buf.formatting()"
 end
 
--------------------------------------------------------------------------------
 -- Init
-
 M.disable()
 M.overwrite()
 M.general()
@@ -220,5 +85,44 @@ M.buffers()
 M.windows()
 M.files()
 M.commands()
+
+--== EXTERNAL INIT ==----------------------------------------------------------
+-- Plugins
+M.telescope = function()
+  map("n", "<leader>fb", ":Telescope buffers <CR>")
+  map("n", "<leader>ff", ":Telescope find_files <CR>")
+  map("n", "<leader>fa", ":Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+  map("n", "", ":Telescope git_commits <CR>")
+  map("n", "", ":Telescope git_status <CR>")
+  map("n", "", ":Telescope help_tags <CR>")
+  map("n", "<leader>fw", ":Telescope live_grep <CR>")
+  map("n", "", ":Telescope oldfiles <CR>")
+  map("n", "", ":Telescope themes <CR>")
+end
+
+M.nvim_tree = function()
+  map("n", "<leader>nt", ":NvimTreeToggle <CR>")
+  map("n", "<leader>nn", ":NvimTreeFindFile <CR>")
+end
+
+-- LSP
+M.lsp = function(buf)
+  mapBuf(buf, "n", "<leader>ll", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+  mapBuf(buf, "n", "<leader>ld", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>")
+  mapBuf(buf, "n", "<S-k>", "<cmd>lua vim.lsp.buf.hover()<CR>")
+  mapBuf(buf, "n", "<leader>li", "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>")
+  mapBuf(buf, "n", "", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
+  mapBuf(buf, "n", "", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
+  mapBuf(buf, "n", "", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
+  mapBuf(buf, "n", "<leader>lt", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>")
+  mapBuf(buf, "n", "<leader>ar", "<cmd>lua vim.lsp.buf.rename()<CR>")
+  mapBuf(buf, "n", "<leader>laa", "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))<CR>")
+  mapBuf(buf, "n", "<leader>lr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>")
+  mapBuf(buf, "n", "<leader>ee", "<cmd>lua vim.diagnostic.open_float()<CR>")
+  mapBuf(buf, "n", "<leader>ep", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+  mapBuf(buf, "n", "<leader>en", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+  mapBuf(buf, "n", "<leader>el", "<cmd>lua vim.diagnostic.setloclist()<CR>")
+  mapBuf(buf, "n", "<leader>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+end
 
 return M

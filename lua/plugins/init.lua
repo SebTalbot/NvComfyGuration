@@ -63,12 +63,20 @@ return packer.startup(function(use)
     run = [[:TSUpdate]],
     config = [[require("plugins.configs.treesitter")]],
   }
-  use "p00f/nvim-ts-rainbow"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
+  use {
+    "p00f/nvim-ts-rainbow",
+    after = "nvim-treesitter",
+  }
+
+  use {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    after = "nvim-treesitter",
+  }
 
   use "tpope/vim-surround"
 
   use "rbgrouleff/bclose.vim"
+
   use "schickling/vim-bufonly"
 
   use {
@@ -80,6 +88,11 @@ return packer.startup(function(use)
         vim.cmd [[:e%]]
       end
     end,
+  }
+
+  use {
+    config = [[require("plugins.configs.which_key")]],
+    "folke/which-key.nvim",
   }
 
   use "andymass/vim-matchup"
