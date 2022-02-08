@@ -22,6 +22,12 @@ telescope.setup {
         },
       },
     },
+    git_commits = {
+      git_command = { "git", "log", "--pretty=format:%h %<(15,trunc)%an %ad %s", "--date=format:%Y-%m-%d %H:%M:%S", "--", "." },
+    },
+    git_bcommits = {
+      git_command = { "git", "log", "--pretty=format:%h %<(15,trunc)%an %ad %s", "--date=format:%Y-%m-%d %H:%M:%S" },
+    },
   },
 }
 
