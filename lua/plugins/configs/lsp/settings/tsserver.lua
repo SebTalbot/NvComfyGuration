@@ -1,5 +1,11 @@
+local init_options = {
+  preferences = {
+    importModuleSpecifierPreference = "non-relative",
+  },
+}
+
 return {
-  init_options = require("nvim-lsp-ts-utils").init_options,
+  init_options = vim.tbl_deep_extend("force", require("nvim-lsp-ts-utils").init_options, init_options),
   on_attach = function(client, bufnr)
     local ts_utils = require "nvim-lsp-ts-utils"
 
