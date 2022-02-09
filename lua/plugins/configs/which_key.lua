@@ -51,8 +51,35 @@ local nmappings = {
       name = "Find",
       a = "All Files",
       b = "Buffers",
+      c = "Commands",
       f = "Files (not hidden)",
+      r = "Resume last picker",
       w = "Live Grep",
+    },
+    g = {
+      name = "Git",
+      b = "Branches",
+      c = "Project commits",
+      C = "Current file commits",
+      d = "Diff buffer",
+      g = "Preview hunk",
+      l = "Blame line",
+      L = "Blame line with details",
+      n = "Next hunk",
+      p = "Previous hunk",
+      s = "Status",
+      S = "Stash",
+      t = "Toggle diff",
+      v = "Select hunk",
+      a = {
+        name = "Actions",
+        r = "Reset hunk",
+        R = "Reset file",
+        s = "Stage hunk",
+        S = "Stage file",
+        t = "Stash every file",
+        u = "Unstage file",
+      }
     },
     l = {
       name = "LSP",
@@ -66,7 +93,7 @@ local nmappings = {
         a = "LSP code actions",
         r = "Rename word under the cursor",
         f = "Format file",
-      }
+      },
     },
     n = {
       name = "Nvim-tree",
@@ -91,6 +118,11 @@ local nmappings = {
         e = "Equal",
         r = "Smart",
       },
+    },
+    y = {
+      name = "Special Yank",
+      y = "File name",
+      f = "File path",
     },
     z = {
       name = "System files",

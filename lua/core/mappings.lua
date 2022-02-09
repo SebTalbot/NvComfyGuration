@@ -29,6 +29,8 @@ M.general = function()
   map("n", "<C-k>", ":m .-2<CR>==")
   map("v", "<C-j>", ":m '>+1<CR>gv=gv")
   map("v", "<C-k>", ":m '<-2<CR>gv=gv")
+  -- Git
+  map("n", "<leader>gat", "<cmd>GitStashAll <CR>")
 end
 
 M.buffers = function()
@@ -78,6 +80,8 @@ M.commands = function()
   cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
   -- LSP
   cmd "silent! command LspFormatting lua vim.lsp.buf.formatting()"
+  -- Git
+  cmd "silent! command GitStashAll !git stash -u"
 end
 
 -- Init
@@ -100,6 +104,28 @@ M.telescope = function()
   map("n", "<leader>fw", "<cmd>Telescope live_grep <CR>")
   -- General
   map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
+  -- Git
+  map("n", "<leader>gb", "<cmd>Telescope git_branches <CR>")
+  map("n", "<leader>gc", "<cmd>Telescope git_commits <CR>")
+  map("n", "<leader>gC", "<cmd>Telescope git_bcommits <CR>")
+  map("n", "<leader>gs", "<cmd>Telescope git_status <CR>")
+  map("n", "<leader>gS", "<cmd>Telescope git_stash <CR>")
+end
+
+M.gitsigns = function()
+  map("n", "<leader>gd", "<cmd>Gitsigns diffthis <CR>")
+  map("n", "<leader>gg", "<cmd>Gitsigns preview_hunk <CR>")
+  map("n", "<leader>gl", "<cmd>Gitsigns blame_line <CR>")
+  map("n", "<leader>gL", "<cmd>require('gitsigns').blame_line({full=true}) <CR>")
+  map("n", "<leader>gn", "<cmd>Gitsigns next_hunk <CR>")
+  map("n", "<leader>gp", "<cmd>Gitsigns prev_hunk <CR>")
+  map("n", "<leader>gt", "<cmd>Gitsigns toggle_linehl <CR><cmd>Gitsigns toggle_deleted <CR>")
+  map("n", "<leader>gv", "<cmd>Gitsigns select_hunk <CR>")
+  map("n", "<leader>gar", "<cmd>Gitsigns reset_hunk <CR>")
+  map("n", "<leader>gaR", "<cmd>Gitsigns reset_buffer <CR>")
+  map("n", "<leader>gas", "<cmd>Gitsigns stage_hunk <CR>")
+  map("n", "<leader>gaS", "<cmd>Gitsigns stage_buffer <CR>")
+  map("n", "<leader>gau", "<cmd>Gitsigns undo_stage_hunk <CR>")
 end
 
 M.nvim_tree = function()
