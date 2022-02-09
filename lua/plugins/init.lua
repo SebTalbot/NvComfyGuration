@@ -59,6 +59,11 @@ return packer.startup(function(use)
   }
 
   use {
+    "lewis6991/gitsigns.nvim",
+    config = [[require("plugins.configs.gitsigns")]],
+  }
+
+  use {
     "nvim-treesitter/nvim-treesitter",
     run = [[:TSUpdate]],
     config = [[require("plugins.configs.treesitter")]],
