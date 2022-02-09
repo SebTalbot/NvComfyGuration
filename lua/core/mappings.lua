@@ -20,18 +20,19 @@ M.overwrite = function()
 end
 
 M.general = function()
-  map("n", "<leader><leader>", "<cmd>WhichKey<CR>")
+  map("n", "<leader><leader>", "<cmd>WhichKey <CR>")
   map("n", "<leader>*", "*``")
-  map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
-  map("n", "<leader>/", "<cmd>nohlsearch<CR>")
-  map("n", "<C-j>", "<cmd>m .+1<CR>==")
-  map("n", "<C-k>", "<cmd>m .-2<CR>==")
-  map("v", "<C-j>", "<cmd>m '>+1<CR>gv=gv")
-  map("v", "<C-k>", "<cmd>m '<-2<CR>gv=gv")
+  map("n", "<leader>/", "<cmd>nohlsearch <CR>")
+  map("n", "<leader>yf", "<cmd>let @+ = expand('%:r') <CR>")
+  map("n", "<leader>yy", "<cmd>let @+ = expand('%:t:r') <CR>")
+  map("n", "<C-j>", ":m .+1<CR>==")
+  map("n", "<C-k>", ":m .-2<CR>==")
+  map("v", "<C-j>", ":m '>+1<CR>gv=gv")
+  map("v", "<C-k>", ":m '<-2<CR>gv=gv")
 end
 
 M.buffers = function()
-  map("n", "<leader>bdd", "<cmd>Bclose!<CR>")
+  map("n", "<leader>bdd", "<cmd>bdelete!<CR>")
   map("n", "<leader>bdo", "<cmd>BufOnly<CR>")
   map("n", "<leader>bdl", "")
   map("n", "<leader>bb", "<cmd>e#<CR>")
@@ -68,7 +69,6 @@ M.commands = function()
   local cmd = vim.cmd
   -- General
   cmd "command! ClearRegisters for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor"
-
   -- Packer
   cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
   cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
@@ -92,15 +92,14 @@ M.commands()
 --== EXTERNAL INIT ==----------------------------------------------------------
 -- Plugins
 M.telescope = function()
-  map("n", "<leader>fb", "<cmd>Telescope buffers <CR>")
-  map("n", "<leader>ff", "<cmd>Telescope find_files <CR>")
   map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>")
-  map("n", "", "<cmd>Telescope git_commits <CR>")
-  map("n", "", "<cmd>Telescope git_status <CR>")
-  map("n", "", "<cmd>Telescope help_tags <CR>")
+  map("n", "<leader>fb", "<cmd>Telescope buffers <CR>")
+  map("n", "<leader>fc", "<cmd>Telescope commands <CR>")
+  map("n", "<leader>ff", "<cmd>Telescope find_files follow=true <CR>")
+  map("n", "<leader>fr", "<cmd>Telescope resume <CR>")
   map("n", "<leader>fw", "<cmd>Telescope live_grep <CR>")
-  map("n", "", "<cmd>Telescope oldfiles <CR>")
-  map("n", "", "<cmd>Telescope themes <CR>")
+  -- General
+  map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
 end
 
 M.nvim_tree = function()
