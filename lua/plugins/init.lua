@@ -17,20 +17,10 @@ return packer.startup(function(use)
 
   use {
     "folke/tokyonight.nvim",
-    disable = isLaptop or isHome,
+    disable = isLaptop,
     config = function()
-      vim.opt.termguicolors = true
       vim.g.tokyonight_style = "night"
       vim.cmd [[colorscheme tokyonight]]
-    end,
-  }
-
-  use {
-    "Th3Whit3Wolf/space-nvim",
-    disable = not isHome,
-    config = function()
-      vim.g.space_nvim_transparent_bg = true
-      vim.cmd [[colorscheme space-nvim]]
     end,
   }
 
@@ -84,8 +74,6 @@ return packer.startup(function(use)
   }
 
   use "tpope/vim-surround"
-
-  use "rbgrouleff/bclose.vim"
 
   use "schickling/vim-bufonly"
 
