@@ -54,6 +54,7 @@ local nmappings = {
       c = "Commands",
       f = "Files (not hidden)",
       r = "Resume last picker",
+      s = "Spelling suggestions",
       w = "Live Grep",
     },
     g = {
@@ -62,6 +63,7 @@ local nmappings = {
       c = "Project commits",
       C = "Current file commits",
       d = "Diff buffer",
+      e = "Lazy Git",
       g = "Preview hunk",
       l = "Blame line",
       L = "Blame line with details",
