@@ -64,6 +64,11 @@ return packer.startup(function(use)
   }
 
   use {
+    "akinsho/toggleterm.nvim",
+    config = [[require("plugins.configs.toggleterm")]],
+  }
+
+  use {
     "nvim-treesitter/nvim-treesitter",
     run = [[:TSUpdate]],
     config = [[require("plugins.configs.treesitter")]],
@@ -79,6 +84,8 @@ return packer.startup(function(use)
   }
 
   use "tpope/vim-surround"
+
+  use "rbgrouleff/bclose.vim"
 
   use "schickling/vim-bufonly"
 
