@@ -55,6 +55,7 @@ local nmappings = {
       f = "Files (not hidden)",
       r = "Resume last picker",
       s = "Spelling suggestions",
+      t = "Terminals",
       w = "Live Grep",
     },
     g = {
