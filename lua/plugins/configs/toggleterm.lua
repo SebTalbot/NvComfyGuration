@@ -52,4 +52,10 @@ function _Toggleterm_lazygit()
   lazygit:toggle()
 end
 
+-- Init Default Terminal
+-- Usefull in case another terminal is opened before the main one
+local mainTerminal = Terminal:new { count = 1 }
+mainTerminal:open() -- need to open because __add is private
+mainTerminal:close()
+
 require("core.mappings").toggleterm()
