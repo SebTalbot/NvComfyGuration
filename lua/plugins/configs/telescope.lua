@@ -38,10 +38,6 @@ telescope.setup {
         },
       },
     },
-    find_files = {
-      follow = true,
-      path_display = { "smart" },
-    },
     live_grep = {
       disable_coordinates = true,
       path_display = { "tail" },
