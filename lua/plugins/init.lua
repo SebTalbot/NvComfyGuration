@@ -68,6 +68,8 @@ return packer.startup(function(use)
     config = [[require("plugins.configs.toggleterm")]],
   }
 
+  use {'tknightz/telescope-termfinder.nvim'}
+
   use {
     "nvim-treesitter/nvim-treesitter",
     run = [[:TSUpdate]],

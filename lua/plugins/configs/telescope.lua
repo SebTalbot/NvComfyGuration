@@ -63,9 +63,19 @@ telescope.setup {
       override_file_sorter = true,
       case_mode = "smart_case",
     },
+    termfinder = {
+      mappings = {
+        rename_term = "<C-n>",
+        delete_term = "<C-x>",
+        vertical_term = "<C-v>",
+        horizontal_term = "<C-h>",
+        float_term = "<C-f>",
+      },
+    },
   },
 }
 
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "env"
+require("telescope").load_extension "termfinder"
 require("core.mappings").telescope()
