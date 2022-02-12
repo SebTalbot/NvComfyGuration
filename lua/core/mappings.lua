@@ -141,6 +141,10 @@ M.nvim_tree = function()
   map("n", "<leader>nn", "<cmd>NvimTreeFindFile <CR>")
 end
 
+M.mundo = function ()
+  map("n", "<leader>fu", "<cmd>MundoToggle <CR>")
+end
+
 -- LSP
 M.lsp = function(buf)
   mapBuf(buf, "n", "<leader>ll", "<cmd>lua vim.lsp.buf.declaration()<CR>")

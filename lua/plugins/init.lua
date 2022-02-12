@@ -59,6 +59,13 @@ return packer.startup(function(use)
   }
 
   use {
+    "simnalamburt/vim-mundo",
+    config = function()
+      require("core.mappings").mundo()
+    end,
+  }
+
+  use {
     "lewis6991/gitsigns.nvim",
     config = [[require("plugins.configs.gitsigns")]],
   }

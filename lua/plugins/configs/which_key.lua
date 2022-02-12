@@ -56,6 +56,7 @@ local nmappings = {
       r = "Resume last picker",
       s = "Spelling suggestions",
       t = "Terminals",
+      u = "Undo tree",
       w = "Live Grep",
     },
     g = {
