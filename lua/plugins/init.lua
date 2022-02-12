@@ -37,6 +37,11 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-web-devicons"
 
   use {
+    "karb94/neoscroll.nvim",
+    config = [[require("plugins.configs.neoscroll")]],
+  }
+
+  use {
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
     config = function()
