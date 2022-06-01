@@ -47,15 +47,14 @@ toggleterm.setup {
 -- Custom Terminals
 local Terminal = require("toggleterm.terminal").Terminal
 
+local mainTerminal = Terminal:new { count = 1 }
+function _Toggleterm_main()
+  mainTerminal:open()
+end
+
 local lazygit = Terminal:new { cmd = "lazygit", count = 11 }
 function _Toggleterm_lazygit()
   lazygit:toggle()
 end
-
--- Init Default Terminal
--- Usefull in case another terminal is opened before the main one
-local mainTerminal = Terminal:new { count = 1 }
-mainTerminal:open() -- need to open because __add is private
-mainTerminal:close()
 
 require("core.mappings").toggleterm()

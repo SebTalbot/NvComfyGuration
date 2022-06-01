@@ -34,6 +34,7 @@ M.general = function()
   map("t", "<C-space>", "<C-\\><C-n>")
   -- Git
   map("n", "<leader>gat", "<cmd>GitStashAll <CR>")
+  map("n", "<leader>gL", "<cmd>Git blame <CR>")
 end
 
 M.buffers = function()
@@ -121,7 +122,6 @@ M.gitsigns = function()
   map("n", "<leader>gd", "<cmd>Gitsigns toggle_linehl <CR><cmd>Gitsigns toggle_deleted <CR>")
   map("n", "<leader>gg", "<cmd>Gitsigns preview_hunk <CR>")
   map("n", "<leader>gl", "<cmd>Gitsigns blame_line <CR>")
-  map("n", "<leader>gL", "<cmd>require('gitsigns').blame_line({full=true}) <CR>")
   map("n", "<leader>gn", "<cmd>Gitsigns next_hunk <CR>")
   map("n", "<leader>gp", "<cmd>Gitsigns prev_hunk <CR>")
   map("n", "<leader>gv", "<cmd>Gitsigns select_hunk <CR>")
@@ -133,6 +133,7 @@ M.gitsigns = function()
 end
 
 M.toggleterm = function ()
+  map("n", "<leader>t", "<cmd>lua _Toggleterm_main() <CR>")
   map("n", "<leader>ge", "<cmd>lua _Toggleterm_lazygit() <CR>")
 end
 

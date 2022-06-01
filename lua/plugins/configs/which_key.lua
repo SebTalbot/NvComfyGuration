@@ -68,7 +68,7 @@ local nmappings = {
       e = "Lazy Git",
       g = "Preview hunk",
       l = "Blame line",
-      L = "Blame line with details",
+      L = "Blame file",
       n = "Next hunk",
       p = "Previous hunk",
       s = "Status",
@@ -103,6 +103,7 @@ local nmappings = {
       n = "Open on current file",
       t = "Toggle",
     },
+    t = "Terminal",
     w = {
       name = "Windows",
       H = "Move position to right",

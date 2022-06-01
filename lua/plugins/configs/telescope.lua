@@ -12,7 +12,7 @@ telescope.setup {
   defaults = {
     multi_icon = "",
     selection_caret = "",
-    prompt_prefix = "  ",
+    prompt_prefix = " >> ",
     entry_prefix = "",
     vimgrep_arguments = {
       "rg",
