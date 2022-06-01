@@ -46,6 +46,8 @@ return packer.startup(function(use)
 
   use {
     "akinsho/bufferline.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    tag = "v2.*",
     config = function()
       require("bufferline").setup {}
     end,
@@ -65,6 +67,8 @@ return packer.startup(function(use)
     end,
   }
 
+  use "tpope/vim-fugitive"
+
   use {
     "lewis6991/gitsigns.nvim",
     config = [[require("plugins.configs.gitsigns")]],
@@ -72,6 +76,7 @@ return packer.startup(function(use)
 
   use {
     "akinsho/toggleterm.nvim",
+    tag = "v1.*",
     config = [[require("plugins.configs.toggleterm")]],
   }
 
