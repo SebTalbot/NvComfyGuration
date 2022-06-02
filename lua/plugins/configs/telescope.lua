@@ -14,14 +14,14 @@ telescope.setup {
     selection_caret = "",
     prompt_prefix = " >> ",
     entry_prefix = "",
-    vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--column",
-      "--smart-case",
-      "--trim",
+    sorting_strategy = "ascending",
+    layout_strategy = "vertical",
+    layout_config = {
+      vertical = {
+        height = 0.99,
+        width = 0.99,
+        prompt_position = "top",
+      },
     },
     mappings = {
       i = {
