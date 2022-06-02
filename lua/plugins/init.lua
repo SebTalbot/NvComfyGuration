@@ -26,6 +26,7 @@ return packer.startup(function(use)
 
   use {
     "morhetz/gruvbox",
+    as = "theme",
     disable = not isLaptop,
     config = function()
       vim.opt.termguicolors = true
@@ -76,11 +77,11 @@ return packer.startup(function(use)
 
   use {
     "akinsho/toggleterm.nvim",
+    after = "theme",
     tag = "v1.*",
     config = [[require("plugins.configs.toggleterm")]],
   }
 
-  use { "tknightz/telescope-termfinder.nvim" }
 
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -124,6 +125,7 @@ return packer.startup(function(use)
 
   use {
     "nvim-telescope/telescope.nvim",
+    after = "toggleterm.nvim",
     config = [[require("plugins.configs.telescope")]],
   }
 
@@ -133,6 +135,8 @@ return packer.startup(function(use)
   }
 
   use { "LinArcX/telescope-env.nvim" }
+
+  use { "tknightz/telescope-termfinder.nvim" }
 
   use {
     "kyazdani42/nvim-tree.lua",

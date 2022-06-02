@@ -45,9 +45,21 @@ toggleterm.setup {
 }
 
 -- Custom Terminals
+local ttt = require('toggleterm.terminal')
 local Terminal = require("toggleterm.terminal").Terminal
 
+local nameTerm = function (term, name)
+  vim.api.nvim_buf_set_name(term.bufnr, name)
+  ttt.get(term.id).name = name
+end
+
+local initTerm = function (term, name)
+  term:spawn()
+  nameTerm(term, name)
+end
+
 local mainTerminal = Terminal:new { count = 1 }
+initTerm(mainTerminal, "Main")
 function _Toggleterm_main()
   mainTerminal:open()
 end
@@ -55,6 +67,7 @@ end
 local lazygit = Terminal:new { cmd = "lazygit", count = 11 }
 function _Toggleterm_lazygit()
   lazygit:toggle()
+  nameTerm(lazygit, "Git")
 end
 
 require("core.mappings").toggleterm()
