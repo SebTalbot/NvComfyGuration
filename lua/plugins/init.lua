@@ -26,7 +26,6 @@ return packer.startup(function(use)
 
   use {
     "morhetz/gruvbox",
-    as = "theme",
     disable = not isLaptop,
     config = function()
       vim.opt.termguicolors = true
@@ -77,11 +76,10 @@ return packer.startup(function(use)
 
   use {
     "akinsho/toggleterm.nvim",
-    after = "theme",
+    after = { "gruvbox", "tokyonight.nvim" },
     tag = "v1.*",
     config = [[require("plugins.configs.toggleterm")]],
   }
-
 
   use {
     "nvim-treesitter/nvim-treesitter",
