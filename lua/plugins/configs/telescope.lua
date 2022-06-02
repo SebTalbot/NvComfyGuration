@@ -23,10 +23,21 @@ telescope.setup {
         prompt_position = "top",
       },
     },
+    -- vimgrep_arguments = {
+    --   "rg",
+    --   "--color=never",
+    --   "--no-heading",
+    --   "--with-filename",
+    --   "--column",
+    --   "--smart-case",
+    --   "--trim",
+    -- },
     mappings = {
       i = {
         ["<C-a>"] = actions.toggle_all,
         ["<C-e>"] = actions_layout.toggle_preview,
+        ["<M-n>"] = actions.results_scrolling_down,
+        ["<M-p>"] = actions.results_scrolling_up,
       },
     },
   },
