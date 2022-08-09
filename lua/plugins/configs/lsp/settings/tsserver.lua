@@ -1,8 +1,4 @@
-local init_options = {
-  preferences = {
-    importModuleSpecifierPreference = "non-relative",
-  },
-}
+local init_options = {}
 
 return {
   init_options = vim.tbl_deep_extend("force", require("nvim-lsp-ts-utils").init_options, init_options),
@@ -25,7 +21,7 @@ return {
       always_organize_imports = false,
       filter_out_diagnostics_by_severity = {},
       filter_out_diagnostics_by_code = {},
-      auto_inlay_hints = true,
+      auto_inlay_hints = false,
       inlay_hints_highlight = "Comment",
       inlay_hints_priority = 200,
       inlay_hints_throttle = 150,
