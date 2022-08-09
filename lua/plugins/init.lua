@@ -166,4 +166,9 @@ return packer.startup(function(use)
 
   use "jose-elias-alvarez/null-ls.nvim"
   use "jose-elias-alvarez/nvim-lsp-ts-utils"
+
+  use {
+    "mfussenegger/nvim-dap",
+    config = [[require("plugins.configs.dap")]],
+  }
 end)
