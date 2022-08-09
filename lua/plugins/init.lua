@@ -171,4 +171,6 @@ return packer.startup(function(use)
     "mfussenegger/nvim-dap",
     config = [[require("plugins.configs.dap")]],
   }
+  use "nvim-telescope/telescope-dap.nvim"
+
 end)
