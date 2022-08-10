@@ -40,6 +40,23 @@ local nmappings = {
         o = "Everything but the current",
       },
     },
+    d = {
+      name = "Debug",
+      c = "Continue (Start)",
+      d = "Breakpoint",
+      i = "Step Into",
+      o = "Step Over",
+      t = "Toggle UI",
+      u = "Step Out",
+      f = {
+        name = "Find",
+        c = "Commands",
+        f = "Frames (Call Stack)",
+        g = "Configurations",
+        s = "Variables (Scope)",
+        t = "Breakpoints",
+      },
+    },
     e = {
       name = "Errors & Diagnostic [LSP]",
       e = "Open details",
