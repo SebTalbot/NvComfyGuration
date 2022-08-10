@@ -40,7 +40,18 @@ return packer.startup(function(use)
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
     config = function()
-      require("lualine").setup()
+      require("lualine").setup {
+        options = {
+          ignore_focus = {
+            "dapui_watches",
+            "dapui_stacks",
+            "dapui_breakpoints",
+            "dapui_scopes",
+            "dap-repl",
+            "dapui_console",
+          },
+        },
+      }
     end,
   }
 
@@ -166,4 +177,33 @@ return packer.startup(function(use)
 
   use "jose-elias-alvarez/null-ls.nvim"
   use "jose-elias-alvarez/nvim-lsp-ts-utils"
+
+  use {
+    "mfussenegger/nvim-dap",
+    config = [[require("plugins.configs.dap")]],
+  }
+  use "nvim-telescope/telescope-dap.nvim"
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" },
+    config = [[require("plugins.configs.dap.ui")]],
+  }
+
+  use {
+    "mxsdev/nvim-dap-vscode-js",
+    requires = { "mfussenegger/nvim-dap" },
+    config = [[require("plugins.configs.dap.js")]],
+  }
+  use {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npm run compile",
+  }
+
+  use {
+    "leoluz/nvim-dap-go",
+    requires = { "mfussenegger/nvim-dap" },
+    config = [[require("plugins.configs.dap.go")]],
+  }
+
 end)

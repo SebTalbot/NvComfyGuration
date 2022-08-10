@@ -165,4 +165,21 @@ M.lsp = function(buf)
   mapBuf(buf, "n", "<leader>lr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>")
 end
 
+-- DAP
+M.dap = function()
+  map("n", "<leader>dc", '<cmd>lua require"dap".continue()<CR>')
+  map("n", "<leader>dd", '<cmd>lua require"dap".toggle_breakpoint()<CR>')
+  map("n", "<leader>di", '<cmd>lua require"dap".step_into()<CR>')
+  map("n", "<leader>do", '<cmd>lua require"dap".step_over()<CR>')
+  map("n", "<leader>du", '<cmd>lua require"dap".step_out()<CR>')
+  -- telescope extension
+  map("n", "<leader>dfc", '<cmd>lua require"telescope".extensions.dap.commands{}<CR>')
+  map("n", "<leader>dff", '<cmd>lua require"telescope".extensions.dap.frames{}<CR>')
+  map("n", "<leader>dfg", '<cmd>lua require"telescope".extensions.dap.configurations{}<CR>')
+  map("n", "<leader>dfs", '<cmd>lua require"telescope".extensions.dap.variables{}<CR>')
+  map("n", "<leader>dft", '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>')
+  -- DAP UI
+  map("n", "<leader>dt", "<cmd>lua require('dapui').toggle()<CR>")
+end
+
 return M
