@@ -199,4 +199,11 @@ return packer.startup(function(use)
     opt = true,
     run = "npm install --legacy-peer-deps && npm run compile",
   }
+
+  use {
+    "leoluz/nvim-dap-go",
+    requires = { "mfussenegger/nvim-dap" },
+    config = [[require("plugins.configs.dap.go")]],
+  }
+
 end)
