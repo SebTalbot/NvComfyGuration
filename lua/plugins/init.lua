@@ -162,6 +162,11 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer"
 
   use {
+    "weilbith/nvim-code-action-menu",
+    cmd = "CodeActionMenu",
+  }
+
+  use {
     "hrsh7th/nvim-cmp",
     config = [[require("plugins.configs.nvim_cmp")]],
   }

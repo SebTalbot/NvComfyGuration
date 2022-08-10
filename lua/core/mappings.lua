@@ -152,17 +152,18 @@ M.lsp = function(buf)
   mapBuf(buf, "n", "<S-k>", "<cmd>lua vim.lsp.buf.hover()<CR>")
   mapBuf(buf, "n", "<leader>laf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
   mapBuf(buf, "n", "<leader>lar", "<cmd>lua vim.lsp.buf.rename()<CR>")
-  mapBuf(buf, "n", "<leader>laa", "<cmd>lua vim.lsp.buf.code_action()<CR>")
   mapBuf(buf, "n", "<leader>ee", "<cmd>lua vim.diagnostic.open_float()<CR>")
   mapBuf(buf, "n", "<leader>ep", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
   mapBuf(buf, "n", "<leader>en", "<cmd>lua vim.diagnostic.goto_next()<CR>")
   mapBuf(buf, "n", "<leader>el", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-  mapBuf(buf, "v", "<leader>la", "<cmd>'<,'>lua vim.lsp.buf.range_code_action()<CR>")
+  mapBuf(buf, "v", "<leader>la", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
   -- telescope extension
   mapBuf(buf, "n", "<leader>ld", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>")
   mapBuf(buf, "n", "<leader>li", "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>")
   mapBuf(buf, "n", "<leader>lt", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>")
   mapBuf(buf, "n", "<leader>lr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>")
+  -- code action menu plugin
+  mapBuf(buf, "n", "<leader>laa", "<cmd>CodeActionMenu<CR>")
 end
 
 -- DAP
