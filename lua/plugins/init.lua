@@ -1,5 +1,4 @@
 local present, packer = pcall(require, "plugins.packerInit")
-
 if not present then
   print "Warning: Cannot find packer"
   return false
@@ -17,7 +16,7 @@ return packer.startup(function(use)
 
   use {
     "folke/tokyonight.nvim",
-    disable = isLaptop,
+    disable = isHome or isLaptop,
     config = function()
       vim.g.tokyonight_style = "night"
       vim.cmd [[colorscheme tokyonight]]
@@ -26,7 +25,6 @@ return packer.startup(function(use)
 
   use {
     "morhetz/gruvbox",
-    disable = not isLaptop,
     config = function()
       vim.opt.termguicolors = true
       vim.o.background = "dark"
@@ -143,9 +141,9 @@ return packer.startup(function(use)
     run = "make",
   }
 
-  use { "LinArcX/telescope-env.nvim" }
+  use "LinArcX/telescope-env.nvim"
 
-  use { "tknightz/telescope-termfinder.nvim" }
+  use "tknightz/telescope-termfinder.nvim"
 
   use {
     "kyazdani42/nvim-tree.lua",
@@ -210,5 +208,4 @@ return packer.startup(function(use)
     requires = { "mfussenegger/nvim-dap" },
     config = [[require("plugins.configs.dap.go")]],
   }
-
 end)

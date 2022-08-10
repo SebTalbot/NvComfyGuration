@@ -1,5 +1,4 @@
 local present, telescope = pcall(require, "telescope")
-
 if not present then
   print "Warning: Telescope not found"
   return

@@ -1,11 +1,10 @@
 local dapPresent, dap = pcall(require, "dap")
-local dapJsPresent, dapJs = pcall(require, "dap-vscode-js")
-
 if not dapPresent then
   print "Warning: Cannot find DAP"
   return false
 end
 
+local dapJsPresent, dapJs = pcall(require, "dap-vscode-js")
 if not dapJsPresent then
   print "Warning: Cannot find dap-vscode-js"
   return false

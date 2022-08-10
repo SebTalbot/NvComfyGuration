@@ -1,5 +1,4 @@
 local present, gitsigns = pcall(require, "gitsigns")
-
 if not present then
   print "Warning: GitSigns not found"
   return

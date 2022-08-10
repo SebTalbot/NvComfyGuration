@@ -1,5 +1,4 @@
 local present, dapui = pcall(require, "dapui")
-
 if not present then
   print "Warning: Cannot find DAP"
   return false
