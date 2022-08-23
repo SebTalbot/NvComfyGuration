@@ -1,10 +1,25 @@
 #!/bin/bash
-rm -rf ~/.config/nvim
-rm -rf ~/.local/share/nvim
-rm -rf ~/.cache/nvim
+install_configs () {
+  rm -rf ~/.config/nvim
+  rm -rf ~/.local/share/nvim
+  rm -rf ~/.cache/nvim
 
-mkdir ~/.config/nvim
-ln -sf $(pwd)/init.lua ~/.config/nvim/init.lua
-ln -sf $(pwd)/lua ~/.config/nvim/lua
+  mkdir ~/.config/nvim
+  ln -sf $(pwd)/init.lua ~/.config/nvim/init.lua
+  ln -sf $(pwd)/lua ~/.config/nvim/lua
 
-nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
+  nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
+}
+
+if test -d "$HOME/.config/nvim"; then
+  echo "This script will remove your current neovim configurations and cache. Do you want to continue? y/n"
+  read input
+  if test $input == "y"; then
+    install_configs
+  else
+    echo "Install aborted"
+  fi
+else
+  install_configs
+fi
+
