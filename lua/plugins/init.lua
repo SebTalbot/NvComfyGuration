@@ -76,14 +76,14 @@ return packer.startup(function(use)
 
   use {
     "akinsho/toggleterm.nvim",
-    after = { "gruvbox", "tokyonight.nvim" },
+    after = { "gruvbox" },
     tag = "v1.*",
     config = [[require("plugins.configs.toggleterm")]],
   }
 
   use {
     "nvim-treesitter/nvim-treesitter",
-    run = [[:TSUpdate]],
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     config = [[require("plugins.configs.treesitter")]],
   }
   use {
