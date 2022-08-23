@@ -15,15 +15,6 @@ return packer.startup(function(use)
   }
 
   use {
-    "folke/tokyonight.nvim",
-    disable = isHome or isLaptop,
-    config = function()
-      vim.g.tokyonight_style = "night"
-      vim.cmd [[colorscheme tokyonight]]
-    end,
-  }
-
-  use {
     "morhetz/gruvbox",
     config = function()
       vim.opt.termguicolors = true
