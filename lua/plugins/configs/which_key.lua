@@ -61,8 +61,10 @@ local nmappings = {
       name = "Errors & Diagnostic [LSP]",
       e = "Open details",
       l = "List diagnostic in quickfix",
-      n = "Next error",
-      p = "Previous error",
+      n = "Next diagnostic",
+      N = "Next error",
+      p = "Previous diagnostic",
+      P = "Previous error",
     },
     f = {
       name = "Find",
