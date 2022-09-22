@@ -58,6 +58,7 @@ telescope.setup {
     },
     grep_string = {
       disable_coordinates = true,
+      only_sort_text = true,
       prompt_title = "Find Words (All)",
       search = "\\w",
       use_regex = true,
@@ -67,6 +68,7 @@ telescope.setup {
     },
     live_grep = {
       prompt_title = "Find Grep (All)",
+      only_sort_text = true,
       disable_coordinates = true,
     },
     lsp_definitions = {
