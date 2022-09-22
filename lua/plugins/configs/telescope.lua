@@ -1,6 +1,12 @@
-local present, telescope = pcall(require, "telescope")
-if not present then
+local telescopePresent, telescope = pcall(require, "telescope")
+if not telescopePresent then
   print "Warning: Telescope not found"
+  return
+end
+
+local builtinPresent, builtin = pcall(require, "telescope.builtin")
+if not builtinPresent then
+  print "Warning: telescope.builtin not found"
   return
 end
 
@@ -9,34 +15,26 @@ local actions_layout = require "telescope.actions.layout"
 
 telescope.setup {
   defaults = {
-    multi_icon = "",
-    selection_caret = "",
-    prompt_prefix = " >> ",
+    dynamic_preview_title = true,
     entry_prefix = "",
-    sorting_strategy = "ascending",
+    layout_config = { vertical = { height = 0.99, width = 0.99, prompt_position = "top" } },
     layout_strategy = "vertical",
-    layout_config = {
-      vertical = {
-        height = 0.99,
-        width = 0.99,
-        prompt_position = "top",
-      },
-    },
-    -- vimgrep_arguments = {
-    --   "rg",
-    --   "--color=never",
-    --   "--no-heading",
-    --   "--with-filename",
-    --   "--column",
-    --   "--smart-case",
-    --   "--trim",
-    -- },
+    multi_icon = "",
+    prompt_prefix = " >> ",
+    scroll_strategy = "limit",
+    selection_caret = "",
+    sorting_strategy = "ascending",
+    vimgrep_arguments = { "rg", "--color=never", "--column", "--line-number", "--no-heading", "--smart-case", "--trim", "--with-filename" },
     mappings = {
       i = {
         ["<C-a>"] = actions.toggle_all,
         ["<C-e>"] = actions_layout.toggle_preview,
         ["<M-n>"] = actions.results_scrolling_down,
         ["<M-p>"] = actions.results_scrolling_up,
+        ["<C-\\>"] = actions.close,
+      },
+      n = {
+        ["<C-\\>"] = actions.close,
       },
     },
   },
@@ -48,22 +46,48 @@ telescope.setup {
         },
       },
     },
-    live_grep = {
-      disable_coordinates = true,
-      path_display = { "tail" },
+    find_files = {
+      prompt_title = "Find Files (All)",
+      hidden = true,
     },
-    help_tags = {
-      mappings = {
-        i = {
-          ["<CR>"] = actions.select_vertical,
-        },
-      },
+    git_bcommits = {
+      git_command = { "git", "log", "--pretty=format:%h %<(15,trunc)%an %ad %s", "--date=format:%Y-%m-%d %H:%M:%S" },
     },
     git_commits = {
       git_command = { "git", "log", "--pretty=format:%h %<(15,trunc)%an %ad %s", "--date=format:%Y-%m-%d %H:%M:%S", "--", "." },
     },
-    git_bcommits = {
-      git_command = { "git", "log", "--pretty=format:%h %<(15,trunc)%an %ad %s", "--date=format:%Y-%m-%d %H:%M:%S" },
+    grep_string = {
+      disable_coordinates = true,
+      prompt_title = "Find Words (All)",
+      search = "\\w",
+      use_regex = true,
+    },
+    help_tags = {
+      mappings = { i = { ["<CR>"] = actions.select_vertical } },
+    },
+    live_grep = {
+      prompt_title = "Find Grep (All)",
+      disable_coordinates = true,
+    },
+    lsp_definitions = {
+      fname_width = 80,
+      path_display = { shorten = 4 },
+      trim_text = true,
+    },
+    lsp_implementations = {
+      fname_width = 80,
+      path_display = { shorten = 4 },
+      trim_text = true,
+    },
+    lsp_references = {
+      fname_width = 80,
+      path_display = { shorten = 4 },
+      trim_text = true,
+    },
+    lsp_type_definitions = {
+      fname_width = 80,
+      path_display = { shorten = 4 },
+      trim_text = true,
     },
   },
   extensions = {
@@ -84,6 +108,60 @@ telescope.setup {
     },
   },
 }
+
+-- Custom Telescope calls with file ignore
+function _TelescopeFileIgnore()
+  builtin.find_files {
+    prompt_title = "Find Files (Ignore)",
+    hidden = false,
+    file_ignore_patterns = {
+      "%.test%.",
+      "%.tests%.",
+    },
+  }
+end
+
+function _TelescopeWordIgnore()
+  builtin.grep_string {
+    prompt_title = "Find Words (Ignore)",
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--column",
+      "--line-number",
+      "--no-heading",
+      "--trim",
+      "--with-filename",
+      "-g",
+      "!*.test.*",
+      "-g",
+      "!*.tests.*",
+    },
+  }
+end
+
+function _TelescopeGrepIgnore()
+  builtin.live_grep {
+    prompt_title = "Find Grep (Ignore)",
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--column",
+      "--line-number",
+      "--no-heading",
+      "--smart-case",
+      "--trim",
+      "--with-filename",
+      "-g",
+      "!*.test.*",
+      "-g",
+      "!*.tests.*",
+    },
+  }
+end
+
+-- Custom Theme
+vim.cmd [[hi link TelescopeTitle TelescopeMatching]]
 
 require("telescope").load_extension "dap"
 require("telescope").load_extension "fzf"
