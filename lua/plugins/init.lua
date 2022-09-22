@@ -77,7 +77,7 @@ return packer.startup(function(use)
   use {
     "akinsho/toggleterm.nvim",
     after = { "gruvbox" },
-    tag = "v1.*",
+    tag = "*",
     config = [[require("plugins.configs.toggleterm")]],
   }
 
@@ -172,15 +172,10 @@ return packer.startup(function(use)
   use "rafamadriz/friendly-snippets"
   use "saadparwaiz1/cmp_luasnip"
 
-  use {
-    "jose-elias-alvarez/null-ls.nvim",
-    after = "nvim-lsp-installer",
-  }
+  use "jose-elias-alvarez/null-ls.nvim"
 
-  use {
-    "jose-elias-alvarez/nvim-lsp-ts-utils",
-    after = "nvim-lsp-installer",
-  }
+  use "jose-elias-alvarez/nvim-lsp-ts-utils"
+
 
   use {
     "mfussenegger/nvim-dap",
