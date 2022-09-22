@@ -51,14 +51,15 @@ telescope.setup {
       hidden = true,
     },
     git_bcommits = {
-      git_command = { "git", "log", "--pretty=format:%h %<(15,trunc)%an %ad %s", "--date=format:%Y-%m-%d %H:%M:%S" },
+      git_command = { "git", "log", "--pretty=%h %<(20,trunc)%an %ad %s", "--date=format:%Y-%m-%d %H:%M:%S" },
     },
     git_commits = {
-      git_command = { "git", "log", "--pretty=format:%h %<(15,trunc)%an %ad %s", "--date=format:%Y-%m-%d %H:%M:%S", "--", "." },
+      git_command = { "git", "log", "--pretty=%h %<(20,trunc)%an %ad %s", "--date=format:%Y-%m-%d %H:%M:%S", "--", "." },
     },
     grep_string = {
       disable_coordinates = true,
       only_sort_text = true,
+      path_display = { shorten = 4 },
       prompt_title = "Find Words (All)",
       search = "\\w",
       use_regex = true,
@@ -69,6 +70,7 @@ telescope.setup {
     live_grep = {
       prompt_title = "Find Grep (All)",
       only_sort_text = true,
+      path_display = { shorten = 4 },
       disable_coordinates = true,
     },
     lsp_definitions = {
