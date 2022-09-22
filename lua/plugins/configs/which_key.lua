@@ -4,7 +4,11 @@ if not status_ok then
   return
 end
 
-local setup = {}
+local setup = {
+  window = {
+    border = "single"
+  }
+}
 
 local nmappings = {
   -- Better definitions
@@ -68,15 +72,19 @@ local nmappings = {
     },
     f = {
       name = "Find",
-      a = "All Files",
+      a = "Files (All)",
       b = "Buffers",
       c = "Commands",
-      f = "Files (not hidden)",
+      f = "Files (-Ignore)",
+      F = "Files (+Hidden)",
+      g = "Grep (-Ignore)",
+      G = "Grep (All)",
       r = "Resume last picker",
       s = "Spelling suggestions",
       t = "Terminals",
       u = "Undo tree",
-      w = "Live Grep",
+      w = "Words (-Ignore)",
+      W = "Words (All)",
     },
     g = {
       name = "Git",
