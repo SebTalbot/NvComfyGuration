@@ -1,9 +1,10 @@
 local init_options = {}
-local ts_utils = require "nvim-lsp-ts-utils"
 
 return {
-  init_options = vim.tbl_deep_extend("force", ts_utils.init_options, init_options),
+  init_options = vim.tbl_deep_extend("force", require("nvim-lsp-ts-utils").init_options, init_options),
   on_attach = function(client, bufnr)
+    local ts_utils = require "nvim-lsp-ts-utils"
+
     ts_utils.setup {
       debug = false,
       disable_commands = false,
