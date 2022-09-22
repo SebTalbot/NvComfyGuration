@@ -8,10 +8,7 @@ M.setup = function()
     { name = "DiagnosticSignInfo", text = "" },
   }
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(
-      sign.name,
-      { texthl = sign.name, text = sign.text, numhl = "" }
-    )
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
   local config = {
     virtual_text = false,
@@ -31,16 +28,12 @@ M.setup = function()
     },
   }
   vim.diagnostic.config(config)
-  vim.lsp.handlers["textDocument/hover"] =
-    vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "rounded",
-    })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    {
-      border = "rounded",
-    }
-  )
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  })
 end
 
 local function lsp_highlight_document(client)
@@ -58,18 +51,28 @@ local function lsp_highlight_document(client)
   end
 end
 
-M.on_attach = function(client, bufnr)
-  require("core.mappings").lsp(bufnr)
-  lsp_highlight_document(client)
-end
-
-M.capabilities = function()
+local capabilities = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
   if not status_ok then
     return capabilities
   end
   return cmp_nvim_lsp.update_capabilities(capabilities)
+end
+
+local on_attach = function(client, bufnr)
+  require("core.mappings").lsp(bufnr)
+  lsp_highlight_document(client)
+end
+
+M.on_attach = on_attach
+
+M.inject = function(settings)
+  local default = {
+    capabilities = capabilities(),
+    on_attach = on_attach,
+  }
+  return vim.tbl_deep_extend("force", default, settings)
 end
 
 return M

@@ -83,7 +83,9 @@ return packer.startup(function(use)
 
   use {
     "nvim-treesitter/nvim-treesitter",
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    run = function()
+      require("nvim-treesitter.install").update { with_sync = true }
+    end,
     config = [[require("plugins.configs.treesitter")]],
   }
   use {
@@ -143,12 +145,13 @@ return packer.startup(function(use)
     end,
   }
 
+  use "neovim/nvim-lspconfig"
+
   use {
-    "neovim/nvim-lspconfig",
+    "williamboman/nvim-lsp-installer",
+    after = "nvim-lspconfig",
     config = [[require("plugins.configs.lsp")]],
   }
-
-  use "williamboman/nvim-lsp-installer"
 
   use {
     "weilbith/nvim-code-action-menu",
@@ -169,8 +172,15 @@ return packer.startup(function(use)
   use "rafamadriz/friendly-snippets"
   use "saadparwaiz1/cmp_luasnip"
 
-  use "jose-elias-alvarez/null-ls.nvim"
-  use "jose-elias-alvarez/nvim-lsp-ts-utils"
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    after = "nvim-lsp-installer",
+  }
+
+  use {
+    "jose-elias-alvarez/nvim-lsp-ts-utils",
+    after = "nvim-lsp-installer",
+  }
 
   use {
     "mfussenegger/nvim-dap",

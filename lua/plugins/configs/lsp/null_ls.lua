@@ -12,7 +12,7 @@ local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 
 null_ls.setup {
-  debug = false,
+  debug = true,
   sources = {
     formatting.prettier,
     formatting.stylua,
