@@ -1,4 +1,14 @@
-local init_options = {}
+-- https://github.com/typescript-language-server/typescript-language-server#cli-options
+local init_options = {
+  preferences = {
+    allowRenameOfImportPath = true,
+    importModuleSpecifierEnding = "auto",
+    importModuleSpecifierPreference = "non-relative",
+    includeCompletionsForImportStatements = true,
+    includeCompletionsForModuleExports = true,
+    quotePreference = "single",
+  },
+}
 
 return {
   init_options = vim.tbl_deep_extend("force", require("nvim-lsp-ts-utils").init_options, init_options),
