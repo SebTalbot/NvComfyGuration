@@ -42,8 +42,9 @@ local initTerm = function (term, name)
   -- nameTerm(term, name)
 end
 
+-- initTerm(mainTerminal, "Main")
+
 local mainTerminal = Terminal:new { count = 1 }
-initTerm(mainTerminal, "Main")
 function _Toggleterm_main()
   mainTerminal:toggle()
 end
