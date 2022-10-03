@@ -17,6 +17,7 @@ return packer.startup(function(use)
   use {
     "morhetz/gruvbox",
     config = function()
+      vim.g.gruvbox_italic = 1
       vim.opt.termguicolors = true
       vim.o.background = "dark"
       vim.cmd [[colorscheme gruvbox]]
@@ -175,6 +176,15 @@ return packer.startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim"
 
   use "jose-elias-alvarez/nvim-lsp-ts-utils"
+
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" },
+    },
+    config = [[require('refactoring').setup({})]],
+  }
 
   use {
     "mfussenegger/nvim-dap",
