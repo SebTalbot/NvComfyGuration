@@ -41,6 +41,14 @@ return packer.startup(function(use)
             "dapui_console",
           },
         },
+        sections = {
+          lualine_c = {
+            {
+              "filename",
+              path = 1,
+            },
+          },
+        },
       }
     end,
   }
@@ -50,7 +58,13 @@ return packer.startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
     tag = "v2.*",
     config = function()
-      require("bufferline").setup {}
+      require("bufferline").setup {
+        options = {
+          buffer_close_icon = "",
+          close_icon = "",
+          separator_style = "thick",
+        },
+      }
     end,
   }
 
