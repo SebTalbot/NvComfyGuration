@@ -46,7 +46,7 @@ return {
     }
     ts_utils.setup_client(client)
 
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.document_formatting = false
     require("plugins.configs.lsp.handlers").on_attach(client, bufnr)
   end,
 }
