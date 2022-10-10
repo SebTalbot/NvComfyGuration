@@ -1,6 +1,7 @@
 local options = {
   clipboard = "unnamedplus",
   colorcolumn = "80",
+  cmdheight = 0,
   conceallevel = 0,
   cursorline = true,
   expandtab = true,
