@@ -1,4 +1,4 @@
-local present, lsp_installer = pcall(require, "nvim-lsp-installer")
+local present, lsp_installer = pcall(require, "mason-lspconfig")
 if not present then
   print "Warning: Cannot find lsp_installer"
   return
@@ -9,8 +9,8 @@ lsp_installer.setup({
 })
 
 
-local LSPConfigPresent, lspconfig = pcall(require, "lspconfig")
-if not LSPConfigPresent then
+local lspconfig_present, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_present then
   print "Warning: Cannot find lspconfig"
   return
 end
