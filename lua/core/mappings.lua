@@ -82,7 +82,7 @@ M.commands = function()
   cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
   cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
   -- LSP
-  cmd "silent! command LspFormatting lua vim.lsp.buf.formatting()"
+  cmd "silent! command LspFormatting lua vim.lsp.buf.format()"
   -- Git
   cmd "silent! command GitStashAll !git stash -u"
 end
