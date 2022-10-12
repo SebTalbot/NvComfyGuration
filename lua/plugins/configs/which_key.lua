@@ -50,6 +50,7 @@ local nmappings = {
       d = "Breakpoint",
       i = "Step Into",
       o = "Step Over",
+      q = "Terminate",
       t = "Toggle UI",
       u = "Step Out",
       f = {

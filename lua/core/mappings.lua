@@ -179,6 +179,7 @@ M.dap = function()
   map("n", "<leader>dd", '<cmd>lua require"dap".toggle_breakpoint()<CR>')
   map("n", "<leader>di", '<cmd>lua require"dap".step_into()<CR>')
   map("n", "<leader>do", '<cmd>lua require"dap".step_over()<CR>')
+  map("n", "<leader>dq", '<cmd>lua require"dap".terminate()<CR>')
   map("n", "<leader>du", '<cmd>lua require"dap".step_out()<CR>')
   -- telescope extension
   map("n", "<leader>dfc", '<cmd>lua require"telescope".extensions.dap.commands{}<CR>')
