@@ -19,8 +19,11 @@ null_ls.setup {
   debug = true,
   sources = {
     code_actions.eslint_d,
-    diagnostics.djlint,
+    diagnostics.golangci_lint,
     formatting.beautysh,
+    formatting.gofumpt,
+    formatting.goimports,
+    formatting.goimports_reviser,
     formatting.prettier,
     formatting.stylua,
   },
