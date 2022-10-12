@@ -170,7 +170,7 @@ M.lsp = function(buf)
   mapBuf(buf, "n", "<leader>lt", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>")
   mapBuf(buf, "n", "<leader>lr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>")
   -- code action menu plugin
-  mapBuf(buf, "n", "<leader>laa", "<cmd>CodeActionMenu<CR>")
+  mapBuf(buf, "n", "<leader>laa", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 end
 
 -- DAP

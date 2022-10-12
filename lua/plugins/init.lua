@@ -187,10 +187,10 @@ return packer.startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim"
   use "jayp0521/mason-null-ls.nvim"
 
-  use {
-    "weilbith/nvim-code-action-menu",
-    cmd = "CodeActionMenu",
-  }
+  -- use {
+  --   "weilbith/nvim-code-action-menu",
+  --   cmd = "CodeActionMenu",
+  -- }
 
   -- DAP
   use "mfussenegger/nvim-dap"
