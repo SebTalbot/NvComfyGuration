@@ -64,8 +64,9 @@ end
 -- Files
 M.files = function()
   map("n", "<leader>zi", "<cmd>e ~/.config/i3/config<CR>")
-  map("n", "<leader>zv", "<cmd>e ~/.config/nvim/init.lua<CR>")
-  map("n", "<leader>zm", "<cmd>e ~/.config/nvim/lua/core/mappings.lua<CR>")
+  map("n", "<leader>zp", "<cmd>e ~/.config/polybar/config<CR><cmd>setfiletype dosini<CR>")
+  map("n", "<leader>zr", "<cmd>e ~/.config/rofi/config.rasi<CR><cmd>setfiletype rasi<CR>")
+  map("n", "<leader>zt", "<cmd>e ~/.config/kitty/kitty.conf<CR>")
   map("n", "<leader>zb", "<cmd>e ~/.zshrc<CR>")
 end
 
