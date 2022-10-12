@@ -14,7 +14,7 @@ dapui.setup({
     repl = "r",
     toggle = "t",
   },
-  expand_lines = vim.fn.has("nvim-0.7"),
+  expand_lines = true,
   layouts = {
     {
       elements = {
@@ -35,6 +35,9 @@ dapui.setup({
       position = "bottom",
     },
   },
+  controls = {
+    enabled = false,
+  },
   floating = {
     max_height = nil,
     max_width = nil,
@@ -49,3 +52,6 @@ dapui.setup({
   }
 })
 
+vim.fn.sign_define('DapBreakpoint', {text=' ', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointRejected', {text=' ', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text=' ', texthl='', linehl='', numhl=''})
