@@ -10,7 +10,8 @@ configs.setup {
     "css",
     "dockerfile",
     "go",
-    "help",
+    "gomod",
+    -- "help", broken for now
     "gitignore",
     "tsx",
     "graphql",

@@ -1,14 +1,37 @@
-local present, dapgo = pcall(require, "dap-go")
-if not present then
-  print "Warning: Cannot find dap-go"
+local dap_present, dap = pcall(require, "dap")
+if not dap_present then
+  print "Warning: Cannot find nvim-dap"
   return false
 end
 
-local handle = io.popen "dlv version"
-local isDebuggerInstalled = handle:read "l" == "Delve Debugger"
-if not isDebuggerInstalled then
-  print "Warning: dap-go needs the delve debugger to be installed systeme wise. Disable the package if you dont want to use dap-go"
-  return false
-end
+dap.adapters.delve = {
+  type = "server",
+  port = "${port}",
+  executable = {
+    command = "dlv",
+    args = { "dap", "-l", "127.0.0.1:${port}" },
+  },
+}
 
-dapgo.setup()
+dap.configurations.go = {
+  {
+    type = "delve",
+    name = "Debug",
+    request = "launch",
+    program = "${file}",
+  },
+  {
+    type = "delve",
+    name = "Debug test",
+    request = "launch",
+    mode = "test",
+    program = "${file}",
+  },
+  {
+    type = "delve",
+    name = "Debug test (go.mod)",
+    request = "launch",
+    mode = "test",
+    program = "./${relativeFileDirname}",
+  },
+}

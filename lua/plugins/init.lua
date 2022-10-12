@@ -17,6 +17,7 @@ return packer.startup(function(use)
   use {
     "morhetz/gruvbox",
     config = function()
+      vim.g.gruvbox_italic = 1
       vim.opt.termguicolors = true
       vim.o.background = "dark"
       vim.cmd [[colorscheme gruvbox]]
@@ -40,6 +41,14 @@ return packer.startup(function(use)
             "dapui_console",
           },
         },
+        sections = {
+          lualine_c = {
+            {
+              "filename",
+              path = 1,
+            },
+          },
+        },
       }
     end,
   }
@@ -49,7 +58,13 @@ return packer.startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
     tag = "v2.*",
     config = function()
-      require("bufferline").setup {}
+      require("bufferline").setup {
+        options = {
+          buffer_close_icon = "",
+          close_icon = "",
+          separator_style = "thick",
+        },
+      }
     end,
   }
 
@@ -58,6 +73,11 @@ return packer.startup(function(use)
     config = function()
       vim.cmd [[let g:lens#disabled = 1]]
     end,
+  }
+
+  use {
+    "stevearc/dressing.nvim",
+    config = [[require("dressing").setup()]],
   }
 
   use {
@@ -145,18 +165,49 @@ return packer.startup(function(use)
     end,
   }
 
-  use "neovim/nvim-lspconfig"
-
+  -- Mason Servers manager
   use {
-    "williamboman/nvim-lsp-installer",
+    "williamboman/mason.nvim",
+    config = [[require("mason").setup({})]],
+  }
+  use {
+    "RubixDev/mason-update-all",
+    config = [[require("mason-update-all").setup({})]],
+  }
+
+  -- LSP
+  use "neovim/nvim-lspconfig"
+  use {
+    "williamboman/mason-lspconfig.nvim",
     after = "nvim-lspconfig",
     config = [[require("plugins.configs.lsp")]],
   }
 
+  -- Null-ls (code actions, diagnostics, formatting)
+  use "jose-elias-alvarez/null-ls.nvim"
+  use "jayp0521/mason-null-ls.nvim"
+
+  -- use {
+  --   "weilbith/nvim-code-action-menu",
+  --   cmd = "CodeActionMenu",
+  -- }
+
+  -- DAP
+  use "mfussenegger/nvim-dap"
   use {
-    "weilbith/nvim-code-action-menu",
-    cmd = "CodeActionMenu",
+    "jayp0521/mason-nvim-dap.nvim",
+    after = "nvim-dap",
+    config = [[require("plugins.configs.dap")]],
   }
+
+  use "nvim-telescope/telescope-dap.nvim"
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" },
+    config = [[require("plugins.configs.dap.ui")]],
+  }
+
+  -- Completion & Snippets
 
   use {
     "hrsh7th/nvim-cmp",
@@ -171,36 +222,4 @@ return packer.startup(function(use)
   use "L3MON4D3/LuaSnip"
   use "rafamadriz/friendly-snippets"
   use "saadparwaiz1/cmp_luasnip"
-
-  use "jose-elias-alvarez/null-ls.nvim"
-
-  use "jose-elias-alvarez/nvim-lsp-ts-utils"
-
-  use {
-    "mfussenegger/nvim-dap",
-    config = [[require("plugins.configs.dap")]],
-  }
-  use "nvim-telescope/telescope-dap.nvim"
-  use {
-    "rcarriga/nvim-dap-ui",
-    requires = { "mfussenegger/nvim-dap" },
-    config = [[require("plugins.configs.dap.ui")]],
-  }
-
-  -- use {
-  --   "mxsdev/nvim-dap-vscode-js",
-  --   requires = { "mfussenegger/nvim-dap" },
-  --   config = [[require("plugins.configs.dap.js")]],
-  -- }
-  -- use {
-  --   "microsoft/vscode-js-debug",
-  --   opt = true,
-  --   run = "npm install --legacy-peer-deps && npm run compile",
-  -- }
-
-  use {
-    "leoluz/nvim-dap-go",
-    requires = { "mfussenegger/nvim-dap" },
-    config = [[require("plugins.configs.dap.go")]],
-  }
 end)

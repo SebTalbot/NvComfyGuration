@@ -1,6 +1,7 @@
 local options = {
   clipboard = "unnamedplus",
   colorcolumn = "80",
+  cmdheight = 0,
   conceallevel = 0,
   cursorline = true,
   expandtab = true,
@@ -16,7 +17,7 @@ local options = {
   swapfile = false,
   tabstop = 2,
   termguicolors = true,
-  timeoutlen = 0,
+  timeoutlen = 500,
   undodir = vim.fn.stdpath "config" .. "/undo",
   undofile = true,
   updatetime = 500,
@@ -26,4 +27,4 @@ for key, value in pairs(options) do
   vim.opt[key] = value
 end
 
--- vim.cmd [[setlocal spell spelllang=en_us]]
+vim.cmd [[let g:loaded_perl_provider = 0]]

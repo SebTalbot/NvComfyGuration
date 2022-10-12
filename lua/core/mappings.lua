@@ -83,7 +83,7 @@ M.commands = function()
   cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
   cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
   -- LSP
-  cmd "silent! command LspFormatting lua vim.lsp.buf.formatting()"
+  cmd "silent! command LspFormatting lua vim.lsp.buf.format()"
   -- Git
   cmd "silent! command GitStashAll !git stash -u"
 end
@@ -128,8 +128,8 @@ M.gitsigns = function()
   map("n", "<leader>gd", "<cmd>Gitsigns toggle_linehl <CR><cmd>Gitsigns toggle_deleted <CR>")
   map("n", "<leader>gg", "<cmd>Gitsigns preview_hunk <CR>")
   map("n", "<leader>gl", "<cmd>Gitsigns blame_line <CR>")
-  map("n", "<leader>gn", "<cmd>Gitsigns next_hunk <CR>")
-  map("n", "<leader>gp", "<cmd>Gitsigns prev_hunk <CR>")
+  map("n", "<leader>gn", "<cmd>silent Gitsigns next_hunk <CR>")
+  map("n", "<leader>gp", "<cmd>silent Gitsigns prev_hunk <CR>")
   map("n", "<leader>gv", "<cmd>Gitsigns select_hunk <CR>")
   map("n", "<leader>gar", "<cmd>Gitsigns reset_hunk <CR>")
   map("n", "<leader>gaR", "<cmd>Gitsigns reset_buffer <CR>")
@@ -156,7 +156,7 @@ end
 M.lsp = function(buf)
   mapBuf(buf, "n", "<leader>ll", "<cmd>lua vim.lsp.buf.declaration()<CR>")
   mapBuf(buf, "n", "<S-k>", "<cmd>lua vim.lsp.buf.hover()<CR>")
-  mapBuf(buf, "n", "<leader>laf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+  mapBuf(buf, "n", "<leader>laf", "<cmd>lua vim.lsp.buf.format()<CR>")
   mapBuf(buf, "n", "<leader>lar", "<cmd>lua vim.lsp.buf.rename()<CR>")
   mapBuf(buf, "n", "<leader>ee", "<cmd>lua vim.diagnostic.open_float()<CR>")
   mapBuf(buf, "n", "<leader>ep", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
@@ -171,7 +171,7 @@ M.lsp = function(buf)
   mapBuf(buf, "n", "<leader>lt", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>")
   mapBuf(buf, "n", "<leader>lr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>")
   -- code action menu plugin
-  mapBuf(buf, "n", "<leader>laa", "<cmd>CodeActionMenu<CR>")
+  mapBuf(buf, "n", "<leader>laa", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 end
 
 -- DAP
@@ -180,6 +180,7 @@ M.dap = function()
   map("n", "<leader>dd", '<cmd>lua require"dap".toggle_breakpoint()<CR>')
   map("n", "<leader>di", '<cmd>lua require"dap".step_into()<CR>')
   map("n", "<leader>do", '<cmd>lua require"dap".step_over()<CR>')
+  map("n", "<leader>dq", '<cmd>lua require"dap".terminate()<CR>')
   map("n", "<leader>du", '<cmd>lua require"dap".step_out()<CR>')
   -- telescope extension
   map("n", "<leader>dfc", '<cmd>lua require"telescope".extensions.dap.commands{}<CR>')
