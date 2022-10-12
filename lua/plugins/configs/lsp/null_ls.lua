@@ -19,6 +19,7 @@ null_ls.setup {
   debug = true,
   sources = {
     code_actions.eslint_d,
+    diagnostics.djlint,
     formatting.beautysh,
     formatting.prettier,
     formatting.stylua,
