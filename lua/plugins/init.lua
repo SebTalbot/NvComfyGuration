@@ -5,8 +5,6 @@ if not present then
 end
 
 return packer.startup(function(use)
-  local isLaptop = (os.getenv "CURRENT_DEVICE" == "laptop")
-  local isHome = (os.getenv "CURRENT_DEVICE" == "home")
 
   use "nvim-lua/plenary.nvim"
 
@@ -17,10 +15,14 @@ return packer.startup(function(use)
   use {
     "morhetz/gruvbox",
     config = function()
+      local is_laptop = os.getenv "CURRENT_DEVICE" == "laptop"
       vim.g.gruvbox_italic = 1
       vim.opt.termguicolors = true
       vim.o.background = "dark"
       vim.cmd [[colorscheme gruvbox]]
+      if is_laptop then
+        vim.cmd [[highlight Normal guibg=none]]
+      end
     end,
   }
 
