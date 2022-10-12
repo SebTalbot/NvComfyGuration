@@ -1,5 +1,5 @@
-local telescopePresent, telescope = pcall(require, "telescope")
-if not telescopePresent then
+local telescope_present, telescope = pcall(require, "telescope")
+if not telescope_present then
   print "Warning: Telescope not found"
   return
 end
