@@ -5,7 +5,6 @@ if not present then
 end
 
 return packer.startup(function(use)
-
   use "nvim-lua/plenary.nvim"
 
   use {
@@ -30,7 +29,10 @@ return packer.startup(function(use)
 
   use {
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    requires = {
+      "kyazdani42/nvim-web-devicons",
+      opt = true,
+    },
     config = function()
       require("lualine").setup {
         options = {
@@ -205,7 +207,6 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-dap.nvim"
   use {
     "rcarriga/nvim-dap-ui",
-    requires = { "mfussenegger/nvim-dap" },
     config = [[require("plugins.configs.dap.ui")]],
   }
 
@@ -213,15 +214,22 @@ return packer.startup(function(use)
 
   use {
     "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-path",
+      "ray-x/cmp-treesitter",
+    },
     config = [[require("plugins.configs.nvim_cmp")]],
   }
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
-  use "hrsh7th/cmp-cmdline"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-nvim-lua"
 
-  use "L3MON4D3/LuaSnip"
-  use "rafamadriz/friendly-snippets"
-  use "saadparwaiz1/cmp_luasnip"
+  use {
+    "L3MON4D3/LuaSnip",
+    requires = {
+      "rafamadriz/friendly-snippets",
+      "saadparwaiz1/cmp_luasnip",
+    },
+  }
 end)
