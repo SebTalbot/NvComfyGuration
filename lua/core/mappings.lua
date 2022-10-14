@@ -35,6 +35,7 @@ M.general = function()
   -- Git
   map("n", "<leader>gat", "<cmd>GitStashAll <CR>")
   map("n", "<leader>gL", "<cmd>Git blame <CR>")
+  map("i", "<C-l>", "<Esc>a")
 end
 
 M.buffers = function()
