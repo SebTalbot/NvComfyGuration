@@ -186,6 +186,7 @@ return packer.startup(function(use)
     after = "nvim-lspconfig",
     config = [[require("plugins.configs.lsp")]],
   }
+  use "jose-elias-alvarez/typescript.nvim"
 
   -- Null-ls (code actions, diagnostics, formatting)
   use "jose-elias-alvarez/null-ls.nvim"
