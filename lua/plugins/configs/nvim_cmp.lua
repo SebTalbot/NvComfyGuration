@@ -8,6 +8,7 @@ if not snip_status_ok then
   return
 end
 
+
 -- Uses rafamadriz/friendly-snippets
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -16,6 +17,7 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
+-- find more here: https://www.nerdfonts.com/cheat-sheet
 local kind_icons = {
   Text = "",
   Method = "m",
@@ -43,8 +45,34 @@ local kind_icons = {
   Operator = "",
   TypeParameter = "",
 }
--- find more here: https://www.nerdfonts.com/cheat-sheet
+
+local menu_tags = {
+  nvim_lsp = "[LSP]",
+  nvim_lua = "[NVim]",
+  luasnip = "[Snippet]",
+  cmp_tabnine = "[TabNine]",
+  buffer = "[Buffer]",
+  path = "[Path]",
+}
+
+local compare = cmp.config.compare
+
 cmp.setup {
+  preselect = cmp.PreselectMode.None,
+  sorting = {
+    priority_weight = 2,
+      comparators = {
+        compare.offset,
+        compare.exact,
+        compare.score,
+        require "cmp_tabnine.compare",
+        compare.recently_used,
+        compare.kind,
+        compare.sort_text,
+        compare.length,
+        compare.order,
+      },
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -53,9 +81,10 @@ cmp.setup {
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
-    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-5), { "i", "c" }),
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(5), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<C-z>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-y>"] = cmp.mapping {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
@@ -94,15 +123,7 @@ cmp.setup {
     fields = { "abbr", "kind", "menu" },
     format = function(entry, vim_item)
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-      -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-      local menu = ({
-        nvim_lsp = "[LSP]",
-        nvim_lua = "[NVim]",
-        luasnip = "[Snippet]",
-        cmp_tabnine = "[TabNine]",
-        buffer = "[Buffer]",
-        path = "[Path]",
-      })[entry.source.name]
+      local menu = menu_tags[entry.source.name]
 
       if entry.source.name == "cmp_tabnine" then
         if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
@@ -119,8 +140,8 @@ cmp.setup {
   sources = {
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
-    { name = "luasnip" },
     { name = "cmp_tabnine" },
+    { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
   },
@@ -130,6 +151,21 @@ cmp.setup {
   },
   experimental = {
     ghost_text = false,
-    native_menu = false,
   },
 }
+
+cmp.setup.cmdline({ "/", "?" }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = "buffer" },
+  },
+})
+
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = "path" },
+  }, {
+    { name = "cmdline" },
+  }),
+})
