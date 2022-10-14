@@ -221,6 +221,7 @@ return packer.startup(function(use)
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
       "ray-x/cmp-treesitter",
+      { "tzachar/cmp-tabnine", run = "./install.sh" },
     },
     config = [[require("plugins.configs.nvim_cmp")]],
   }
