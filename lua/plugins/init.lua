@@ -79,7 +79,7 @@ return packer.startup(function(use)
 
   use {
     "stevearc/dressing.nvim",
-    config = [[require("dressing").setup()]],
+    config = [[require("plugins.configs.dressing")]],
   }
 
   use {
