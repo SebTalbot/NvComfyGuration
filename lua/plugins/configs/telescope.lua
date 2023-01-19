@@ -52,10 +52,24 @@ telescope.setup {
       hidden = true,
     },
     git_bcommits = {
-      git_command = { "git", "log", "--pretty=%h %<(20,trunc)%an %ad %s", "--date=format:%Y-%m-%d %H:%M:%S" },
+      git_command = {
+        "git",
+        "log",
+        "--graph",
+        "--pretty=%h %<(20,trunc)%an %ad %s",
+        "--date=format:%Y-%m-%d %H:%M:%S",
+      },
     },
     git_commits = {
-      git_command = { "git", "log", "--pretty=%h %<(20,trunc)%an %ad %s", "--date=format:%Y-%m-%d %H:%M:%S", "--", "." },
+      git_command = {
+        "git",
+        "log",
+        "--graph",
+        "--pretty=%h %<(20,trunc)%an %ad %s",
+        "--date=format:%Y-%m-%d %H:%M:%S",
+        "--",
+        ".",
+      },
     },
     grep_string = {
       disable_coordinates = true,
