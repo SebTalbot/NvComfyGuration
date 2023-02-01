@@ -55,7 +55,6 @@ telescope.setup {
       git_command = {
         "git",
         "log",
-        "--graph",
         "--pretty=%h %<(20,trunc)%an %ad %s",
         "--date=format:%Y-%m-%d %H:%M:%S",
       },
@@ -64,7 +63,6 @@ telescope.setup {
       git_command = {
         "git",
         "log",
-        "--graph",
         "--pretty=%h %<(20,trunc)%an %ad %s",
         "--date=format:%Y-%m-%d %H:%M:%S",
         "--",
