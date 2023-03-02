@@ -25,7 +25,7 @@ lspconfig.gopls.setup(handlers.inject({}))
 lspconfig.graphql.setup(handlers.inject({}))
 lspconfig.html.setup(handlers.inject({}))
 lspconfig.jsonls.setup(handlers.inject(require("plugins.configs.lsp.settings.jsonls")))
-lspconfig.sumneko_lua.setup(handlers.inject(require("plugins.configs.lsp.settings.sumneko_lua")))
+lspconfig.lua_ls.setup(handlers.inject(require("plugins.configs.lsp.settings.lua_ls")))
 lspconfig.vimls.setup(handlers.inject({}))
 
 require("plugins.configs.lsp.settings.tsserver")
