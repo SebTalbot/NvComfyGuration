@@ -65,7 +65,7 @@ cmp.setup {
         compare.offset,
         compare.exact,
         compare.score,
-        require "cmp_tabnine.compare",
+        -- require "cmp_tabnine.compare",
         compare.recently_used,
         compare.kind,
         compare.sort_text,
@@ -140,7 +140,7 @@ cmp.setup {
   sources = {
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
-    { name = "cmp_tabnine" },
+    -- { name = "cmp_tabnine" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
