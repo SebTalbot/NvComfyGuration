@@ -50,7 +50,7 @@ local menu_tags = {
   nvim_lsp = "[LSP]",
   nvim_lua = "[NVim]",
   luasnip = "[Snippet]",
-  cmp_tabnine = "[TabNine]",
+  -- cmp_tabnine = "[TabNine]",
   buffer = "[Buffer]",
   path = "[Path]",
 }
@@ -125,12 +125,12 @@ cmp.setup {
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       local menu = menu_tags[entry.source.name]
 
-      if entry.source.name == "cmp_tabnine" then
-        if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-          menu = entry.completion_item.data.detail .. " " .. menu
-        end
-        vim_item.kind = ""
-      end
+      -- if entry.source.name == "cmp_tabnine" then
+      --   if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+      --     menu = entry.completion_item.data.detail .. " " .. menu
+      --   end
+      --   vim_item.kind = ""
+      -- end
 
       vim_item.menu = menu
 
