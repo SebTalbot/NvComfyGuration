@@ -57,7 +57,7 @@ local capabilities = function()
   if not status_ok then
     return capabilities
   end
-  return cmp_nvim_lsp.update_capabilities(capabilities)
+  return vim.tbl_deep_extend("force", capabilities, cmp_nvim_lsp.default_capabilities())
 end
 
 local on_attach = function(client, bufnr)
