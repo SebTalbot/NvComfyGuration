@@ -53,6 +53,5 @@ if not parsers_status_ok then
   return
 end
 
-local ft_to_parser = parsers.filetype_to_parsername
-ft_to_parser.javascript = "tsx"
-ft_to_parser.typescript = "tsx"
+vim.treesitter.language.register("javascript", "tsx")
+vim.treesitter.language.register("typescript", "tsx")

@@ -174,10 +174,10 @@ return packer.startup(function(use)
     "williamboman/mason.nvim",
     config = [[require("mason").setup({})]],
   }
-  use {
-    "RubixDev/mason-update-all",
-    config = [[require("mason-update-all").setup({})]],
-  }
+  -- use {
+  --   "RubixDev/mason-update-all",
+  --   config = [[require("mason-update-all").setup({})]],
+  -- }
 
   -- LSP
   use "neovim/nvim-lspconfig"

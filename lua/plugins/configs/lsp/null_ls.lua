@@ -34,5 +34,3 @@ manson_null_ls.setup {
   ensure_installed = {},
   automatic_installation = true,
 }
-
-manson_null_ls.setup_handlers {}
