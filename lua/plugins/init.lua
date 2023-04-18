@@ -1,18 +1,11 @@
-local present, packer = pcall(require, "plugins.packerInit")
-if not present then
-  print "Warning: Cannot find packer"
-  return false
-end
-
-return packer.startup(function(use)
-  use "nvim-lua/plenary.nvim"
-
-  use {
-    "wbthomason/packer.nvim",
-  }
-
-  use {
+local plugins = {
+  {
+    "nvim-lua/plenary.nvim",
+    lazy = false,
+  },
+  {
     "morhetz/gruvbox",
+    lazy = false,
     config = function()
       local is_laptop = os.getenv "CURRENT_DEVICE" == "laptop"
       vim.g.gruvbox_italic = 1
@@ -23,15 +16,17 @@ return packer.startup(function(use)
         vim.cmd [[highlight Normal guibg=none]]
       end
     end,
-  }
-
-  use "kyazdani42/nvim-web-devicons"
-
-  use {
+  },
+  {
+    "kyazdani42/nvim-web-devicons",
+    lazy = false,
+  },
+  {
     "nvim-lualine/lualine.nvim",
-    requires = {
-      "kyazdani42/nvim-web-devicons",
-      opt = true,
+    lazy = false,
+    dependencies = {
+      "gruvbox",
+      "nvim-web-devicons",
     },
     config = function()
       require("lualine").setup {
@@ -55,12 +50,15 @@ return packer.startup(function(use)
         },
       }
     end,
-  }
-
-  use {
+  },
+  {
     "akinsho/bufferline.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    tag = "v2.*",
+    lazy = false,
+    dependencies = {
+      "gruvbox",
+      "nvim-web-devicons",
+    },
+    version = "v3.*",
     config = function()
       require("bufferline").setup {
         options = {
@@ -70,154 +68,197 @@ return packer.startup(function(use)
         },
       }
     end,
-  }
-
-  use "lukas-reineke/indent-blankline.nvim"
-
-  use {
-    "camspiers/lens.vim",
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    lazy = false,
+  },
+  {
+    "SebTalbot/lens.vim",
     config = function()
       vim.cmd [[let g:lens#disabled = 1]]
     end,
-  }
-
-  use {
+  },
+  {
     "stevearc/dressing.nvim",
-    config = [[require("plugins.configs.dressing")]],
-  }
-
-  use {
-    "simnalamburt/vim-mundo",
     config = function()
+      require "plugins.configs.dressing"
+    end,
+  },
+  {
+    "simnalamburt/vim-mundo",
+    init = function()
       require("core.mappings").mundo()
     end,
-  }
-
-  use "tpope/vim-fugitive"
-
-  use {
+  },
+  {
+    "tpope/vim-fugitive",
+  },
+  {
     "lewis6991/gitsigns.nvim",
-    config = [[require("plugins.configs.gitsigns")]],
-  }
-
-  use {
+    config = function()
+      require "plugins.configs.gitsigns"
+    end,
+  },
+  {
     "akinsho/toggleterm.nvim",
-    after = { "gruvbox" },
-    tag = "*",
-    config = [[require("plugins.configs.toggleterm")]],
-  }
-
-  use {
+    version = "*",
+    config = function()
+      require "plugins.configs.toggleterm"
+    end,
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = function()
+    build = function()
       require("nvim-treesitter.install").update { with_sync = true }
     end,
-    config = [[require("plugins.configs.treesitter")]],
-  }
-  use {
+    config = function()
+      require "plugins.configs.treesitter"
+    end,
+  },
+  {
     "p00f/nvim-ts-rainbow",
-    after = "nvim-treesitter",
-  }
-
-  use {
+    dependencies = {
+      "nvim-treesitter",
+    },
+  },
+  {
     "JoosepAlviste/nvim-ts-context-commentstring",
-    after = "nvim-treesitter",
-  }
-
-  use "tpope/vim-surround"
-
-  use "rbgrouleff/bclose.vim"
-
-  use "schickling/vim-bufonly"
-
-  use {
-    config = [[require("plugins.configs.which_key")]],
+    dependencies = {
+      "nvim-treesitter",
+    },
+  },
+  {
+    "tpope/vim-surround",
+  },
+  {
+    "rbgrouleff/bclose.vim",
+  },
+  {
+    "schickling/vim-bufonly",
+  },
+  {
     "folke/which-key.nvim",
-  }
-
-  use "andymass/vim-matchup"
-
-  use {
+    config = function()
+      require "plugins.configs.which_key"
+    end,
+  },
+  {
+    "andymass/vim-matchup",
+  },
+  {
     "windwp/nvim-autopairs",
-    config = [[require("plugins.configs.autopairs")]],
-  }
-
-  use {
+    config = function()
+      require "plugins.configs.autopairs"
+    end,
+  },
+  {
     "terrortylor/nvim-comment",
     config = function()
       require("nvim_comment").setup()
     end,
-  }
-
-  use {
+  },
+  {
     "nvim-telescope/telescope.nvim",
-    after = "toggleterm.nvim",
-    config = [[require("plugins.configs.telescope")]],
-  }
-
-  use {
+    dependencies = {
+      "plenary.nvim",
+      "telescope-fzf-native.nvim",
+    },
+    config = function()
+      require "plugins.configs.telescope"
+    end,
+  },
+  {
     "nvim-telescope/telescope-fzf-native.nvim",
-    run = "make",
-  }
-
-  use "LinArcX/telescope-env.nvim"
-
-  use "tknightz/telescope-termfinder.nvim"
-
-  use {
+    -- dependencies = {
+    --   "telescope.nvim",
+    -- },
+    build = "make",
+  },
+  {
+    "LinArcX/telescope-env.nvim",
+    dependencies = {
+      "telescope.nvim",
+    },
+  },
+  {
+    "tknightz/telescope-termfinder.nvim",
+    dependencies = {
+      "telescope.nvim",
+    },
+  },
+  {
     "kyazdani42/nvim-tree.lua",
     config = function()
       require "plugins.configs.nvim_tree"
     end,
-  }
-
-  -- Mason Servers manager
-  use {
+  },
+  -- LSP plugins
+  {
     "williamboman/mason.nvim",
-    config = [[require("mason").setup({})]],
-  }
-  -- use {
-  --   "RubixDev/mason-update-all",
-  --   config = [[require("mason-update-all").setup({})]],
-  -- }
-
-  -- LSP
-  use "neovim/nvim-lspconfig"
-  use {
+    lazy = false,
+    build = ":MasonUpdate",
+    config = function()
+      require("mason").setup({})
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+  },
+  {
     "williamboman/mason-lspconfig.nvim",
-    after = "nvim-lspconfig",
-    config = [[require("plugins.configs.lsp")]],
-  }
-  use "jose-elias-alvarez/typescript.nvim"
-
-  -- Null-ls (code actions, diagnostics, formatting)
-  use "jose-elias-alvarez/null-ls.nvim"
-  use "jayp0521/mason-null-ls.nvim"
-
-  -- use {
-  --   "weilbith/nvim-code-action-menu",
-  --   cmd = "CodeActionMenu",
-  -- }
-
-  -- DAP
-  use "mfussenegger/nvim-dap"
-  use {
+    dependencies = {
+      "mason.nvim",
+      "nvim-lspconfig",
+    },
+    config = function()
+      require "plugins.configs.lsp"
+    end,
+  },
+  {
+    "jose-elias-alvarez/typescript.nvim",
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+  },
+  {
+    "jayp0521/mason-null-ls.nvim",
+    dependencies = {
+      "mason.nvim",
+      "null-ls.nvim",
+    },
+  },
+  -- DAP plugins
+  {
+    "mfussenegger/nvim-dap",
+  },
+  {
     "jayp0521/mason-nvim-dap.nvim",
-    after = "nvim-dap",
-    config = [[require("plugins.configs.dap")]],
-  }
-
-  use "nvim-telescope/telescope-dap.nvim"
-  use {
+    dependencies = {
+      "nvim-dap",
+    },
+    config = function()
+      require "plugins.configs.dap"
+    end,
+  },
+  {
+    "nvim-telescope/telescope-dap.nvim",
+    dependencies = {
+      "telescope.nvim",
+      "nvim-dap",
+    },
+  },
+  {
     "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "nvim-dap",
+    },
     config = [[require("plugins.configs.dap.ui")]],
-  }
-
+  },
   -- Completion & Snippets
-
-  use {
+  {
     "hrsh7th/nvim-cmp",
-    requires = {
+    dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp",
@@ -226,14 +267,17 @@ return packer.startup(function(use)
       "ray-x/cmp-treesitter",
       -- { "tzachar/cmp-tabnine", run = "./install.sh" },
     },
-    config = [[require("plugins.configs.nvim_cmp")]],
-  }
-
-  use {
+    config = function()
+      require "plugins.configs.nvim_cmp"
+    end,
+  },
+  {
     "L3MON4D3/LuaSnip",
     requires = {
       "rafamadriz/friendly-snippets",
       "saadparwaiz1/cmp_luasnip",
     },
-  }
-end)
+  },
+}
+
+return require("lazy").setup(plugins)
