@@ -1,5 +1,5 @@
 # NvComfyGuration
-Lua configurations for Neovim
+Lua configurations for Neovim `9.0`
 
 # Install
 # Dependencies
