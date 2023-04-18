@@ -1,4 +1,7 @@
 require("nvim-tree").setup {
+  disable_netrw = true,
+  hijack_cursor = true,
+  hijack_netrw = true,
   filters = {
     dotfiles = false,
     custom = {},

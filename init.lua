@@ -1,3 +1,10 @@
+-- Setting up
+
+-- nvim_tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- Loading custom files
 local modules = {
   "core.autocommands",
   "core.options",
