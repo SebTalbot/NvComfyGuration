@@ -72,6 +72,8 @@ return packer.startup(function(use)
     end,
   }
 
+  use "lukas-reineke/indent-blankline.nvim"
+
   use {
     "camspiers/lens.vim",
     config = function()
