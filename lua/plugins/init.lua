@@ -45,7 +45,11 @@ local plugins = {
             {
               "filename",
               path = 1,
+              "lsp_progress",
             },
+          },
+          lualine_x = {
+            "tabnine",
           },
         },
       }
@@ -199,7 +203,7 @@ local plugins = {
     lazy = false,
     build = ":MasonUpdate",
     config = function()
-      require("mason").setup({})
+      require("mason").setup {}
     end,
   },
   {
@@ -257,6 +261,13 @@ local plugins = {
   },
   -- Completion & Snippets
   {
+    "codota/tabnine-nvim",
+    build = "./dl_binaries.sh",
+    config = function()
+      require "plugins.configs.tabnine"
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-buffer",
@@ -265,7 +276,6 @@ local plugins = {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
       "ray-x/cmp-treesitter",
-      -- { "tzachar/cmp-tabnine", run = "./install.sh" },
     },
     config = function()
       require "plugins.configs.nvim_cmp"

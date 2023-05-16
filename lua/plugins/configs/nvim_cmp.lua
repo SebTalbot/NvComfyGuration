@@ -50,7 +50,6 @@ local menu_tags = {
   nvim_lsp = "[LSP]",
   nvim_lua = "[NVim]",
   luasnip = "[Snippet]",
-  -- cmp_tabnine = "[TabNine]",
   buffer = "[Buffer]",
   path = "[Path]",
 }
@@ -65,7 +64,6 @@ cmp.setup {
         compare.offset,
         compare.exact,
         compare.score,
-        -- require "cmp_tabnine.compare",
         compare.recently_used,
         compare.kind,
         compare.sort_text,
@@ -90,47 +88,12 @@ cmp.setup {
       c = cmp.mapping.close(),
     },
     ["<C-e>"] = cmp.mapping.confirm { select = true },
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        luasnip.expand_or_jump()
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif check_backspace() then
-        fallback()
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        luasnip.jump(-1)
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
   },
   formatting = {
     fields = { "abbr", "kind", "menu" },
     format = function(entry, vim_item)
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       local menu = menu_tags[entry.source.name]
-
-      -- if entry.source.name == "cmp_tabnine" then
-      --   if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-      --     menu = entry.completion_item.data.detail .. " " .. menu
-      --   end
-      --   vim_item.kind = ""
-      -- end
 
       vim_item.menu = menu
 
@@ -140,7 +103,6 @@ cmp.setup {
   sources = {
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
-    -- { name = "cmp_tabnine" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
