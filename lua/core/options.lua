@@ -26,4 +26,5 @@ for key, value in pairs(options) do
   vim.opt[key] = value
 end
 
-vim.cmd [[let g:loaded_perl_provider = 0]]
+vim.cmd [[ let g:loaded_perl_provider = 0 ]]
+vim.cmd [[ set title titlestring=%{substitute(getcwd(),\ $HOME,\ '~',\ '')} ]]
