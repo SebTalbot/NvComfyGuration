@@ -45,7 +45,6 @@ local plugins = {
             {
               "filename",
               path = 1,
-              "lsp_progress",
             },
           },
           lualine_x = {
