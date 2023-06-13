@@ -5,7 +5,7 @@ end
 
 tabnine.setup({
   disable_auto_comment=true,
-  accept_keymap="<Tab>",
+  accept_keymap="<C-t>",
   dismiss_keymap = "<C-s>",
   debounce_ms = 300,
   suggestion_color = {gui = "#f7e163", cterm = 244},
