@@ -32,6 +32,7 @@ M.general = function()
   map("v", "<C-j>", ":m '>+1<CR>gv=gv")
   map("v", "<C-k>", ":m '<-2<CR>gv=gv")
   map("t", "<C-space>", "<C-\\><C-n>")
+
   -- Git
   map("n", "<leader>gat", "<cmd>GitStashAll <CR>")
   map("n", "<leader>gL", "<cmd>Git blame <CR>")
@@ -60,6 +61,12 @@ M.windows = function()
   map("n", "<leader>wv", "<C-w>v")
   map("n", "<leader>wrr", "<cmd>call lens#run()<CR>")
   map("n", "<leader>wre", "<C-w>=")
+end
+
+M.applications = function()
+  map("n", "<leader>ah", "<cmd>checkhealth<CR>")
+  map("n", "<leader>al", "<cmd>Lazy<CR>")
+  map("n", "<leader>am", "<cmd>Mason<CR>")
 end
 
 -- Files
@@ -95,6 +102,7 @@ M.overwrite()
 M.general()
 M.buffers()
 M.windows()
+M.applications()
 M.files()
 M.commands()
 

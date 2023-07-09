@@ -30,9 +30,12 @@ local nmappings = {
     ["*"] = "Select word under cursor",
     ["/"] = "Hide word selection",
     ["h"] = "Neovim help search",
-    -- a = {
-    --   name = "Actions",
-    -- },
+    a = {
+      name = "Applications",
+      h = "Check Health",
+      l = "Lazy (Plugins Manager)",
+      m = "Mason (3rd party Manager)",
+    },
     b = {
       name = "Buffers",
       b = "Back",
