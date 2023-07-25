@@ -115,6 +115,12 @@ local nmappings = {
         u = "Unstage file",
       }
     },
+    q = {
+      name = "Quick",
+      q = "Quit",
+      w = "Write",
+      W = "Write all",
+    },
     l = {
       name = "LSP",
       d = "List definitions",
