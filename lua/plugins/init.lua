@@ -120,12 +120,6 @@ local plugins = {
     end,
   },
   {
-    "p00f/nvim-ts-rainbow",
-    dependencies = {
-      "nvim-treesitter",
-    },
-  },
-  {
     "JoosepAlviste/nvim-ts-context-commentstring",
     dependencies = {
       "nvim-treesitter",
@@ -138,7 +132,7 @@ local plugins = {
     "rbgrouleff/bclose.vim",
   },
   {
-    "schickling/vim-bufonly",
+    "numtostr/BufOnly.nvim",
   },
   {
     "folke/which-key.nvim",
