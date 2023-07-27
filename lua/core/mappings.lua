@@ -139,7 +139,7 @@ M.telescope = function()
 end
 
 M.gitsigns = function()
-  map("n", "<leader>gd", "<cmd>Gitsigns toggle_linehl <CR><cmd>Gitsigns toggle_deleted <CR>")
+  map("n", "<leader>gd", "<cmd>Gitsigns toggle_deleted<CR> <cmd>sleep 200ms<CR> <cmd>Gitsigns toggle_linehl<CR>")
   map("n", "<leader>gg", "<cmd>Gitsigns preview_hunk <CR>")
   map("n", "<leader>gl", "<cmd>Gitsigns blame_line <CR>")
   map("n", "<leader>gn", "<cmd>silent Gitsigns next_hunk <CR>")
