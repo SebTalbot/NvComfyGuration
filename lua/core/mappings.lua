@@ -33,6 +33,11 @@ M.general = function()
   map("v", "<C-k>", ":m '<-2<CR>gv=gv")
   map("t", "<C-space>", "<C-\\><C-n>")
 
+  -- Quick
+  map("n", "<leader>qq", "<cmd>qa! <CR>")
+  map("n", "<leader>qw", "<cmd>w <CR>")
+  map("n", "<leader>qW", "<cmd>wa <CR>")
+
   -- Git
   map("n", "<leader>gat", "<cmd>GitStashAll <CR>")
   map("n", "<leader>gL", "<cmd>Git blame <CR>")
@@ -41,7 +46,7 @@ end
 
 M.buffers = function()
   map("n", "<leader>bdd", "<cmd>Bclose! <CR>")
-  map("n", "<leader>bdo", "<cmd>BufOnly <CR>")
+  map("n", "<leader>bdo", "<cmd>BufOnly <CR><cmd>lua require('lualine').refresh()<CR>")
   map("n", "<leader>bb", "<cmd>e#<CR>")
   map("n", "<leader>bn", "<cmd>bn<CR>")
   map("n", "<leader>bp", "<cmd>bp<CR>")
