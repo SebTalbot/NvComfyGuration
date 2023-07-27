@@ -1,6 +1,6 @@
 local is_laptop = os.getenv "CURRENT_DEVICE" == "laptop"
 local is_desktop = os.getenv "CURRENT_DEVICE" == "desktop"
-local is_default = not is_laptop
+local is_default = not is_laptop and not is_desktop
 
 local plugins = {
   {
