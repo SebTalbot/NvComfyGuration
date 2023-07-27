@@ -1,5 +1,6 @@
 local is_laptop = os.getenv "CURRENT_DEVICE" == "laptop"
 local is_desktop = os.getenv "CURRENT_DEVICE" == "desktop"
+local is_default = not is_laptop
 
 local plugins = {
   {
@@ -9,7 +10,7 @@ local plugins = {
   {
     "morhetz/gruvbox",
     lazy = false,
-    enabled = is_desktop,
+    enabled = is_desktop or is_default,
     priority = 1000,
     config = function()
       vim.g.gruvbox_italic = 1
