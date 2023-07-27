@@ -16,7 +16,7 @@ end
 M.overwrite = function()
   map("v", "<", "<gv")
   map("v", ">", ">gv")
-  map("v", "p", [["_dP]])
+  map("v", "<C-p>", [["_dP]])
 end
 
 M.general = function()
