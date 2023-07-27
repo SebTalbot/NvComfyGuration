@@ -1,3 +1,6 @@
+local is_laptop = os.getenv "CURRENT_DEVICE" == "laptop"
+local is_desktop = os.getenv "CURRENT_DEVICE" == "desktop"
+
 local plugins = {
   {
     "nvim-lua/plenary.nvim",
@@ -6,15 +9,31 @@ local plugins = {
   {
     "morhetz/gruvbox",
     lazy = false,
+    enabled = is_desktop,
+    priority = 1000,
     config = function()
-      local is_laptop = os.getenv "CURRENT_DEVICE" == "laptop"
       vim.g.gruvbox_italic = 1
       vim.opt.termguicolors = true
       vim.o.background = "dark"
       vim.cmd [[colorscheme gruvbox]]
-      if is_laptop then
-        vim.cmd [[highlight Normal guibg=none]]
-      end
+    end,
+  },
+  {
+    "Mofiqul/dracula.nvim",
+    lazy = false,
+    priority = 1000,
+    enabled = is_laptop,
+    config = function()
+      local dracula = require "dracula"
+      dracula.setup {
+        colors = {
+          bg = "#2c2a38",
+          fg = "#fce0f1",
+          selection = "#383348",
+          comment = "#6c5a78",
+        },
+      }
+      vim.cmd [[colorscheme dracula]]
     end,
   },
   {
@@ -27,6 +46,7 @@ local plugins = {
     dependencies = {
       "gruvbox",
       "nvim-web-devicons",
+      "arkav/lualine-lsp-progress",
     },
     config = function()
       require("lualine").setup {
@@ -48,7 +68,7 @@ local plugins = {
             },
           },
           lualine_x = {
-            "tabnine",
+            "lsp_progress",
           },
         },
       }
@@ -126,7 +146,12 @@ local plugins = {
     },
   },
   {
-    "tpope/vim-surround",
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup()
+    end,
   },
   {
     "rbgrouleff/bclose.vim",

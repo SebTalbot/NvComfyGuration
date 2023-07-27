@@ -18,6 +18,7 @@ local formatting = null_ls.builtins.formatting
 null_ls.setup {
   debug = true,
   sources = {
+    code_actions.gitsigns,
     code_actions.eslint_d,
     diagnostics.golangci_lint,
     formatting.beautysh,
