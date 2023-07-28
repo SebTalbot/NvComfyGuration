@@ -41,10 +41,6 @@ configs.setup {
   context_commentstring = {
     enable = true,
   },
-  rainbow = {
-    enable = true,
-    extended_mode = true,
-  },
 }
 
 local parsers_status_ok, parsers = pcall(require, "nvim-treesitter.parsers")
