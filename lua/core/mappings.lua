@@ -46,7 +46,7 @@ end
 
 M.buffers = function()
   map("n", "<leader>bdd", "<cmd>Bclose! <CR>")
-  map("n", "<leader>bdo", "<cmd>BufOnly <CR><cmd>lua require('lualine').refresh()<CR>")
+  map("n", "<leader>bdo", "<cmd>BufOnly <CR><C-l>")
   map("n", "<leader>bb", "<cmd>e#<CR>")
   map("n", "<leader>bn", "<cmd>bn<CR>")
   map("n", "<leader>bp", "<cmd>bp<CR>")
