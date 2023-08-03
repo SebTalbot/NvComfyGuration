@@ -161,6 +161,12 @@ local plugins = {
     "numtostr/BufOnly.nvim",
   },
   {
+    "ashfinal/qfview.nvim",
+    config = function()
+      require('qfview').setup()
+    end,
+  },
+  {
     "folke/which-key.nvim",
     config = function()
       require "plugins.configs.which_key"
