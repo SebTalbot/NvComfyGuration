@@ -15,10 +15,6 @@ require("nvim-tree").setup {
     width = 30,
     hide_root_folder = false,
     side = "left",
-    mappings = {
-      custom_only = false,
-      list = {},
-    },
     number = true,
     relativenumber = true,
     signcolumn = "auto",
