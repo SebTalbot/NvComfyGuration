@@ -28,12 +28,13 @@ local plugins = {
       local dracula = require "dracula"
       dracula.setup {
         colors = {
-          bg = "#2c2a38",
-          fg = "#fce0f1",
+          -- bg = "#2c2a38",
+          -- fg = "#fce0f1",
           selection = "#383348",
           comment = "#6c5a78",
         },
       }
+
       vim.cmd [[colorscheme dracula]]
     end,
   },
