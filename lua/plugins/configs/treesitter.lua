@@ -11,7 +11,6 @@ configs.setup {
     "dockerfile",
     "go",
     "gomod",
-    -- "help", broken for now
     "gitignore",
     "tsx",
     "graphql",
@@ -36,9 +35,6 @@ configs.setup {
   },
   -- Plugins
   autopairs = {
-    enable = true,
-  },
-  context_commentstring = {
     enable = true,
   },
 }
