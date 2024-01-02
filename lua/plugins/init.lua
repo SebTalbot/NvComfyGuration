@@ -17,6 +17,7 @@ local plugins = {
       vim.opt.termguicolors = true
       vim.o.background = "dark"
       vim.cmd [[colorscheme gruvbox]]
+      vim.cmd [[hi Normal ctermbg=none guibg=none]]
     end,
   },
   {
@@ -89,7 +90,7 @@ local plugins = {
         options = {
           buffer_close_icon = "",
           close_icon = "",
-          separator_style = "thick",
+          separator_style = "thin",
         },
       }
     end,

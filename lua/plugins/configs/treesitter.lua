@@ -4,6 +4,8 @@ if not configs_status_ok then
   return
 end
 
+vim.opt.runtimepath:append "~/.local/share/nvim/tree-sitter"
+
 configs.setup {
   ensure_installed = {
     "bash",
@@ -37,6 +39,8 @@ configs.setup {
   autopairs = {
     enable = true,
   },
+
+  parser_install_dir = "~/.local/share/nvim/tree-sitter",
 }
 
 local parsers_status_ok, parsers = pcall(require, "nvim-treesitter.parsers")
