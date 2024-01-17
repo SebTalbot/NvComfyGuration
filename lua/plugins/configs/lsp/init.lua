@@ -28,6 +28,8 @@ lspconfig.jsonls.setup(handlers.inject(require("plugins.configs.lsp.settings.jso
 lspconfig.lua_ls.setup(handlers.inject(require("plugins.configs.lsp.settings.lua_ls")))
 lspconfig.vimls.setup(handlers.inject({}))
 
+lspconfig.pyright.setup(handlers.inject({}))
+
 require("plugins.configs.lsp.settings.tsserver")
 require("plugins.configs.lsp.handlers").setup()
 require "plugins.configs.lsp.null_ls"

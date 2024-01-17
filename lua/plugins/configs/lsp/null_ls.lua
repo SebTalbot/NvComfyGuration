@@ -21,6 +21,7 @@ null_ls.setup {
     code_actions.gitsigns,
     code_actions.eslint_d,
     diagnostics.golangci_lint,
+    diagnostics.pylint,
     formatting.beautysh,
     formatting.gofumpt,
     formatting.goimports,
