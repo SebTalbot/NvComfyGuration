@@ -4,7 +4,7 @@ if not configs_status_ok then
   return
 end
 
-vim.opt.runtimepath:append "~/.local/share/nvim/tree-sitter"
+-- vim.opt.runtimepath:append "~/.local/share/nvim/lazy/tree-sitter"
 
 configs.setup {
   ensure_installed = {
@@ -40,7 +40,7 @@ configs.setup {
     enable = true,
   },
 
-  parser_install_dir = "~/.local/share/nvim/tree-sitter",
+  -- parser_install_dir = "~/.local/share/nvim/lazy/tree-sitter",
 }
 
 local parsers_status_ok, parsers = pcall(require, "nvim-treesitter.parsers")
