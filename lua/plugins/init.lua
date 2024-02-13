@@ -235,7 +235,11 @@ local plugins = {
     lazy = false,
     build = ":MasonUpdate",
     config = function()
-      require("mason").setup {}
+      require("mason").setup {
+        handlers = {
+          pylint = function() end,
+        }
+      }
     end,
   },
   {
