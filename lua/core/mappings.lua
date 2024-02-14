@@ -14,6 +14,8 @@ M.disable = function()
 end
 
 M.overwrite = function()
+  map("n", "zn", "zj")
+  map("n", "zp", "zk")
   map("v", "<", "<gv")
   map("v", ">", ">gv")
   map("v", "<C-p>", [["_dP]])

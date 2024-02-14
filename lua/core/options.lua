@@ -4,6 +4,9 @@ local options = {
   conceallevel = 0,
   cursorline = true,
   expandtab = true,
+  foldenable = true,
+  foldlevel = 99,
+  foldmethod = "expr",
   ignorecase = true,
   linebreak = true,
   mouse = "",
@@ -28,3 +31,4 @@ end
 
 vim.cmd [[ let g:loaded_perl_provider = 0 ]]
 vim.cmd [[ set title titlestring=%{substitute(getcwd(),\ $HOME,\ '~',\ '')} ]]
+vim.cmd [[ set foldexpr=nvim_treesitter#foldexpr() ]]
