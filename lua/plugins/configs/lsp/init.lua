@@ -6,9 +6,6 @@ end
 
 lsp_installer.setup({
   automatic_installation = true,
-  ensure_installed = {
-    "goimports-reviser"
-  },
 })
 
 
