@@ -324,6 +324,16 @@ local plugins = {
       "saadparwaiz1/cmp_luasnip",
     },
   },
+  -- Obsidian
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
 }
 
 return require("lazy").setup(plugins)
