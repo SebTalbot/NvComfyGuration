@@ -1,10 +1,10 @@
 local dressing_present, dressing = pcall(require, "dressing")
 if not dressing_present then
-  print "Warning: Cannot find dressing"
+  print("Warning: Cannot find dressing")
   return
 end
 
-dressing.setup {
+dressing.setup({
   input = {
     enabled = true,
     insert_only = false,
@@ -23,4 +23,4 @@ dressing.setup {
       layout_strategy = "vertical",
     },
   },
-}
+})

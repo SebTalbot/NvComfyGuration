@@ -89,18 +89,18 @@ end
 M.commands = function()
   local cmd = vim.cmd
   -- General
-  cmd "command! ClearRegisters for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor"
+  cmd("command! ClearRegisters for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor")
   -- Packer
-  cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
-  cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
-  cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
-  cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
-  cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
-  cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
+  cmd("silent! command PackerClean lua require 'plugins' require('packer').clean()")
+  cmd("silent! command PackerCompile lua require 'plugins' require('packer').compile()")
+  cmd("silent! command PackerInstall lua require 'plugins' require('packer').install()")
+  cmd("silent! command PackerStatus lua require 'plugins' require('packer').status()")
+  cmd("silent! command PackerSync lua require 'plugins' require('packer').sync()")
+  cmd("silent! command PackerUpdate lua require 'plugins' require('packer').update()")
   -- LSP
-  cmd "silent! command LspFormatting lua vim.lsp.buf.format()"
+  cmd("silent! command LspFormatting lua vim.lsp.buf.format()")
   -- Git
-  cmd "silent! command GitStashAll !git stash -u"
+  cmd("silent! command GitStashAll !git stash -u")
 end
 
 -- Init

@@ -1,19 +1,19 @@
 local telescope_present, telescope = pcall(require, "telescope")
 if not telescope_present then
-  print "Warning: Telescope not found"
+  print("Warning: Telescope not found")
   return
 end
 
 local builtinPresent, builtin = pcall(require, "telescope.builtin")
 if not builtinPresent then
-  print "Warning: telescope.builtin not found"
+  print("Warning: telescope.builtin not found")
   return
 end
 
-local actions = require "telescope.actions"
-local actions_layout = require "telescope.actions.layout"
+local actions = require("telescope.actions")
+local actions_layout = require("telescope.actions.layout")
 
-telescope.setup {
+telescope.setup({
   defaults = {
     borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
     dynamic_preview_title = true,
@@ -124,22 +124,22 @@ telescope.setup {
       },
     },
   },
-}
+})
 
 -- Custom Telescope calls with file ignore
 function _TelescopeFileIgnore()
-  builtin.find_files {
+  builtin.find_files({
     prompt_title = "Find Files (Ignore)",
     hidden = false,
     file_ignore_patterns = {
       "%.test%.",
       "%.tests%.",
     },
-  }
+  })
 end
 
 function _TelescopeWordIgnore()
-  builtin.grep_string {
+  builtin.grep_string({
     prompt_title = "Find Words (Ignore)",
     vimgrep_arguments = {
       "rg",
@@ -154,11 +154,11 @@ function _TelescopeWordIgnore()
       "-g",
       "!*.tests.*",
     },
-  }
+  })
 end
 
 function _TelescopeGrepIgnore()
-  builtin.live_grep {
+  builtin.live_grep({
     prompt_title = "Find Grep (Ignore)",
     vimgrep_arguments = {
       "rg",
@@ -174,14 +174,14 @@ function _TelescopeGrepIgnore()
       "-g",
       "!*.tests.*",
     },
-  }
+  })
 end
 
 -- Custom Theme
-vim.cmd [[hi link TelescopeTitle TelescopeMatching]]
+vim.cmd([[hi link TelescopeTitle TelescopeMatching]])
 
-require("telescope").load_extension "dap"
-require("telescope").load_extension "fzf"
-require("telescope").load_extension "env"
-require("telescope").load_extension "termfinder"
+require("telescope").load_extension("dap")
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("env")
+require("telescope").load_extension("termfinder")
 require("core.mappings").telescope()

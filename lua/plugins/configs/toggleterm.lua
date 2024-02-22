@@ -1,10 +1,10 @@
 local present, toggleterm = pcall(require, "toggleterm")
 if not present then
-  print "Warning: toggleterm not found"
+  print("Warning: toggleterm not found")
   return
 end
 
-toggleterm.setup {
+toggleterm.setup({
   open_mapping = [[<c-\>]],
   hide_numbers = true,
   shade_filetypes = {},
@@ -25,7 +25,7 @@ toggleterm.setup {
       background = "Normal",
     },
   },
-}
+})
 
 -- Custom Terminals
 -- local ttt = require('toggleterm.terminal')
@@ -42,15 +42,15 @@ local Terminal = require("toggleterm.terminal").Terminal
 --   name_term(term, name)
 -- end
 
-
-local main_terminal = Terminal:new { count = 1 }
+local main_terminal = Terminal:new({ count = 1 })
 function _Toggleterm_main()
   main_terminal:toggle()
 end
+
 --
 -- init_term(main_terminal, "Main")
 
-local lazygit = Terminal:new { cmd = "lazygit", count = 11 }
+local lazygit = Terminal:new({ cmd = "lazygit", count = 11 })
 function _Toggleterm_lazygit()
   lazygit:toggle()
   -- name_term(lazygit, "Git")

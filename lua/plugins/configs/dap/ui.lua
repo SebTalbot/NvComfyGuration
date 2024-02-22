@@ -1,6 +1,6 @@
 local present, dapui = pcall(require, "dapui")
 if not present then
-  print "Warning: Cannot find DAP"
+  print("Warning: Cannot find DAP")
   return false
 end
 
@@ -49,9 +49,9 @@ dapui.setup({
   windows = { indent = 1 },
   render = {
     max_type_length = nil,
-  }
+  },
 })
 
-vim.fn.sign_define('DapBreakpoint', {text=' ', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpointRejected', {text=' ', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapStopped', {text=' ', texthl='', linehl='', numhl=''})
+vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = " ", texthl = "", linehl = "", numhl = "" })

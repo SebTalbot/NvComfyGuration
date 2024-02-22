@@ -1,6 +1,6 @@
 local dap_present, dap = pcall(require, "dap")
 if not dap_present then
-  print "Warning: Cannot find nvim-dap"
+  print("Warning: Cannot find nvim-dap")
   return false
 end
 

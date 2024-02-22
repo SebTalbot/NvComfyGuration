@@ -1,13 +1,13 @@
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
-  print "Warning: Cannot find which_key"
+  print("Warning: Cannot find which_key")
   return
 end
 
 local setup = {
   window = {
-    border = "single"
-  }
+    border = "single",
+  },
 }
 
 local nmappings = {
@@ -113,7 +113,7 @@ local nmappings = {
         S = "Stage file",
         t = "Stash every file",
         u = "Unstage file",
-      }
+      },
     },
     q = {
       name = "Quick",

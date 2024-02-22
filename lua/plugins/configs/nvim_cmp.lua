@@ -8,13 +8,12 @@ if not snip_status_ok then
   return
 end
 
-
 -- Uses rafamadriz/friendly-snippets
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+  local col = vim.fn.col(".") - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
 -- find more here: https://www.nerdfonts.com/cheat-sheet
@@ -56,20 +55,20 @@ local menu_tags = {
 
 local compare = cmp.config.compare
 
-cmp.setup {
+cmp.setup({
   preselect = cmp.PreselectMode.None,
   sorting = {
     priority_weight = 2,
-      comparators = {
-        compare.offset,
-        compare.exact,
-        compare.score,
-        compare.recently_used,
-        compare.kind,
-        compare.sort_text,
-        compare.length,
-        compare.order,
-      },
+    comparators = {
+      compare.offset,
+      compare.exact,
+      compare.score,
+      compare.recently_used,
+      compare.kind,
+      compare.sort_text,
+      compare.length,
+      compare.order,
+    },
   },
   snippet = {
     expand = function(args)
@@ -83,11 +82,11 @@ cmp.setup {
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(5), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-z>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<C-y>"] = cmp.mapping {
+    ["<C-y>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
-    },
-    ["<C-e>"] = cmp.mapping.confirm { select = true },
+    }),
+    ["<C-e>"] = cmp.mapping.confirm({ select = true }),
   },
   formatting = {
     fields = { "abbr", "kind", "menu" },
@@ -114,7 +113,7 @@ cmp.setup {
   experimental = {
     ghost_text = false,
   },
-}
+})
 
 cmp.setup.cmdline({ "/", "?" }, {
   mapping = cmp.mapping.preset.cmdline(),

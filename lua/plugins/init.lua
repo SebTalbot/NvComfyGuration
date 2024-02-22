@@ -1,5 +1,5 @@
-local is_laptop = os.getenv "CURRENT_DEVICE" == "laptop"
-local is_desktop = os.getenv "CURRENT_DEVICE" == "desktop"
+local is_laptop = os.getenv("CURRENT_DEVICE") == "laptop"
+local is_desktop = os.getenv("CURRENT_DEVICE") == "desktop"
 local is_default = not is_laptop and not is_desktop
 
 local plugins = {
@@ -16,8 +16,8 @@ local plugins = {
       vim.g.gruvbox_italic = 1
       vim.opt.termguicolors = true
       vim.o.background = "dark"
-      vim.cmd [[colorscheme gruvbox]]
-      vim.cmd [[hi Normal ctermbg=none guibg=none]]
+      vim.cmd([[colorscheme gruvbox]])
+      vim.cmd([[hi Normal ctermbg=none guibg=none]])
     end,
   },
   {
@@ -26,17 +26,17 @@ local plugins = {
     priority = 1000,
     enabled = is_laptop,
     config = function()
-      local dracula = require "dracula"
-      dracula.setup {
+      local dracula = require("dracula")
+      dracula.setup({
         colors = {
           -- bg = "#2c2a38",
           -- fg = "#fce0f1",
           selection = "#383348",
           comment = "#6c5a78",
         },
-      }
+      })
 
-      vim.cmd [[colorscheme dracula]]
+      vim.cmd([[colorscheme dracula]])
     end,
   },
   {
@@ -52,7 +52,7 @@ local plugins = {
       "arkav/lualine-lsp-progress",
     },
     config = function()
-      require("lualine").setup {
+      require("lualine").setup({
         options = {
           ignore_focus = {
             "dapui_watches",
@@ -74,7 +74,7 @@ local plugins = {
             "lsp_progress",
           },
         },
-      }
+      })
     end,
   },
   {
@@ -86,13 +86,13 @@ local plugins = {
     },
     version = "v3.*",
     config = function()
-      require("bufferline").setup {
+      require("bufferline").setup({
         options = {
           buffer_close_icon = "",
           close_icon = "",
           separator_style = "thin",
         },
-      }
+      })
     end,
   },
   {
@@ -102,13 +102,13 @@ local plugins = {
   {
     "SebTalbot/lens.vim",
     config = function()
-      vim.cmd [[let g:lens#disabled = 1]]
+      vim.cmd([[let g:lens#disabled = 1]])
     end,
   },
   {
     "stevearc/dressing.nvim",
     config = function()
-      require "plugins.configs.dressing"
+      require("plugins.configs.dressing")
     end,
   },
   {
@@ -123,23 +123,23 @@ local plugins = {
   {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require "plugins.configs.gitsigns"
+      require("plugins.configs.gitsigns")
     end,
   },
   {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
-      require "plugins.configs.toggleterm"
+      require("plugins.configs.toggleterm")
     end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
     build = function()
-      require("nvim-treesitter.install").update { with_sync = true }
+      require("nvim-treesitter.install").update({ with_sync = true })
     end,
     config = function()
-      require "plugins.configs.treesitter"
+      require("plugins.configs.treesitter")
     end,
   },
   {
@@ -148,9 +148,9 @@ local plugins = {
       "nvim-treesitter",
     },
     config = function()
-      require("ts_context_commentstring").setup {
+      require("ts_context_commentstring").setup({
         enable_autocmd = false,
-      }
+      })
     end,
   },
   {
@@ -176,7 +176,7 @@ local plugins = {
   {
     "folke/which-key.nvim",
     config = function()
-      require "plugins.configs.which_key"
+      require("plugins.configs.which_key")
     end,
   },
   {
@@ -185,7 +185,7 @@ local plugins = {
   {
     "windwp/nvim-autopairs",
     config = function()
-      require "plugins.configs.autopairs"
+      require("plugins.configs.autopairs")
     end,
   },
   {
@@ -201,7 +201,7 @@ local plugins = {
       "telescope-fzf-native.nvim",
     },
     config = function()
-      require "plugins.configs.telescope"
+      require("plugins.configs.telescope")
     end,
   },
   {
@@ -226,7 +226,7 @@ local plugins = {
   {
     "kyazdani42/nvim-tree.lua",
     config = function()
-      require "plugins.configs.nvim_tree"
+      require("plugins.configs.nvim_tree")
     end,
   },
   -- LSP plugins
@@ -235,11 +235,11 @@ local plugins = {
     lazy = false,
     build = ":MasonUpdate",
     config = function()
-      require("mason").setup {
+      require("mason").setup({
         handlers = {
           pylint = function() end,
         },
-      }
+      })
     end,
   },
   {
@@ -253,7 +253,7 @@ local plugins = {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
-      require "plugins.configs.lsp"
+      require("plugins.configs.lsp")
     end,
   },
   {
@@ -279,7 +279,7 @@ local plugins = {
       "nvim-dap",
     },
     config = function()
-      require "plugins.configs.dap"
+      require("plugins.configs.dap")
     end,
   },
   {
@@ -301,7 +301,7 @@ local plugins = {
     "codota/tabnine-nvim",
     build = "./dl_binaries.sh",
     config = function()
-      require "plugins.configs.tabnine"
+      require("plugins.configs.tabnine")
     end,
   },
   {
@@ -315,7 +315,7 @@ local plugins = {
       "ray-x/cmp-treesitter",
     },
     config = function()
-      require "plugins.configs.nvim_cmp"
+      require("plugins.configs.nvim_cmp")
     end,
   },
   {

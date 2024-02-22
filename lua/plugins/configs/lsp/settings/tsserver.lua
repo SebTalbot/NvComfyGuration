@@ -1,4 +1,4 @@
-require("typescript").setup {
+require("typescript").setup({
   server = {
     init_options = {
       preferences = {
@@ -15,4 +15,4 @@ require("typescript").setup {
       require("plugins.configs.lsp.handlers").on_attach(client, bufnr)
     end,
   },
-}
+})

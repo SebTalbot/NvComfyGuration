@@ -1,4 +1,4 @@
-require("nvim-tree").setup {
+require("nvim-tree").setup({
   disable_netrw = true,
   hijack_cursor = true,
   hijack_netrw = true,
@@ -23,6 +23,6 @@ require("nvim-tree").setup {
       quit_on_open = true,
     },
   },
-}
+})
 
 require("core.mappings").nvim_tree()

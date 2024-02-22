@@ -37,15 +37,7 @@ M.map = function(mode, keys, command, opt)
           vim.api.nvim_set_keymap(sub_mode, lhs, rhs, sub_options)
         else
           sub_mode, lhs, rhs = sub_mode or "", lhs or "", rhs or ""
-          print(
-            "Cannot set mapping [ mode = '"
-              .. sub_mode
-              .. "' | key = '"
-              .. lhs
-              .. "' | cmd = '"
-              .. rhs
-              .. "' ]"
-          )
+          print("Cannot set mapping [ mode = '" .. sub_mode .. "' | key = '" .. lhs .. "' | cmd = '" .. rhs .. "' ]")
         end
       end
     end
@@ -76,15 +68,7 @@ M.mapBuf = function(buf, mode, keys, command, opt)
           vim.api.nvim_buf_set_keymap(bufr, sub_mode, lhs, rhs, sub_options)
         else
           sub_mode, lhs, rhs = sub_mode or "", lhs or "", rhs or ""
-          print(
-            "Cannot set mapping [ mode = '"
-              .. sub_mode
-              .. "' | key = '"
-              .. lhs
-              .. "' | cmd = '"
-              .. rhs
-              .. "' ]"
-          )
+          print("Cannot set mapping [ mode = '" .. sub_mode .. "' | key = '" .. lhs .. "' | cmd = '" .. rhs .. "' ]")
         end
       end
     end
