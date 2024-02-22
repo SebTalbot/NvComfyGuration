@@ -1,6 +1,6 @@
 local present, lsp_installer = pcall(require, "mason-lspconfig")
 if not present then
-  print "Warning: Cannot find lsp_installer"
+  print("Warning: Cannot find lsp_installer")
   return
 end
 
@@ -8,10 +8,21 @@ lsp_installer.setup({
   automatic_installation = true,
 })
 
+local installer_present, mason_installer = pcall(require, "mason-tool-installer")
+if not installer_present then
+  print("Warning: Cannot find mason-tool-installer")
+  return
+end
+
+mason_installer.setup({
+  ensure_installed = {
+    "goimports-reviser",
+  },
+})
 
 local lspconfig_present, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_present then
-  print "Warning: Cannot find lspconfig"
+  print("Warning: Cannot find lspconfig")
   return
 end
 
@@ -32,4 +43,4 @@ lspconfig.pyright.setup(handlers.inject({}))
 
 require("plugins.configs.lsp.settings.tsserver")
 require("plugins.configs.lsp.handlers").setup()
-require "plugins.configs.lsp.null_ls"
+require("plugins.configs.lsp.null_ls")

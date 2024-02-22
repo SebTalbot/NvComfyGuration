@@ -238,7 +238,7 @@ local plugins = {
       require("mason").setup {
         handlers = {
           pylint = function() end,
-        }
+        },
       }
     end,
   },
@@ -250,6 +250,7 @@ local plugins = {
     dependencies = {
       "mason.nvim",
       "nvim-lspconfig",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
       require "plugins.configs.lsp"
