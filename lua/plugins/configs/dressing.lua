@@ -6,7 +6,7 @@ end
 
 dressing.setup {
   input = {
-    enabled = false,
+    enabled = true,
     insert_only = false,
   },
   select = {

@@ -14,5 +14,4 @@ Lua configurations for Neovim `9.0`
 Don't forget to run `:checkhealth`
 # Todo
 - Readme
-- easy configs to enable/disable features
 - wiki
