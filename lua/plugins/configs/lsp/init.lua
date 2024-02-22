@@ -5,7 +5,10 @@ if not present then
 end
 
 lsp_installer.setup({
-  automatic_installation = true
+  automatic_installation = true,
+  ensure_installed = {
+    "goimports-reviser"
+  },
 })
 
 
