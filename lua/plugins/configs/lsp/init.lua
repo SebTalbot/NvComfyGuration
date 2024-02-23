@@ -16,6 +16,7 @@ end
 
 mason_installer.setup({
   ensure_installed = {
+    "tree-sitter-cli",
     "goimports-reviser",
   },
 })
