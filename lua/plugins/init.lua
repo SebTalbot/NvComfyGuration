@@ -37,11 +37,18 @@ local plugins = {
       })
 
       vim.cmd([[colorscheme dracula]])
+      vim.cmd([[hi Normal ctermbg=none guibg=none]])
     end,
   },
   {
     "kyazdani42/nvim-web-devicons",
     lazy = false,
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
   },
   {
     "nvim-lualine/lualine.nvim",
