@@ -38,6 +38,7 @@ local plugins = {
 
       vim.cmd([[colorscheme dracula]])
       vim.cmd([[hi Normal ctermbg=none guibg=none]])
+      vim.cmd([[hi BufferLineFill ctermbg=none guibg=none]])
     end,
   },
   {

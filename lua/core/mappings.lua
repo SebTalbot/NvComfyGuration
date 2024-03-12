@@ -11,6 +11,7 @@ M.disable = function()
   map("n", "Q", "<nop>")
   map("n", "<C-z>", "<nop>")
   map("v", "u", "gv")
+  map("n", "q:", "<nop>")
 end
 
 M.overwrite = function()
