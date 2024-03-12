@@ -18,6 +18,7 @@ mason_installer.setup({
   ensure_installed = {
     "tree-sitter-cli",
     "goimports-reviser",
+    "shopify-theme-check",
   },
 })
 
@@ -38,9 +39,14 @@ lspconfig.graphql.setup(handlers.inject({}))
 lspconfig.html.setup(handlers.inject({}))
 lspconfig.jsonls.setup(handlers.inject(require("plugins.configs.lsp.settings.jsonls")))
 lspconfig.lua_ls.setup(handlers.inject(require("plugins.configs.lsp.settings.lua_ls")))
+lspconfig.pyright.setup(handlers.inject({}))
 lspconfig.vimls.setup(handlers.inject({}))
 
-lspconfig.pyright.setup(handlers.inject({}))
+lspconfig.theme_check.setup(handlers.inject({
+  root_dir = function(fname)
+    return vim.loop.cwd()
+  end,
+}))
 
 require("plugins.configs.lsp.settings.tsserver")
 require("plugins.configs.lsp.handlers").setup()
