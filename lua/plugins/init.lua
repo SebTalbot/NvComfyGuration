@@ -106,6 +106,11 @@ local plugins = {
   {
     "lukas-reineke/indent-blankline.nvim",
     lazy = false,
+    main = "ibl",
+    opts = {},
+    config = function()
+      require("ibl").setup()
+    end,
   },
   {
     "SebTalbot/lens.vim",
@@ -331,16 +336,6 @@ local plugins = {
     dependencies = {
       "rafamadriz/friendly-snippets",
       "saadparwaiz1/cmp_luasnip",
-    },
-  },
-  -- Obsidian
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*",
-    lazy = true,
-    ft = "markdown",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
     },
   },
 }
