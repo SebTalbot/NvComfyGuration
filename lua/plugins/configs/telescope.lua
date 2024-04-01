@@ -134,6 +134,7 @@ function _TelescopeFileIgnore()
     file_ignore_patterns = {
       "%.test%.",
       "%.tests%.",
+      "assets%/",
     },
   })
 end
@@ -153,6 +154,8 @@ function _TelescopeWordIgnore()
       "!*.test.*",
       "-g",
       "!*.tests.*",
+      "-g",
+      "!*assets*",
     },
   })
 end
@@ -173,6 +176,8 @@ function _TelescopeGrepIgnore()
       "!*.test.*",
       "-g",
       "!*.tests.*",
+      "-g",
+      "!*assets*",
     },
   })
 end
