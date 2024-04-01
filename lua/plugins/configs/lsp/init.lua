@@ -16,9 +16,10 @@ end
 
 mason_installer.setup({
   ensure_installed = {
-    "tree-sitter-cli",
     "goimports-reviser",
     "shopify-theme-check",
+    "tree-sitter-cli",
+    "vue-language-server",
   },
 })
 
@@ -29,6 +30,7 @@ if not lspconfig_present then
 end
 
 local handlers = require("plugins.configs.lsp.handlers")
+
 lspconfig.bashls.setup(handlers.inject({}))
 lspconfig.cssls.setup(handlers.inject({}))
 lspconfig.dockerls.setup(handlers.inject({}))
@@ -41,6 +43,7 @@ lspconfig.jsonls.setup(handlers.inject(require("plugins.configs.lsp.settings.jso
 lspconfig.lua_ls.setup(handlers.inject(require("plugins.configs.lsp.settings.lua_ls")))
 lspconfig.pyright.setup(handlers.inject({}))
 lspconfig.vimls.setup(handlers.inject({}))
+lspconfig.volar.setup(handlers.inject({}))
 
 lspconfig.theme_check.setup(handlers.inject({
   root_dir = function(fname)
