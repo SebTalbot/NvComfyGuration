@@ -130,11 +130,27 @@ telescope.setup({
 function _TelescopeFileIgnore()
   builtin.find_files({
     prompt_title = "Find Files (Ignore)",
-    hidden = false,
+    hidden = true,
     file_ignore_patterns = {
+      "node_modules/",
+      ".git/",
+
+      -- Images
+      ".jpg$",
+      ".jpeg$",
+      ".gif$",
+      ".bmp$",
+      ".png$",
+      ".woff$",
+
+      -- Job
       "%.test%.",
       "%.tests%.",
-      "assets%/",
+      "^assets%/skinia",
+      "^assets%/sdk%-",
+      "^assets%/omy%-",
+      "^assets%/account%-management%-",
+      "^assets%/FaceDetectionService%-",
     },
   })
 end
@@ -151,11 +167,25 @@ function _TelescopeWordIgnore()
       "--trim",
       "--with-filename",
       "-g",
+      "!node_modules/*",
+      "-g",
+      "!package-lock.json",
+      "-g",
       "!*.test.*",
       "-g",
       "!*.tests.*",
       "-g",
-      "!*assets*",
+      "!assets/skinia*",
+      "-g",
+      "!assets/sdk-*",
+      "-g",
+      "!assets/omy-*",
+      "-g",
+      "!assets/account-management-*",
+      "-g",
+      "!assets/FaceDetectionService-*",
+      "-g",
+      "!assets/theme.js",
     },
   })
 end
@@ -173,11 +203,25 @@ function _TelescopeGrepIgnore()
       "--trim",
       "--with-filename",
       "-g",
+      "!node_modules/*",
+      "-g",
+      "!package-lock.json",
+      "-g",
       "!*.test.*",
       "-g",
       "!*.tests.*",
       "-g",
-      "!*assets*",
+      "!assets/skinia*",
+      "-g",
+      "!assets/sdk-*",
+      "-g",
+      "!assets/omy-*",
+      "-g",
+      "!assets/account-management-*",
+      "-g",
+      "!assets/FaceDetectionService-*",
+      "-g",
+      "!assets/theme.js",
     },
   })
 end

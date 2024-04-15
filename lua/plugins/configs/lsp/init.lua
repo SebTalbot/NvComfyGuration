@@ -43,7 +43,16 @@ lspconfig.jsonls.setup(handlers.inject(require("plugins.configs.lsp.settings.jso
 lspconfig.lua_ls.setup(handlers.inject(require("plugins.configs.lsp.settings.lua_ls")))
 lspconfig.pyright.setup(handlers.inject({}))
 lspconfig.vimls.setup(handlers.inject({}))
-lspconfig.volar.setup(handlers.inject({}))
+
+-- @TODO Move to setting file
+lspconfig.volar.setup(handlers.inject({
+  init_options = {
+    vue = {
+      hybridMode = false,
+      maxOldSpaceSize = 8096,
+    },
+  },
+}))
 
 lspconfig.theme_check.setup(handlers.inject({
   root_dir = function(fname)
@@ -54,3 +63,12 @@ lspconfig.theme_check.setup(handlers.inject({
 require("plugins.configs.lsp.settings.tsserver")
 require("plugins.configs.lsp.handlers").setup()
 require("plugins.configs.lsp.null_ls")
+
+function _LspCustomFormat()
+  vim.lsp.buf.format({
+    filter = function(client)
+      -- ignore volar
+      return client.name ~= "volar"
+    end,
+  })
+end

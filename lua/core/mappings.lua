@@ -173,7 +173,7 @@ end
 M.lsp = function(buf)
   mapBuf(buf, "n", "<leader>ll", "<cmd>lua vim.lsp.buf.declaration()<CR>")
   mapBuf(buf, "n", "<S-k>", "<cmd>lua vim.lsp.buf.hover()<CR>")
-  mapBuf(buf, "n", "<leader>laf", "<cmd>lua vim.lsp.buf.format()<CR>")
+  mapBuf(buf, "n", "<leader>laf", "<cmd>lua _LspCustomFormat()<CR>")
   mapBuf(buf, "n", "<leader>lar", "<cmd>lua vim.lsp.buf.rename()<CR>")
   mapBuf(buf, "n", "<leader>ee", "<cmd>lua vim.diagnostic.open_float()<CR>")
   mapBuf(buf, "n", "<leader>ep", "<cmd>lua vim.diagnostic.goto_prev()<CR>")

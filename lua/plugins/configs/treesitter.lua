@@ -25,9 +25,9 @@ configs.setup({
     "regex",
     "scss",
     "tsx",
-    "tsx",
     "typescript",
     "vim",
+    "vue",
     "yaml",
   },
   highlight = {

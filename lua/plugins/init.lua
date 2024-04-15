@@ -204,7 +204,11 @@ local plugins = {
   {
     "terrortylor/nvim-comment",
     config = function()
-      require("nvim_comment").setup()
+      require("nvim_comment").setup({
+        hook = function()
+          require("ts_context_commentstring").update_commentstring()
+        end,
+      })
     end,
   },
   {
@@ -237,7 +241,7 @@ local plugins = {
     },
   },
   {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     config = function()
       require("plugins.configs.nvim_tree")
     end,
@@ -306,6 +310,7 @@ local plugins = {
     "rcarriga/nvim-dap-ui",
     dependencies = {
       "nvim-dap",
+      "nvim-neotest/nvim-nio",
     },
     config = [[require("plugins.configs.dap.ui")]],
   },
