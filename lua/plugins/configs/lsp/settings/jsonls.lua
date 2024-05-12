@@ -161,6 +161,11 @@ local schemas = {
     fileMatch = { "resume.json" },
     url = "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   },
+  {
+    description = "PyRight (Python)",
+    fileMatch = { "pyrightconfig.json" },
+    url = "https://raw.githubusercontent.com/microsoft/pyright/main/packages/vscode-pyright/schemas/pyrightconfig.schema.json"
+  }
 }
 
 local opts = {
