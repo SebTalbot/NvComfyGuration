@@ -55,7 +55,6 @@ local plugins = {
     "nvim-lualine/lualine.nvim",
     lazy = false,
     dependencies = {
-      "gruvbox",
       "nvim-web-devicons",
       "arkav/lualine-lsp-progress",
     },
@@ -89,10 +88,9 @@ local plugins = {
     "akinsho/bufferline.nvim",
     lazy = false,
     dependencies = {
-      "gruvbox",
       "nvim-web-devicons",
     },
-    version = "v3.*",
+    version = "*",
     config = function()
       require("bufferline").setup({
         options = {
@@ -338,6 +336,7 @@ local plugins = {
   },
   {
     "L3MON4D3/LuaSnip",
+    build = "make install_jsregexp",
     dependencies = {
       "rafamadriz/friendly-snippets",
       "saadparwaiz1/cmp_luasnip",
