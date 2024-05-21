@@ -8,7 +8,7 @@ local plugins = {
     lazy = false,
   },
   {
-    "morhetz/gruvbox",
+    "ellisonleao/gruvbox.nvim",
     lazy = false,
     enabled = is_desktop or is_default,
     priority = 1000,
@@ -35,7 +35,6 @@ local plugins = {
           comment = "#6c5a78",
         },
       })
-
       vim.cmd([[colorscheme dracula]])
       vim.cmd([[hi Normal ctermbg=none guibg=none]])
       vim.cmd([[hi BufferLineFill ctermbg=none guibg=none]])
@@ -244,6 +243,7 @@ local plugins = {
       require("plugins.configs.nvim_tree")
     end,
   },
+
   -- LSP plugins
   {
     "williamboman/mason.nvim",
@@ -284,6 +284,7 @@ local plugins = {
       "null-ls.nvim",
     },
   },
+
   -- DAP plugins
   {
     "mfussenegger/nvim-dap",
@@ -312,6 +313,7 @@ local plugins = {
     },
     config = [[require("plugins.configs.dap.ui")]],
   },
+
   -- Completion & Snippets
   {
     "codota/tabnine-nvim",
