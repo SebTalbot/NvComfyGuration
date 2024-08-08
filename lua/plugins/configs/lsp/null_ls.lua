@@ -25,6 +25,7 @@ null_ls.setup({
     --   -- need python-pylint-venv
     --   extra_args = { "--init-hook", 'import sys; sys.path.append("/usr/lib/python3.11/site-packages"); import pylint_venv; pylint_venv.inithook(force_venv_activation=True, quiet=True)' },
     -- }),
+    formatting.autopep8,
     formatting.beautysh,
     formatting.gofumpt,
     formatting.goimports,

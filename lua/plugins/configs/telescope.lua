@@ -82,6 +82,9 @@ telescope.setup({
     },
     live_grep = {
       prompt_title = "Find Grep (All)",
+      additional_args = {
+        "--hidden",
+      },
       only_sort_text = true,
       path_display = { shorten = 4 },
       disable_coordinates = true,
