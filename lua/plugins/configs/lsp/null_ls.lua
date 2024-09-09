@@ -21,11 +21,7 @@ null_ls.setup({
     code_actions.gitsigns,
     code_actions.eslint_d,
     diagnostics.golangci_lint,
-    -- diagnostics.pylint.with({
-    --   -- need python-pylint-venv
-    --   extra_args = { "--init-hook", 'import sys; sys.path.append("/usr/lib/python3.11/site-packages"); import pylint_venv; pylint_venv.inithook(force_venv_activation=True, quiet=True)' },
-    -- }),
-    formatting.autopep8,
+    formatting.black,
     formatting.beautysh,
     formatting.gofumpt,
     formatting.goimports,
