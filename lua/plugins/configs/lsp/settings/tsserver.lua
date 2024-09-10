@@ -1,7 +1,7 @@
 local mason_registry = require("mason-registry")
 local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path() .. "/node_modules/@vue/language-server"
 
-require("typescript").setup({
+return {
   server = {
     init_options = {
       plugins = {
@@ -26,4 +26,4 @@ require("typescript").setup({
       require("plugins.configs.lsp.handlers").on_attach(client, bufnr)
     end,
   },
-})
+}

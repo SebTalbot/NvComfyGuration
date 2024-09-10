@@ -273,9 +273,6 @@ local plugins = {
     end,
   },
   {
-    "jose-elias-alvarez/typescript.nvim",
-  },
-  {
     "jose-elias-alvarez/null-ls.nvim",
   },
   {

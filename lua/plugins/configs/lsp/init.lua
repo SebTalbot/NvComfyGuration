@@ -42,6 +42,7 @@ lspconfig.html.setup(handlers.inject({}))
 lspconfig.jsonls.setup(handlers.inject(require("plugins.configs.lsp.settings.jsonls")))
 lspconfig.lua_ls.setup(handlers.inject(require("plugins.configs.lsp.settings.lua_ls")))
 lspconfig.pyright.setup(handlers.inject({}))
+lspconfig.ts_ls.setup(handlers.inject(require("plugins.configs.lsp.settings.tsserver")))
 lspconfig.vimls.setup(handlers.inject({}))
 
 -- @TODO Move to setting file
@@ -60,7 +61,6 @@ lspconfig.theme_check.setup(handlers.inject({
   end,
 }))
 
-require("plugins.configs.lsp.settings.tsserver")
 require("plugins.configs.lsp.handlers").setup()
 require("plugins.configs.lsp.null_ls")
 
