@@ -17,6 +17,7 @@ end
 mason_installer.setup({
   ensure_installed = {
     "goimports-reviser",
+    "shopify-cli",
     "shopify-theme-check",
     "tree-sitter-cli",
     "vue-language-server",
@@ -41,6 +42,7 @@ lspconfig.graphql.setup(handlers.inject({}))
 lspconfig.html.setup(handlers.inject({}))
 lspconfig.jsonls.setup(handlers.inject(require("plugins.configs.lsp.settings.jsonls")))
 lspconfig.lua_ls.setup(handlers.inject(require("plugins.configs.lsp.settings.lua_ls")))
+lspconfig.shopify_theme_ls.setup(handlers.inject({}))
 lspconfig.pyright.setup(handlers.inject({}))
 lspconfig.ts_ls.setup(handlers.inject(require("plugins.configs.lsp.settings.tsserver")))
 lspconfig.vimls.setup(handlers.inject({}))
