@@ -78,11 +78,11 @@ local nmappings = {
     },
     f = {
       name = "Find",
-      a = "Files (All)",
+      a = "Grep (Args)",
       b = "Buffers",
       c = "Commands",
       f = "Files (-Ignore)",
-      F = "Files (+Hidden)",
+      F = "Files (All)",
       g = "Grep (-Ignore)",
       G = "Grep (All)",
       r = "Resume last picker",

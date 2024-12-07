@@ -214,6 +214,10 @@ local plugins = {
     dependencies = {
       "plenary.nvim",
       "telescope-fzf-native.nvim",
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        version = "^1.0.0",
+      },
     },
     config = function()
       require("plugins.configs.telescope")

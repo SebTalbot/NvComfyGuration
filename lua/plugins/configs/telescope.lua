@@ -4,9 +4,15 @@ if not telescope_present then
   return
 end
 
-local builtinPresent, builtin = pcall(require, "telescope.builtin")
-if not builtinPresent then
+local builtin_present, builtin = pcall(require, "telescope.builtin")
+if not builtin_present then
   print("Warning: telescope.builtin not found")
+  return
+end
+
+local lga_present, lga_actions = pcall(require, "telescope-live-grep-args.actions")
+if not lga_present then
+  print("Warning: telescope-live-grep-args.actions not found")
   return
 end
 
@@ -114,6 +120,23 @@ telescope.setup({
       override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = "smart_case",
+    },
+    live_grep_args = {
+      prompt_title = "Find Grep (Args)",
+      auto_quoting = true, -- enable/disable auto-quoting
+      -- define mappings, e.g.
+      mappings = { -- extend mappings
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+          -- freeze the current list and start a fuzzy search in the frozen list
+          ["<C-space>"] = actions.to_fuzzy_refine,
+        },
+      },
+      -- ... also accepts theme settings, for example:
+      -- theme = "dropdown", -- use dropdown theme
+      -- theme = { }, -- use own theme spec
+      -- layout_config = { mirror=true }, -- mirror preview pane
     },
     termfinder = {
       mappings = {
@@ -240,8 +263,9 @@ end
 -- Custom Theme
 vim.cmd([[hi link TelescopeTitle TelescopeMatching]])
 
-require("telescope").load_extension("dap")
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("env")
-require("telescope").load_extension("termfinder")
+telescope.load_extension("dap")
+telescope.load_extension("fzf")
+telescope.load_extension("env")
+telescope.load_extension("live_grep_args")
+telescope.load_extension("termfinder")
 require("core.mappings").telescope()
