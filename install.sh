@@ -8,6 +8,7 @@ install_configs () {
   mkdir ~/.config/nvim
   ln -sf $(pwd)/init.lua ~/.config/nvim/init.lua
   ln -sf $(pwd)/lua ~/.config/nvim/lua
+  ln -sf $(pwd)/after ~/.config/nvim/after
   nvim
 }
 
