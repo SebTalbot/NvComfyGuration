@@ -17,6 +17,8 @@ end
 M.overwrite = function()
   map("n", "zn", "zj")
   map("n", "zp", "zk")
+  map("n", "Zn", "]z")
+  map("n", "Zp", "[z")
   map("v", "<", "<gv")
   map("v", ">", ">gv")
   map("v", "<C-p>", [["_dP]])
@@ -53,6 +55,8 @@ M.buffers = function()
   map("n", "<leader>bb", "<cmd>e#<CR>")
   map("n", "<leader>bn", "<cmd>bn<CR>")
   map("n", "<leader>bp", "<cmd>bp<CR>")
+  map("n", "<leader>bj", "<cmd>BufferLineMoveNext<CR>")
+  map("n", "<leader>bk", "<cmd>BufferLineMovePrev<CR>")
 end
 
 M.windows = function()
