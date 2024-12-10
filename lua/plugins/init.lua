@@ -8,16 +8,17 @@ local plugins = {
     lazy = false,
   },
   {
-    "ellisonleao/gruvbox.nvim",
+    "SebTalbot/everforest-nvim",
     lazy = false,
     enabled = is_desktop or is_default,
     priority = 1000,
     config = function()
-      vim.g.gruvbox_italic = 1
       vim.opt.termguicolors = true
-      vim.o.background = "dark"
-      vim.cmd([[colorscheme gruvbox]])
-      vim.cmd([[hi Normal ctermbg=none guibg=none]])
+      require("everforest").setup({})
+      vim.cmd([[colorscheme everforest]])
+      vim.cmd([[hi @character guifg=#d699b6]])
+      vim.cmd([[hi @string.escape guifg=#e69875]])
+      vim.cmd([[hi BufferLineIndicatorSelected guifg=#475258 guibg=#475258]]) -- bugged in bufferline
     end,
   },
   {
@@ -26,8 +27,7 @@ local plugins = {
     priority = 1000,
     enabled = is_laptop,
     config = function()
-      local dracula = require("dracula")
-      dracula.setup({
+      require("dracula").setup({
         colors = {
           -- bg = "#2c2a38",
           -- fg = "#fce0f1",
@@ -60,6 +60,7 @@ local plugins = {
     config = function()
       require("lualine").setup({
         options = {
+          theme = "auto",
           ignore_focus = {
             "dapui_watches",
             "dapui_stacks",
@@ -88,16 +89,11 @@ local plugins = {
     lazy = false,
     dependencies = {
       "nvim-web-devicons",
+      "lualine.nvim",
     },
     version = "*",
     config = function()
-      require("bufferline").setup({
-        options = {
-          buffer_close_icon = "",
-          close_icon = "",
-          separator_style = "thin",
-        },
-      })
+      require("plugins.configs.bufferline")
     end,
   },
   {
@@ -151,6 +147,9 @@ local plugins = {
     config = function()
       require("plugins.configs.treesitter")
     end,
+  },
+  {
+    "nvim-treesitter/playground",
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
