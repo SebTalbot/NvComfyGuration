@@ -128,14 +128,13 @@ M.telescope = function()
   map("n", "<leader>fF", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>")
   map("n", "<leader>fg", "<cmd>lua _TelescopeGrepIgnore() <CR>")
   map("n", "<leader>fG", "<cmd>Telescope live_grep <CR>")
+  map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
   map("n", "<leader>fr", "<cmd>Telescope resume <CR>")
   map("n", "<leader>fs", "<cmd>Telescope spell_suggest <CR>")
   map("n", "<leader>ft", "<cmd>Telescope termfinder find <CR>")
   map("n", "<leader>fw", "<cmd>lua _TelescopeWordIgnore() <CR>")
   map("n", "<leader>fW", "<cmd>Telescope grep_string <CR>")
 
-  -- General
-  map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
   -- Git
   map("n", "<leader>gb", "<cmd>Telescope git_branches <CR>")
   map("n", "<leader>gc", "<cmd>Telescope git_commits <CR>")
