@@ -146,7 +146,7 @@ local nmappings = {
       },
     },
     n = {
-      name = "Nvim-tree",
+      name = "Files manager",
       n = "Open on current file",
       t = "Toggle",
     },

@@ -169,8 +169,8 @@ M.toggleterm = function()
 end
 
 M.nvim_tree = function()
-  map("n", "<leader>nt", "<cmd>NvimTreeToggle <CR>")
-  map("n", "<leader>nn", "<cmd>NvimTreeFindFile <CR>")
+  -- map("n", "<leader>nt", "<cmd>NvimTreeToggle <CR>")
+  -- map("n", "<leader>nn", "<cmd>NvimTreeFindFile <CR>")
 end
 
 M.mundo = function()
