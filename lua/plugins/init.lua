@@ -10,7 +10,7 @@ local plugins = {
   {
     "SebTalbot/everforest-nvim",
     lazy = false,
-    enabled = is_desktop or is_default,
+    enabled = is_desktop or is_laptop or is_default,
     priority = 1000,
     config = function()
       vim.opt.termguicolors = true
@@ -19,25 +19,6 @@ local plugins = {
       vim.cmd([[hi @character guifg=#d699b6]])
       vim.cmd([[hi @string.escape guifg=#e69875]])
       vim.cmd([[hi BufferLineIndicatorSelected guifg=#475258 guibg=#475258]]) -- bugged in bufferline
-    end,
-  },
-  {
-    "Mofiqul/dracula.nvim",
-    lazy = false,
-    priority = 1000,
-    enabled = is_laptop,
-    config = function()
-      require("dracula").setup({
-        colors = {
-          -- bg = "#2c2a38",
-          -- fg = "#fce0f1",
-          selection = "#383348",
-          comment = "#6c5a78",
-        },
-      })
-      vim.cmd([[colorscheme dracula]])
-      vim.cmd([[hi Normal ctermbg=none guibg=none]])
-      vim.cmd([[hi BufferLineFill ctermbg=none guibg=none]])
     end,
   },
   {
