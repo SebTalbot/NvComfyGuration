@@ -269,18 +269,11 @@ local plugins = {
       },
     },
     opts = {
-      -- if you want to open yazi instead of netrw, see below for more info
-      open_for_directories = false,
+      open_for_directories = true,
       keymaps = {
         show_help = "<f1>",
       },
     },
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    config = function()
-      require("plugins.configs.nvim_tree")
-    end,
   },
 
   -- LSP plugins
