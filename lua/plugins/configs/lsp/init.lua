@@ -45,6 +45,7 @@ lspconfig.jsonls.setup(handlers.inject(require("plugins.configs.lsp.settings.jso
 lspconfig.lua_ls.setup(handlers.inject(require("plugins.configs.lsp.settings.lua_ls")))
 lspconfig.shopify_theme_ls.setup(handlers.inject({}))
 lspconfig.pyright.setup(handlers.inject({}))
+lspconfig.taplo.setup(handlers.inject({}))
 lspconfig.ts_ls.setup(handlers.inject(require("plugins.configs.lsp.settings.tsserver")))
 lspconfig.vimls.setup(handlers.inject({}))
 lspconfig.yamlls.setup(handlers.inject({}))
