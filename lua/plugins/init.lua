@@ -242,6 +242,13 @@ local plugins = {
     },
   },
   {
+    "ThePrimeagen/harpoon",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "telescope.nvim",
+    },
+  },
+  {
     "nvim-tree/nvim-tree.lua",
     config = function()
       require("plugins.configs.nvim_tree")

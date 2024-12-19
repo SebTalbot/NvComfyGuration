@@ -31,7 +31,7 @@ local nmappings = {
     ["<leader>"] = "Default normal mapping",
     ["*"] = "Select word under cursor",
     ["/"] = "Hide word selection",
-    ["h"] = "Neovim help search",
+    ["?"] = "Neovim help search",
     a = {
       name = "Applications",
       h = "Check Health",
@@ -85,6 +85,7 @@ local nmappings = {
       F = "Files (All)",
       g = "Grep (-Ignore)",
       G = "Grep (All)",
+      h = "Harpoon",
       r = "Resume last picker",
       s = "Spelling suggestions",
       t = "Terminals",
@@ -116,6 +117,13 @@ local nmappings = {
         t = "Stash every file",
         u = "Unstage file",
       },
+    },
+    h = {
+      name = "Harpoon",
+      a = "Add",
+      h = "List marks",
+      n = "Next mark",
+      p = "Previous mark"
     },
     q = {
       name = "Quick",

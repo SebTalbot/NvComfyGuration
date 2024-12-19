@@ -94,13 +94,6 @@ M.commands = function()
   local cmd = vim.cmd
   -- General
   cmd("command! ClearRegisters for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor")
-  -- Packer
-  cmd("silent! command PackerClean lua require 'plugins' require('packer').clean()")
-  cmd("silent! command PackerCompile lua require 'plugins' require('packer').compile()")
-  cmd("silent! command PackerInstall lua require 'plugins' require('packer').install()")
-  cmd("silent! command PackerStatus lua require 'plugins' require('packer').status()")
-  cmd("silent! command PackerSync lua require 'plugins' require('packer').sync()")
-  cmd("silent! command PackerUpdate lua require 'plugins' require('packer').update()")
   -- LSP
   cmd("silent! command LspFormatting lua vim.lsp.buf.format()")
   -- Git
@@ -128,6 +121,7 @@ M.telescope = function()
   map("n", "<leader>fF", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>")
   map("n", "<leader>fg", "<cmd>lua _TelescopeGrepIgnore() <CR>")
   map("n", "<leader>fG", "<cmd>Telescope live_grep <CR>")
+  map("n", "<leader>fh", "<cmd>Telescope harpoon marks <CR>")
   map("n", "<leader>fr", "<cmd>Telescope resume <CR>")
   map("n", "<leader>fs", "<cmd>Telescope spell_suggest <CR>")
   map("n", "<leader>ft", "<cmd>Telescope termfinder find <CR>")
@@ -135,7 +129,8 @@ M.telescope = function()
   map("n", "<leader>fW", "<cmd>Telescope grep_string <CR>")
 
   -- General
-  map("n", "<leader>h", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
+  map("n", "<leader>?", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
+
   -- Git
   map("n", "<leader>gb", "<cmd>Telescope git_branches <CR>")
   map("n", "<leader>gc", "<cmd>Telescope git_commits <CR>")
@@ -143,6 +138,16 @@ M.telescope = function()
   map("n", "<leader>gs", "<cmd>Telescope git_status <CR>")
   map("n", "<leader>gS", "<cmd>Telescope git_stash <CR>")
 end
+
+-- Harpoon
+M.harpoon = function()
+  map("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<CR>")
+  map("n", "<leader>hh", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>")
+  map("n", "<leader>hn", "<cmd>lua require('harpoon.ui').nav_next()<CR>zz")
+  map("n", "<leader>hp", "<cmd>lua require('harpoon.ui').nav_prev()<CR>zz")
+end
+M.harpoon() -- no configs
+
 
 M.gitsigns = function()
   map("n", "<leader>gd", "<cmd>Gitsigns toggle_deleted<CR> <cmd>sleep 200ms<CR> <cmd>Gitsigns toggle_linehl<CR>")
