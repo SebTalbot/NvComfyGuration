@@ -51,7 +51,3 @@ dapui.setup({
     max_type_length = nil,
   },
 })
-
-vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapStopped", { text = " ", texthl = "", linehl = "", numhl = "" })

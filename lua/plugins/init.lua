@@ -223,10 +223,38 @@ local plugins = {
     },
   },
   {
-    "nvim-tree/nvim-tree.lua",
-    config = function()
-      require("plugins.configs.nvim_tree")
-    end,
+    "ThePrimeagen/harpoon",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "telescope.nvim",
+    },
+  },
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    keys = {
+      {
+        "<leader>nn",
+        "<cmd>Yazi<cr>",
+        desc = "Open yazi at the current file",
+      },
+      {
+        "<leader>np",
+        "<cmd>Yazi cwd<cr>",
+        desc = "Open the file manager in nvim's working directory",
+      },
+      {
+        "<leader>nt",
+        "<cmd>Yazi toggle<cr>",
+        desc = "Toggle the last session",
+      },
+    },
+    opts = {
+      open_for_directories = true,
+      keymaps = {
+        show_help = "<f1>",
+      },
+    },
   },
 
   -- LSP plugins

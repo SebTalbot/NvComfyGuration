@@ -13,6 +13,10 @@ end
 require("core.mappings").dap()
 require("plugins.configs.dap.go")
 
+vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "red", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = " ", texthl = "", linehl = "", numhl = "" })
+
 mason_dap.setup({
   ensure_installed = {},
   automatic_installation = true,

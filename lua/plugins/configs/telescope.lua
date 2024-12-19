@@ -19,6 +19,8 @@ end
 local actions = require("telescope.actions")
 local actions_layout = require("telescope.actions.layout")
 
+table.unpack = table.unpack or unpack
+
 telescope.setup({
   defaults = {
     borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
@@ -156,10 +158,15 @@ function _TelescopeFileIgnore()
     prompt_title = "Find Files (Ignore)",
     hidden = true,
     file_ignore_patterns = {
-      "node_modules/",
+      -- Directories
       ".git/",
+      "node_modules/",
+      "%/test%/",
+      "%/tests%/",
+      "%.test%.",
+      "%.tests%.",
 
-      -- Images
+      -- Non-text Files
       ".jpg$",
       ".jpeg$",
       ".gif$",
@@ -167,11 +174,7 @@ function _TelescopeFileIgnore()
       ".png$",
       ".woff$",
 
-      -- Job
-      "%/test%/",
-      "%/tests%/",
-      "%.test%.",
-      "%.tests%.",
+      -- OMY
       "^assets%/skinia",
       "^assets%/sdk%-",
       "^assets%/omy%-",
@@ -179,6 +182,38 @@ function _TelescopeFileIgnore()
       "^assets%/FaceDetectionService%-",
     },
   })
+end
+
+local ignorePatterns = {
+  -- Directories
+  ".git/*",
+  "node_modules/*",
+  "*/test/*",
+  "*/tests/*",
+  "*.test.*",
+  "*.tests.*",
+
+  -- Files
+  "package-lock.json",
+
+  -- OMY
+  "assets/skinia*",
+  "assets/sdk-*",
+  "assets/omy-*",
+  "assets/account-management-*",
+  "assets/FaceDetectionService-*",
+  "assets/theme.js",
+}
+
+ ---@param patterns string[]
+ ---@return string[]
+local GenerateRgIgnorePatterns = function(patterns)
+  local result = {}
+  for _, pattern in ipairs(patterns) do
+    table.insert(result, "-g")
+    table.insert(result, "!".. pattern)
+  end
+  return result
 end
 
 function _TelescopeWordIgnore()
@@ -192,30 +227,7 @@ function _TelescopeWordIgnore()
       "--no-heading",
       "--trim",
       "--with-filename",
-      "-g",
-      "!node_modules/*",
-      "-g",
-      "!package-lock.json",
-      "-g",
-      "!*/test/*",
-      "-g",
-      "!*/tests/*",
-      "-g",
-      "!*.test.*",
-      "-g",
-      "!*.tests.*",
-      "-g",
-      "!assets/skinia*",
-      "-g",
-      "!assets/sdk-*",
-      "-g",
-      "!assets/omy-*",
-      "-g",
-      "!assets/account-management-*",
-      "-g",
-      "!assets/FaceDetectionService-*",
-      "-g",
-      "!assets/theme.js",
+      table.unpack(GenerateRgIgnorePatterns(ignorePatterns))
     },
   })
 end
@@ -232,30 +244,7 @@ function _TelescopeGrepIgnore()
       "--smart-case",
       "--trim",
       "--with-filename",
-      "-g",
-      "!node_modules/*",
-      "-g",
-      "!package-lock.json",
-      "-g",
-      "!*test/*",
-      "-g",
-      "!*tests/",
-      "-g",
-      "!*.test.*",
-      "-g",
-      "!*.tests.*",
-      "-g",
-      "!assets/skinia*",
-      "-g",
-      "!assets/sdk-*",
-      "-g",
-      "!assets/omy-*",
-      "-g",
-      "!assets/account-management-*",
-      "-g",
-      "!assets/FaceDetectionService-*",
-      "-g",
-      "!assets/theme.js",
+      table.unpack(GenerateRgIgnorePatterns(ignorePatterns))
     },
   })
 end
@@ -268,4 +257,5 @@ telescope.load_extension("fzf")
 telescope.load_extension("env")
 telescope.load_extension("live_grep_args")
 telescope.load_extension("termfinder")
+telescope.load_extension('harpoon')
 require("core.mappings").telescope()

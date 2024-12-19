@@ -28,6 +28,7 @@ configs.setup({
     "regex",
     "scss",
     "sql",
+    "toml",
     "tsx",
     "typescript",
     "vim",
