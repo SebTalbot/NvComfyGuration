@@ -19,6 +19,8 @@ local plugins = {
       vim.cmd([[hi @character guifg=#d699b6]])
       vim.cmd([[hi @string.escape guifg=#e69875]])
       vim.cmd([[hi BufferLineIndicatorSelected guifg=#475258 guibg=#475258]]) -- bugged in bufferline
+
+      vim.cmd([[hi DiagnosticUnderlineError guifg=none]])
     end,
   },
   {

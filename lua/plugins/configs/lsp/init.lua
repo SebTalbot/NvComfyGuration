@@ -16,7 +16,7 @@ end
 
 mason_installer.setup({
   ensure_installed = {
-    "goimports-reviser",
+    -- "goimports-reviser",
     "shopify-cli",
     "shopify-theme-check",
     "tree-sitter-cli",
